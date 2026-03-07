@@ -14,7 +14,11 @@ import { notFoundHandler, errorHandler } from './middleware/errorMiddleware.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const defaultOrigins = [];
+const defaultOrigins = [
+  'https://eacefrontend.netlify.app',
+  'http://localhost:5173',
+  'http://localhost:5174'
+];
 
 const envOrigins = (process.env.CLIENT_URLS || process.env.CLIENT_URL || '')
   .split(',')
@@ -30,7 +34,16 @@ app.use(
   cors({
     credentials: true,
     origin: (origin, callback) => {
+      // Allow registered exact domains
       if (!origin || allowedOrigins.has(origin)) {
+        return callback(null, true);
+      }
+
+      // Allow any Netlify preview/branch domains and local dev URLs
+      if (
+        origin.endsWith('.netlify.app') ||
+        (process.env.NODE_ENV !== 'production' && /^http:\/\/(localhost|127\.0\.0\.1):\d+$/.test(origin))
+      ) {
         return callback(null, true);
       }
 

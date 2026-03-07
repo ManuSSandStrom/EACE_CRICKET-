@@ -27,7 +27,7 @@ const buildClientConfig = (apiKey) => {
   const headers = {};
 
   if (isOpenRouterKey) {
-    headers['HTTP-Referer'] = process.env.CLIENT_URL || 'https://your-netlify-url.netlify.app';
+    headers['HTTP-Referer'] = process.env.CLIENT_URL || 'https://eacefrontend.netlify.app';
     headers['X-Title'] = 'EACE Assistant';
   }
 
