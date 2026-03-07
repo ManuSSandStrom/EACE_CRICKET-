@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FaWhatsapp, FaPhone, FaMapMarkerAlt, FaSchool, FaCheck, FaArrowRight } from 'react-icons/fa';
+import { FaWhatsapp, FaPhone, FaMapMarkerAlt, FaSchool, FaCheck, FaArrowRight, FaGraduationCap, FaStar } from 'react-icons/fa';
 import { getHomeContent, getTestimonials } from '../api/contentApi.js';
 import HeroSection from '../components/HeroSection.jsx';
 import SectionTitle from '../components/SectionTitle.jsx';
@@ -205,12 +205,19 @@ const SchoolHighlight = () => {
                 ))}
               </div>
             </div>
-
-            {/* Price & CTA */}
-            <div className="flex flex-col items-center rounded-2xl border border-[#D0D8E8] bg-white p-6 text-center shadow-md lg:min-w-[240px]">
-              <p className="text-[10px] font-semibold uppercase tracking-widest text-[#3A5A8C]">Complete Package</p>
-              <p className="mt-2 text-4xl font-extrabold text-[#790000]">₹55,000</p>
-              <p className="text-sm text-[#3A5A8C]">/year</p>
+            {/* Scholarship & CTA */}
+            <div className="flex flex-col items-center rounded-2xl border-2 border-[#790000]/20 bg-gradient-to-b from-white to-[#FDF5F5] p-6 text-center shadow-md lg:min-w-[260px]">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#790000]/10 text-[#790000]">
+                <FaGraduationCap className="text-xl" />
+              </div>
+              <p className="mt-3 text-[10px] font-bold uppercase tracking-[0.15em] text-[#790000]/70">Scholarship Based</p>
+              <p className="mt-2 text-5xl font-extrabold text-[#790000]">75%</p>
+              <p className="text-sm font-semibold text-[#790000]">Scholarship</p>
+              <div className="mt-3 flex items-center gap-1.5 rounded-full bg-[#0B4192]/10 px-3 py-1.5">
+                <FaStar className="text-xs text-[#0B4192]" />
+                <p className="text-xs font-semibold text-[#0B4192]">~₹2.5 Lakhs benefit to student</p>
+              </div>
+              <p className="mt-2 text-[11px] text-[#3A5A8C]">Merit-based scholarship covering tuition, hostel &amp; training</p>
               <a
                 href={whatsAppUrl}
                 target="_blank"
