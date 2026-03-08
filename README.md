@@ -89,7 +89,7 @@ ADMIN_PASSWORD=your_admin_password
 OPENAI_API_KEY=your_openai_api_key
 OPENAI_BASE_URL=https://openrouter.ai/api/v1
 OPENAI_MODEL=openai/gpt-4o-mini
-CONTACT_PHONE=9515022680
+CONTACT_PHONE=8123149416
 CONTACT_EMAIL=your_email@example.com
 ```
 
@@ -190,7 +190,7 @@ Access the admin panel at `/admin`:
 
 **Ekalavya Academy of Cricket Excellence (EACE)**
 
-- 📱 Phone: +91 9515022680
+- 📱 Phone: +91 8123149416
 - 📧 Email: manoharbasappagari18@gmail.com
 - 📍 Bengaluru, Karnataka, India
 

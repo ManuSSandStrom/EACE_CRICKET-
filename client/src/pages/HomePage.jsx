@@ -148,7 +148,7 @@ const normalizeTestimonials = (list, fallback) => {
 /* ─── School Highlight Component ─── */
 const SchoolHighlight = () => {
   const whatsAppUrl =
-    'https://wa.me/919515022680?text=Hello%2C%20I%20am%20interested%20in%20the%20School%20%2B%20Hostel%20%2B%20Cricket%20plan.%20Please%20share%20details.';
+    'https://wa.me/918123105849?text=Hello%2C%20I%20am%20interested%20in%20the%20School%20%2B%20Hostel%20%2B%20Cricket%20plan.%20Please%20share%20details.';
 
   return (
     <motion.section
@@ -172,7 +172,7 @@ const SchoolHighlight = () => {
             </div>
             <div className="flex flex-col gap-1 text-center text-sm md:text-right">
               <span className="flex items-center justify-center gap-2 md:justify-end">
-                <FaPhone className="text-xs" /> 7406656658
+                <FaPhone className="text-xs" /> 8123149416
               </span>
               <span className="flex items-center justify-center gap-2 text-xs text-white/80 md:justify-end">
                 <FaMapMarkerAlt className="text-xs" /> Begur-Koppa Road, Yelenahalli, Bangalore - 560068
@@ -186,20 +186,20 @@ const SchoolHighlight = () => {
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-10">
             {/* Features */}
             <div className="flex-1">
-              <h4 className="text-lg font-bold text-[#0B4192]">🏫 School + 🏠 Hostel + 🏏 Cricket — All in One</h4>
+              <h4 className="text-lg font-bold text-[#0B4192]">🏏 Residential Cricket Academy — All in One</h4>
               <p className="mt-2 text-sm text-[#3A5A8C]">
                 A unique opportunity to combine CISCE-standard academics, comfortable hostel living, and world-class cricket training at EACE.
               </p>
               <div className="mt-4 grid gap-2 sm:grid-cols-2">
                 {[
-                  'CISCE-affiliated quality education',
-                  'Full-time hostel accommodation',
-                  'Daily cricket training sessions',
-                  'Dedicated sports infrastructure & equipment',
-                  'Balanced academics & sports',
-                  'Nutritional meals provided',
-                  'Annual tournament participation',
-                  'Medical & fitness monitoring',
+                  'Daily 5 hours practice (Batting, bowling, keeping & fielding)',
+                  'Integrated Schooling (Balance sports & academics)',
+                  'Dormitory Stay (Safe & comfortable on-campus living)',
+                  'Hygiene-First Nutrition (homely food)',
+                  'Match Experience (Regular practice matches, open nets & tournaments)',
+                  'Elite Fitness Sessions & Nutrition Consultancy',
+                  'Annual Domestic Tour (Exposure to different conditions)',
+                  'Video analysis, Physiotherapy & Mental balancing',
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-2 text-sm text-[#2C3E6B]">
                     <FaCheck className="mt-0.5 shrink-0 text-xs text-[#790000]" />
@@ -213,14 +213,19 @@ const SchoolHighlight = () => {
               <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#790000]/10 text-[#790000]">
                 <FaGraduationCap className="text-xl" />
               </div>
-              <p className="mt-3 text-[10px] font-bold uppercase tracking-[0.15em] text-[#790000]/70">Scholarship Based</p>
+              <p className="mt-3 text-[10px] font-bold uppercase tracking-[0.15em] text-[#790000]/70">Exclusive Early Bird Offer</p>
               <p className="mt-2 text-5xl font-extrabold text-[#790000]">75%</p>
-              <p className="text-sm font-semibold text-[#790000]">Scholarship</p>
-              <div className="mt-3 flex items-center gap-1.5 rounded-full bg-[#0B4192]/10 px-3 py-1.5">
-                <FaStar className="text-xs text-[#0B4192]" />
-                <p className="text-xs font-semibold text-[#0B4192]">~₹2.5 Lakhs benefit to student</p>
+              <p className="text-[11px] font-semibold text-[#790000] uppercase tracking-wider mt-1">Scholarship for First 20 Enrollments</p>
+              <div className="mt-3 mb-1 flex flex-col gap-2 w-full">
+                <div className="flex items-center justify-center gap-1.5 rounded-full bg-[#0B4192]/10 px-3 py-1.5">
+                  <FaStar className="text-xs text-[#0B4192]" />
+                  <p className="text-xs font-semibold text-[#0B4192]">Eligibility: Age 12 years and above</p>
+                </div>
+                <div className="rounded-lg bg-[#E8EEF8] py-2 border border-[#B8C9E8]">
+                  <p className="text-xs font-bold text-[#0B4192]">Status: Enrollment Open Now!</p>
+                </div>
               </div>
-              <p className="mt-2 text-[11px] text-[#3A5A8C]">Merit-based scholarship covering tuition, hostel &amp; training</p>
+              <p className="mt-1 text-[12px] font-bold text-red-600 animate-pulse uppercase tracking-wider">HURRY UP – Slots are filling fast!</p>
               <a
                 href={whatsAppUrl}
                 target="_blank"

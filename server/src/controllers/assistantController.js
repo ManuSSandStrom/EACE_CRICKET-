@@ -4,13 +4,13 @@ const systemPrompt =
   'You are the official AI assistant of Ekalavya Academy of Cricket Excellence. Only answer questions related to this academy including programs, facilities, registration, location, timings, and contact details. Do not answer unrelated topics.';
 
 const buildAcademyContext = () => {
-  const contactPhone = process.env.CONTACT_PHONE || '9515022680';
+  const contactPhone = process.env.CONTACT_PHONE || '8123105849';
   const contactEmail = process.env.CONTACT_EMAIL || 'manoharbasappagari18@gmail.com';
 
   return `
 Academy: Ekalavya Academy of Cricket Excellence (EACE)
 Affiliation: Karnataka State Cricket Association Affiliated Academy
-WhatsApp Registration: https://wa.me/919515022680
+WhatsApp Registration: https://wa.me/918123105849
 Address: Opposite Sunbeam International School, EACE, Mylasandra, Bengaluru, Karnataka - 560068
 Phone: ${contactPhone}
 WhatsApp Number: ${contactPhone}
@@ -46,7 +46,7 @@ const buildFallbackReply = (rawMessage) => {
   const message = (rawMessage || '').toLowerCase();
 
   if (/join|enroll|admission|register|trial|book/.test(message)) {
-    return 'You can join EACE via WhatsApp: https://wa.me/919515022680. Share your name, age group, and preferred batch to start enrollment.';
+    return 'You can join EACE via WhatsApp: https://wa.me/918123105849. Share your name, age group, and preferred batch to start enrollment.';
   }
 
   if (/time|timing|schedule|batch|session/.test(message)) {
@@ -58,7 +58,7 @@ const buildFallbackReply = (rawMessage) => {
   }
 
   if (/phone|call|contact|whatsapp|email/.test(message)) {
-    return 'Contact EACE at +91 95150 22680 or email manoharbasappagari18@gmail.com. WhatsApp enrollment link: https://wa.me/919515022680.';
+    return 'Contact EACE at +91 81231 49416 or email manoharbasappagari18@gmail.com. WhatsApp enrollment link: https://wa.me/918123105849.';
   }
 
   if (/program|coaching|facility|coach|training/.test(message)) {

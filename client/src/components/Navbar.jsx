@@ -54,7 +54,7 @@ const Navbar = () => {
             </NavLink>
           ))}
           <a
-            href="https://wa.me/919515022680?text=Hello,%20I%20want%20to%20join%20Ekalavya%20Academy%20of%20Cricket%20Excellence."
+            href="https://wa.me/918123105849?text=Hello,%20I%20want%20to%20join%20Ekalavya%20Academy%20of%20Cricket%20Excellence."
             target="_blank"
             rel="noreferrer"
             className="btn-gold rounded-full px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.16em]"
@@ -90,7 +90,7 @@ const Navbar = () => {
               </NavLink>
             ))}
             <a
-              href="https://wa.me/919515022680?text=Hello,%20I%20want%20to%20join%20Ekalavya%20Academy%20of%20Cricket%20Excellence."
+              href="https://wa.me/918123105849?text=Hello,%20I%20want%20to%20join%20Ekalavya%20Academy%20of%20Cricket%20Excellence."
               target="_blank"
               rel="noreferrer"
               className="btn-gold mt-2 rounded-lg px-3 py-2 text-center text-sm font-semibold uppercase tracking-[0.12em]"

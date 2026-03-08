@@ -253,7 +253,7 @@ const HeroSection = ({ headline, subheading }) => {
           <motion.a
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.97 }}
-            href="https://wa.me/919515022680?text=Hello,%20I%20want%20to%20join%20Ekalavya%20Academy%20of%20Cricket%20Excellence."
+            href="https://wa.me/918123105849?text=Hello,%20I%20want%20to%20join%20Ekalavya%20Academy%20of%20Cricket%20Excellence."
             target="_blank"
             rel="noreferrer"
             className="btn-gold rounded-full px-9 py-3 text-sm font-semibold uppercase tracking-[0.15em]"

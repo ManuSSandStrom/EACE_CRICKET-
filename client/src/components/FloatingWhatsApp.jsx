@@ -3,7 +3,7 @@ import { FaWhatsapp } from 'react-icons/fa';
 const FloatingWhatsApp = () => {
   return (
     <a
-      href="https://wa.me/919515022680?text=Hello,%20I%20want%20to%20enroll%20in%20Ekalavya%20Academy%20of%20Cricket%20Excellence."
+      href="https://wa.me/918123105849?text=Hello,%20I%20want%20to%20enroll%20in%20Ekalavya%20Academy%20of%20Cricket%20Excellence."
       target="_blank"
       rel="noreferrer"
       aria-label="Enroll on WhatsApp"

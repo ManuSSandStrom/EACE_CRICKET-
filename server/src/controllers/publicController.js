@@ -81,7 +81,7 @@ export const getVideos = async (_req, res) => {
 };
 
 export const getContact = (_req, res) => {
-  const contactPhone = process.env.CONTACT_PHONE || '9515022680';
+  const contactPhone = process.env.CONTACT_PHONE || '8123149416';
   const contactEmail = process.env.CONTACT_EMAIL || 'manoharbasappagari18@gmail.com';
 
   res.json({

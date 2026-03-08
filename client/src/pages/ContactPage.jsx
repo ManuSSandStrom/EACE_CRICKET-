@@ -7,8 +7,8 @@ import { riseIn, slideInLeft, slideInRight } from '../utils/motion.js';
 
 const fallback = {
   address: 'Opposite Sunbeam International School, EACE, Mylasandra, Bengaluru, Karnataka - 560068',
-  phones: ['9515022680'],
-  whatsapp: '9515022680',
+  phones: ['8123149416'],
+  whatsapp: '8123105849',
   email: 'manoharbasappagari18@gmail.com',
   mapEmbedUrl: 'https://www.google.com/maps?q=12.901401,77.620572&output=embed',
 };

@@ -56,18 +56,18 @@ const plans = [
 ];
 
 const schoolBundle = {
-  name: 'School + Hostel + Cricket',
+  name: 'Residential Cricket Academy',
   scholarship: '75%',
-  scholarshipValue: '~₹2.5 Lakhs',
+  scholarshipValue: 'Top 20 Enrollments',
   features: [
-    "Sri Sai School education",
-    'Hostel accommodation included',
-    'Full-year cricket training at EACE',
-    'Dedicated sports infrastructure & equipment',
-    'Balanced academics & sports schedule',
-    'Nutritional meal plan',
-    'Annual tournament participation',
-    'Medical & fitness monitoring',
+    'Daily 5 hours practice (Batting, bowling, keeping & fielding)',
+    'Integrated Schooling (Balance sports & academics)',
+    'Dormitory Stay (Safe & comfortable on-campus living)',
+    'Hygiene-First Nutrition (homely food)',
+    'Match Experience (Regular practice matches, open nets & tournaments)',
+    'Elite Fitness Sessions & Nutrition Consultancy',
+    'Annual Domestic Tour (Exposure to different conditions)',
+    'Video analysis, Physiotherapy & Mental balancing',
   ],
 };
 
@@ -80,9 +80,9 @@ const ageBatches = [
 
 const PlansPage = () => {
   const whatsAppUrl =
-    'https://wa.me/919515022680?text=Hello%2C%20I%20am%20interested%20in%20joining%20EACE.%20Please%20share%20details%20about%20plans%20and%20pricing.';
+    'https://wa.me/918123105849?text=Hello%2C%20I%20am%20interested%20in%20joining%20EACE.%20Please%20share%20details%20about%20plans%20and%20pricing.';
   const trialUrl =
-    'https://wa.me/919515022680?text=Hello%2C%20I%20want%20to%20book%202%20free%20trial%20classes%20at%20EACE.';
+    'https://wa.me/918123105849?text=Hello%2C%20I%20want%20to%20book%202%20free%20trial%20classes%20at%20EACE.';
 
   return (
     <motion.section variants={riseIn} initial="hidden" animate="show" className="mx-auto w-full max-w-7xl px-4 py-14 md:px-8">
@@ -211,7 +211,7 @@ const PlansPage = () => {
                   <img src="https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983586/Sri_sai_school_image_bd7pqw.jpg" alt="Sri Sai School Logo" className="h-14 w-14 sm:h-16 sm:w-16 rounded-full object-cover shadow-sm" />
                   <div className="text-center sm:text-left">
                     <h4 className="text-lg font-bold text-[#790000]">Sri Sai School</h4>
-                    <p className="mt-1 text-sm text-[#3A5A8C]">📞 7406656658</p>
+                    <p className="mt-1 text-sm text-[#3A5A8C]">📞 8123149416</p>
                     <p className="mt-1 text-sm text-[#3A5A8C]">📍 Begur-Koppa Road, Yelenahalli, Bangalore - 560068</p>
                   </div>
                 </div>
@@ -228,14 +228,19 @@ const PlansPage = () => {
                 <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#790000]/10 text-[#790000]">
                   <FaGraduationCap className="text-xl" />
                 </div>
-                <p className="mt-3 text-[10px] font-bold uppercase tracking-[0.15em] text-[#790000]/70">Scholarship Based</p>
+                <p className="mt-3 text-[10px] font-bold uppercase tracking-[0.15em] text-[#790000]/70">Exclusive Early Bird Offer</p>
                 <p className="mt-2 text-5xl font-extrabold text-[#790000]">{schoolBundle.scholarship}</p>
-                <p className="text-sm font-semibold text-[#790000]">Scholarship</p>
-                <div className="mt-3 flex items-center gap-1.5 rounded-full bg-[#0B4192]/10 px-3 py-1.5">
-                  <FaStar className="text-xs text-[#0B4192]" />
-                  <p className="text-xs font-semibold text-[#0B4192]">{schoolBundle.scholarshipValue} benefit to student</p>
+                <p className="text-[11px] font-semibold text-[#790000] uppercase tracking-wider mt-1">Scholarship for First 20 Enrollments</p>
+                <div className="mt-3 mb-1 flex flex-col gap-2 w-full">
+                  <div className="flex items-center justify-center gap-1.5 rounded-full bg-[#0B4192]/10 px-3 py-1.5">
+                    <FaStar className="text-xs text-[#0B4192]" />
+                    <p className="text-xs font-semibold text-[#0B4192]">Eligibility: Age 12 years and above</p>
+                  </div>
+                  <div className="rounded-lg bg-[#E8EEF8] py-2 border border-[#B8C9E8]">
+                    <p className="text-xs font-bold text-[#0B4192]">Status: Enrollment Open Now!</p>
+                  </div>
                 </div>
-                <p className="mt-2 text-[11px] text-[#3A5A8C]">Merit-based scholarship covering tuition, hostel &amp; training</p>
+                <p className="mt-1 text-[12px] font-bold text-red-600 animate-pulse uppercase tracking-wider">HURRY UP – Slots are filling fast!</p>
                 <a
                   href={whatsAppUrl}
                   target="_blank"

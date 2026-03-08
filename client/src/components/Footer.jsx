@@ -42,7 +42,7 @@ const Footer = () => {
               <FaYoutube />
             </a>
             <a
-              href="https://wa.me/919515022680?text=Hello,%20I%20want%20to%20enroll%20in%20Ekalavya%20Academy%20of%20Cricket%20Excellence."
+              href="https://wa.me/918123105849?text=Hello,%20I%20want%20to%20enroll%20in%20Ekalavya%20Academy%20of%20Cricket%20Excellence."
               target="_blank"
               rel="noreferrer"
               aria-label="WhatsApp"
@@ -66,7 +66,7 @@ const Footer = () => {
 
         <div>
           <h4 className="font-heading text-3xl text-[#0B4192]">Contact</h4>
-          <p className="mt-3 text-sm text-[#2C3E6B]">+91 9515022680</p>
+          <p className="mt-3 text-sm text-[#2C3E6B]">+91 8123149416</p>
           <p className="text-sm text-[#2C3E6B]">manoharbasappagari18@gmail.com</p>
           <p className="mt-2 text-sm text-[#2C3E6B]">
             Opposite Sunbeam International School, EACE, Mylasandra, Bengaluru, Karnataka - 560068

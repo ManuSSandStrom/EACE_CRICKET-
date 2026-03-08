@@ -18,7 +18,7 @@ const CTASection = () => {
             Book your trial and begin high-performance cricket training with EACE coaches.
           </p>
           <a
-            href="https://wa.me/919515022680?text=Hello,%20I%20want%20to%20enroll%20in%20Ekalavya%20Academy%20of%20Cricket%20Excellence."
+            href="https://wa.me/918123105849?text=Hello,%20I%20want%20to%20enroll%20in%20Ekalavya%20Academy%20of%20Cricket%20Excellence."
             target="_blank"
             rel="noreferrer"
             className="btn-gold mt-8 inline-block rounded-full px-8 py-3 text-sm font-semibold uppercase tracking-[0.14em]"
