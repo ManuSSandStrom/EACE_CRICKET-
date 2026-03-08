@@ -60,7 +60,7 @@ const schoolBundle = {
   scholarship: '75%',
   scholarshipValue: '~₹2.5 Lakhs',
   features: [
-    "St. Anthony's School CISCE education",
+    "Sri Sai School education",
     'Hostel accommodation included',
     'Full-year cricket training at EACE',
     'Dedicated sports infrastructure & equipment',
@@ -207,10 +207,13 @@ const PlansPage = () => {
           <div className="p-6 md:p-8">
             <div className="flex flex-col items-center gap-6 md:flex-row md:items-start">
               <div className="flex-1">
-                <div className="rounded-xl border border-[#B8C9E8] bg-white p-5">
-                  <h4 className="text-lg font-bold text-[#790000]">St. Anthony's School CISCE</h4>
-                  <p className="mt-1 text-sm text-[#3A5A8C]">📞 7406656658</p>
-                  <p className="mt-1 text-sm text-[#3A5A8C]">📍 Begur-Koppa Road, Yelenahalli, Bangalore - 560068</p>
+                <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 rounded-xl border border-[#B8C9E8] bg-white p-5">
+                  <img src="https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983586/Sri_sai_school_image_bd7pqw.jpg" alt="Sri Sai School Logo" className="h-14 w-14 sm:h-16 sm:w-16 rounded-full object-cover shadow-sm" />
+                  <div className="text-center sm:text-left">
+                    <h4 className="text-lg font-bold text-[#790000]">Sri Sai School</h4>
+                    <p className="mt-1 text-sm text-[#3A5A8C]">📞 7406656658</p>
+                    <p className="mt-1 text-sm text-[#3A5A8C]">📍 Begur-Koppa Road, Yelenahalli, Bangalore - 560068</p>
+                  </div>
                 </div>
                 <ul className="mt-4 space-y-2">
                   {schoolBundle.features.map((feature) => (

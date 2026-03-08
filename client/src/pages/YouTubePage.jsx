@@ -44,15 +44,26 @@ const YouTubePage = () => {
           animate={{ opacity: 1, y: 0 }}
           className="mb-10 overflow-hidden rounded-2xl border border-sportsBlue/20 bg-cream shadow-card"
         >
-          <div className="aspect-video">
-            <iframe
-              className="h-full w-full"
-              loading="lazy"
-              src={toEmbedUrl(featured.youtubeUrl)}
-              title={featured.title}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
+          <div className="aspect-video bg-black/5">
+            {featured.youtubeUrl?.toLowerCase().endsWith('.mp4') ? (
+              <video
+                className="h-full w-full object-cover"
+                src={featured.youtubeUrl}
+                controls
+                autoPlay
+                muted
+                playsInline
+              />
+            ) : (
+              <iframe
+                className="h-full w-full"
+                loading="lazy"
+                src={toEmbedUrl(featured.youtubeUrl)}
+                title={featured.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            )}
           </div>
           <div className="p-5">
             <p className="text-xs uppercase tracking-[0.28em] text-cricketGold">Featured</p>
@@ -62,25 +73,37 @@ const YouTubePage = () => {
       ) : null}
 
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {rest.map((video) => (
-          <motion.article
-            key={video._id}
-            whileHover={{ y: -5 }}
-            className="overflow-hidden rounded-2xl border border-sportsBlue/20 bg-cream shadow-card"
-          >
-            <div className="aspect-video">
-              <iframe
-                className="h-full w-full"
-                loading="lazy"
-                src={toEmbedUrl(video.youtubeUrl)}
-                title={video.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-            <div className="p-4 text-sm font-medium text-paper">{video.title}</div>
-          </motion.article>
-        ))}
+        {rest.map((video) => {
+          const isDirectVideo = video.youtubeUrl?.toLowerCase().endsWith('.mp4');
+          return (
+            <motion.article
+              key={video._id}
+              whileHover={{ y: -5 }}
+              className="overflow-hidden rounded-2xl border border-sportsBlue/20 bg-cream shadow-card"
+            >
+              <div className="aspect-video bg-black/5">
+                {isDirectVideo ? (
+                  <video
+                    className="h-full w-full object-cover"
+                    src={video.youtubeUrl}
+                    controls
+                    playsInline
+                  />
+                ) : (
+                  <iframe
+                    className="h-full w-full"
+                    loading="lazy"
+                    src={toEmbedUrl(video.youtubeUrl)}
+                    title={video.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                )}
+              </div>
+              <div className="p-4 text-sm font-medium text-paper">{video.title}</div>
+            </motion.article>
+          );
+        })}
       </div>
     </section>
   );

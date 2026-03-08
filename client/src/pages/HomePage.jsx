@@ -164,7 +164,10 @@ const SchoolHighlight = () => {
           <div className="flex flex-col items-center gap-4 md:flex-row md:justify-between">
             <div className="text-center md:text-left">
               <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/70">Affiliated School Partner</p>
-              <h3 className="mt-1 font-heading text-2xl font-bold md:text-3xl">🏫 St. Anthony's School CISCE</h3>
+              <div className="mt-2 flex items-center justify-center gap-3 md:justify-start">
+                <img src="https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983586/Sri_sai_school_image_bd7pqw.jpg" alt="Sri Sai School Logo" className="h-10 w-10 sm:h-12 sm:w-12 rounded-full border border-white/50 object-cover shadow-sm bg-white" />
+                <h3 className="font-heading text-2xl font-bold md:text-3xl">Sri Sai School</h3>
+              </div>
               <p className="mt-1 text-sm text-white/90">Quality CISCE education with elite cricket training</p>
             </div>
             <div className="flex flex-col gap-1 text-center text-sm md:text-right">

@@ -129,12 +129,24 @@ const GalleryPage = () => {
                     onClick={() => setPreview(item.imageUrl)}
                     className="masonry-item mb-4 overflow-hidden rounded-xl border border-sportsBlue/25 bg-cream shadow-sm"
                   >
-                    <img
-                      src={item.imageUrl}
-                      alt={item.title || 'EACE Gallery'}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition duration-500 hover:scale-110"
-                    />
+                    {item.imageUrl.toLowerCase().endsWith('.mp4') ? (
+                      <video
+                        src={item.imageUrl}
+                        title={item.title}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="h-full w-full object-cover transition duration-500 hover:scale-110 min-h-[220px]"
+                      />
+                    ) : (
+                      <img
+                        src={item.imageUrl}
+                        alt={item.title || 'EACE Gallery'}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition duration-500 hover:scale-110 min-h-[220px]"
+                      />
+                    )}
                   </motion.button>
                 ) : (
                   <motion.div
@@ -182,26 +194,38 @@ const GalleryPage = () => {
           className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
         >
           {videos.length > 0
-            ? videos.map((video) => (
+            ? videos.map((video) => {
+                const isDirectVideo = video.youtubeUrl.toLowerCase().endsWith('.mp4');
+                return (
                 <motion.article
                   key={video._id}
                   variants={riseIn}
                   whileHover={{ y: -6, scale: 1.01 }}
                   className="overflow-hidden rounded-2xl border border-sportsBlue/25 bg-cream shadow-sm"
                 >
-                  <div className="aspect-video">
-                    <iframe
-                      className="h-full w-full"
-                      loading="lazy"
-                      src={toEmbedUrl(video.youtubeUrl)}
-                      title={video.title}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
+                  <div className="aspect-video bg-black/5">
+                    {isDirectVideo ? (
+                      <video
+                        className="h-full w-full object-cover"
+                        src={video.youtubeUrl}
+                        controls
+                        playsInline
+                      />
+                    ) : (
+                      <iframe
+                        className="h-full w-full"
+                        loading="lazy"
+                        src={toEmbedUrl(video.youtubeUrl)}
+                        title={video.title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    )}
                   </div>
                   <div className="p-4 text-sm font-semibold text-paper">{video.title}</div>
                 </motion.article>
-              ))
+              );
+            })
             : placeholderVideos.map((video, idx) => (
                 <motion.article
                   key={video.id}
