@@ -126,24 +126,32 @@ const GalleryPage = () => {
                     key={item._id}
                     variants={riseIn}
                     whileHover={{ y: -6, scale: 1.01 }}
-                    onClick={() => setPreview(item.imageUrl)}
-                    className="masonry-item mb-4 overflow-hidden rounded-xl border border-sportsBlue/25 bg-cream shadow-sm"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setPreview(item.imageUrl);
+                    }}
+                    className="masonry-item mb-4 overflow-hidden rounded-xl border border-sportsBlue/25 bg-cream shadow-sm relative group cursor-pointer w-full text-left"
                   >
                     {item.imageUrl.toLowerCase().endsWith('.mp4') ? (
-                      <video
-                        src={item.imageUrl}
-                        title={item.title}
-                        controls
-                        playsInline
-                        preload="metadata"
-                        className="h-full w-full object-cover transition duration-500 hover:scale-110 min-h-[220px]"
-                      />
+                      <div className="relative w-full h-full min-h-[220px]">
+                        <video
+                          src={item.imageUrl}
+                          title={item.title}
+                          preload="metadata"
+                          className="h-full w-full object-cover transition duration-500 group-hover:scale-110 min-h-[220px] pointer-events-none"
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition">
+                           <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg">
+                             <div className="w-0 h-0 border-t-8 border-b-8 border-l-[14px] border-t-transparent border-b-transparent border-l-[#0B4192] ml-1"></div>
+                           </div>
+                        </div>
+                      </div>
                     ) : (
                       <img
                         src={item.imageUrl}
                         alt={item.title || 'EACE Gallery'}
                         loading="lazy"
-                        className="h-full w-full object-cover transition duration-500 hover:scale-110 min-h-[220px]"
+                        className="h-full w-full object-cover transition duration-500 group-hover:scale-110 min-h-[220px]"
                       />
                     )}
                   </motion.button>
