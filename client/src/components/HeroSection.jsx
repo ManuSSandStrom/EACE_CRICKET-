@@ -201,7 +201,8 @@ const HeroSection = ({ headline, subheading }) => {
         loop
         muted
         playsInline
-        preload="metadata"
+        preload="auto"
+        style={{ opacity: 0.8 }}
       >
         <source src={HERO_BG_VIDEO} type="video/mp4" />
       </video>

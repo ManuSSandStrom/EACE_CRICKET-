@@ -50,9 +50,8 @@ const YouTubePage = () => {
                 className="h-full w-full object-cover"
                 src={featured.youtubeUrl}
                 controls
-                autoPlay
-                muted
                 playsInline
+                preload="metadata"
               />
             ) : (
               <iframe
@@ -88,6 +87,7 @@ const YouTubePage = () => {
                     src={video.youtubeUrl}
                     controls
                     playsInline
+                    preload="metadata"
                   />
                 ) : (
                   <iframe

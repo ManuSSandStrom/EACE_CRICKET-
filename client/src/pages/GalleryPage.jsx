@@ -133,10 +133,9 @@ const GalleryPage = () => {
                       <video
                         src={item.imageUrl}
                         title={item.title}
-                        autoPlay
-                        loop
-                        muted
+                        controls
                         playsInline
+                        preload="metadata"
                         className="h-full w-full object-cover transition duration-500 hover:scale-110 min-h-[220px]"
                       />
                     ) : (
@@ -210,6 +209,7 @@ const GalleryPage = () => {
                         src={video.youtubeUrl}
                         controls
                         playsInline
+                        preload="metadata"
                       />
                     ) : (
                       <iframe
