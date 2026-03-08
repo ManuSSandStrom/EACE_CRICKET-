@@ -60,14 +60,16 @@ const schoolBundle = {
   scholarship: '75%',
   scholarshipValue: 'Top 20 Enrollments',
   features: [
-    'Daily 5 hours practice (Batting, bowling, keeping & fielding)',
-    'Integrated Schooling (Balance sports & academics)',
-    'Dormitory Stay (Safe & comfortable on-campus living)',
-    'Hygiene-First Nutrition (homely food)',
-    'Match Experience (Regular practice matches, open nets & tournaments)',
-    'Elite Fitness Sessions & Nutrition Consultancy',
-    'Annual Domestic Tour (Exposure to different conditions)',
-    'Video analysis, Physiotherapy & Mental balancing',
+    '🏏 Daily 5hours of practice , mastering the art of Batting, bowling, keeping and fielding overall with experts',
+    '🏫 Integrated Schooling (Balance sports & academics)',
+    '🏠 Dormitory Stay (Safe & comfortable on-campus living)',
+    '🥗 Hygiene-First Nutrition (homely food)',
+    '🏟️ Match Experience (Regular practice matches & tournaments, open nets)',
+    '🏋️ Elite Fitness Sessions & Nutrition Consultancy',
+    '✈️ Annual Domestic Tour (Exposure to different conditions)',
+    '📹 Video analysis',
+    '⚕️ Physiotherapy',
+    '🧠 Mental balancing',
   ],
 };
 
@@ -218,7 +220,6 @@ const PlansPage = () => {
                 <ul className="mt-4 space-y-2">
                   {schoolBundle.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2 text-sm text-[#2C3E6B]">
-                      <FaCheck className="mt-0.5 shrink-0 text-xs text-[#790000]" />
                       {feature}
                     </li>
                   ))}
@@ -228,9 +229,9 @@ const PlansPage = () => {
                 <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#790000]/10 text-[#790000]">
                   <FaGraduationCap className="text-xl" />
                 </div>
-                <p className="mt-3 text-[10px] font-bold uppercase tracking-[0.15em] text-[#790000]/70">Exclusive Early Bird Offer</p>
+                <p className="mt-3 text-[10px] font-bold uppercase tracking-[0.15em] text-[#790000]/70">🔥 Exclusive Early Bird Offer 🔥</p>
                 <p className="mt-2 text-5xl font-extrabold text-[#790000]">{schoolBundle.scholarship}</p>
-                <p className="text-[11px] font-semibold text-[#790000] uppercase tracking-wider mt-1">Scholarship for First 20 Enrollments</p>
+                <p className="text-[11px] font-semibold text-[#790000] uppercase tracking-wider mt-1 text-center px-2">We are offering an Exclusive 75% Scholarship for the first 20 enrollments!</p>
                 <div className="mt-3 mb-1 flex flex-col gap-2 w-full">
                   <div className="flex items-center justify-center gap-1.5 rounded-full bg-[#0B4192]/10 px-3 py-1.5">
                     <FaStar className="text-xs text-[#0B4192]" />
@@ -240,7 +241,7 @@ const PlansPage = () => {
                     <p className="text-xs font-bold text-[#0B4192]">Status: Enrollment Open Now!</p>
                   </div>
                 </div>
-                <p className="mt-1 text-[12px] font-bold text-red-600 animate-pulse uppercase tracking-wider">HURRY UP – Slots are filling fast!</p>
+                <p className="mt-1 text-[12px] font-bold text-red-600 animate-pulse uppercase tracking-wider">⌛ HURRY UP – Slots are filling fast! ⌛</p>
                 <a
                   href={whatsAppUrl}
                   target="_blank"
