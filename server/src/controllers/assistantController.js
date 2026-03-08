@@ -4,16 +4,16 @@ const systemPrompt =
   'You are the official AI assistant of Ekalavya Academy of Cricket Excellence. Only answer questions related to this academy including programs, facilities, registration, location, timings, and contact details. Do not answer unrelated topics.';
 
 const buildAcademyContext = () => {
-  const contactPhone = process.env.CONTACT_PHONE || '8123105849';
+  const contactPhone = process.env.CONTACT_PHONE || '8123149416';
   const contactEmail = process.env.CONTACT_EMAIL || 'manoharbasappagari18@gmail.com';
 
   return `
 Academy: Ekalavya Academy of Cricket Excellence (EACE)
 Affiliation: Karnataka State Cricket Association Affiliated Academy
 WhatsApp Registration: https://wa.me/918123105849
-Address: Opposite Sunbeam International School, EACE, Mylasandra, Bengaluru, Karnataka - 560068
+Address: Begur-Koppa Road, Yelenahalli, Bangalore - 560068
 Phone: ${contactPhone}
-WhatsApp Number: ${contactPhone}
+WhatsApp Number: 8123105849
 Email: ${contactEmail}
 Primary programs: Foundation Cricket Program, Advanced Skill Development, Elite Match Simulation, Strength and Conditioning
 `;
@@ -50,11 +50,11 @@ const buildFallbackReply = (rawMessage) => {
   }
 
   if (/time|timing|schedule|batch|session/.test(message)) {
-    return 'Current batch timings: U10 6:30 AM, U14 7:30 AM, Advanced 4:30 PM, Elite 6:00 PM. For confirmation, message us on WhatsApp: +91 95150 22680.';
+    return 'Current batch timings: U10 6:30 AM, U14 7:30 AM, Advanced 4:30 PM, Elite 6:00 PM. For confirmation, message us on WhatsApp: https://wa.me/918123105849.';
   }
 
   if (/where|location|address|map/.test(message)) {
-    return 'EACE location: Opposite Sunbeam International School, Mylasandra, Bengaluru, Karnataka - 560068. You can request directions on WhatsApp: +91 95150 22680.';
+    return 'EACE location: Begur-Koppa Road, Yelenahalli, Bangalore - 560068. You can request directions on WhatsApp: https://wa.me/918123105849.';
   }
 
   if (/phone|call|contact|whatsapp|email/.test(message)) {
@@ -65,7 +65,7 @@ const buildFallbackReply = (rawMessage) => {
     return 'EACE offers Foundation Cricket Program, Advanced Skill Development, Elite Match Simulation, and Strength & Conditioning with certified coaches and professional turf facilities.';
   }
 
-  return 'I can help with EACE programs, registration, timings, location, facilities, and contact details. Ask any academy-related question or connect directly on WhatsApp: +91 95150 22680.';
+  return 'I can help with EACE programs, registration, timings, location, facilities, and contact details. Ask any academy-related question or connect directly on WhatsApp: https://wa.me/918123105849.';
 };
 
 export const askAssistant = async (req, res) => {

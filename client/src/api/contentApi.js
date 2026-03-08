@@ -49,7 +49,8 @@ export const getGallery = async (category = 'All') => {
   const galleryData = [
     ...horizontalImages.map((url, i) => ({ _id: `match-${i}`, title: `Match Moment ${i + 1}`, category: 'Matches', imageUrl: url })),
     ...netPractice.map((url, i) => ({ _id: `prac-${i}`, title: `Practice ${i + 1}`, category: 'Practice', imageUrl: url })),
-    ...instaImages.map((url, i) => ({ _id: `eve-${i}`, title: `Event ${i + 1}`, category: 'Events', imageUrl: url }))
+    ...instaImages.map((url, i) => ({ _id: `eve-${i}`, title: `Event ${i + 1}`, category: 'Events', imageUrl: url })),
+    { _id: 'school-1', title: 'Sri Sai School Campus', category: 'School', imageUrl: 'https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983586/Sri_sai_school_image_bd7pqw.jpg' }
   ];
 
   if (category === 'All') return galleryData;

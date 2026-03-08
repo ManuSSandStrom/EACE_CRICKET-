@@ -6,7 +6,7 @@ import SectionTitle from '../components/SectionTitle.jsx';
 import { riseIn, slideInLeft, slideInRight } from '../utils/motion.js';
 
 const fallback = {
-  address: 'Opposite Sunbeam International School, EACE, Mylasandra, Bengaluru, Karnataka - 560068',
+  address: 'Begur-Koppa Road, Yelenahalli, Bangalore - 560068',
   phones: ['8123149416'],
   whatsapp: '8123105849',
   email: 'manoharbasappagari18@gmail.com',

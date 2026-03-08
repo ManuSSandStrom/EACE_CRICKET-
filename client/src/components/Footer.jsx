@@ -69,7 +69,7 @@ const Footer = () => {
           <p className="mt-3 text-sm text-[#2C3E6B]">+91 8123149416</p>
           <p className="text-sm text-[#2C3E6B]">manoharbasappagari18@gmail.com</p>
           <p className="mt-2 text-sm text-[#2C3E6B]">
-            Opposite Sunbeam International School, EACE, Mylasandra, Bengaluru, Karnataka - 560068
+            Begur-Koppa Road, Yelenahalli, Bangalore - 560068
           </p>
         </div>
 

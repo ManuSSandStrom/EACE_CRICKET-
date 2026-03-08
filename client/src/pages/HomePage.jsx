@@ -168,7 +168,7 @@ const SchoolHighlight = () => {
                 <img src="https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983586/Sri_sai_school_image_bd7pqw.jpg" alt="Sri Sai School Logo" className="h-10 w-10 sm:h-12 sm:w-12 rounded-full border border-white/50 object-cover shadow-sm bg-white" />
                 <h3 className="font-heading text-2xl font-bold md:text-3xl">Sri Sai School</h3>
               </div>
-              <p className="mt-1 text-sm text-white/90">Quality CISCE education with elite cricket training</p>
+              <p className="mt-1 text-sm text-white/90">Quality academic education with elite cricket training</p>
             </div>
             <div className="flex flex-col gap-1 text-center text-sm md:text-right">
               <span className="flex items-center justify-center gap-2 md:justify-end">
@@ -188,7 +188,7 @@ const SchoolHighlight = () => {
             <div className="flex-1">
               <h4 className="text-lg font-bold text-[#0B4192]">🏏 Residential Cricket Academy — All in One</h4>
               <p className="mt-2 text-sm text-[#3A5A8C]">
-                A unique opportunity to combine CISCE-standard academics, comfortable hostel living, and world-class cricket training at EACE.
+                A unique opportunity to combine high-standard academics, comfortable hostel living, and world-class cricket training at EACE.
               </p>
               <div className="mt-4 grid gap-2 sm:grid-cols-2">
                 {[

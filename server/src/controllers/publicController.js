@@ -85,7 +85,7 @@ export const getContact = (_req, res) => {
   const contactEmail = process.env.CONTACT_EMAIL || 'manoharbasappagari18@gmail.com';
 
   res.json({
-    address: 'Opposite Sunbeam International School, EACE, Mylasandra, Bengaluru, Karnataka - 560068',
+    address: 'Begur-Koppa Road, Yelenahalli, Bangalore - 560068',
     phones: [contactPhone],
     whatsapp: contactPhone,
     email: contactEmail,

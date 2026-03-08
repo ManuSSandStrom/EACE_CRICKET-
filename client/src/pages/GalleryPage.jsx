@@ -7,7 +7,7 @@ import Lightbox from '../components/Lightbox.jsx';
 import { toEmbedUrl } from '../utils/youtube.js';
 import { riseIn, staggerContainer } from '../utils/motion.js';
 
-const filters = ['All', 'Matches', 'Practice', 'Events', 'Tournaments'];
+const filters = ['All', 'Matches', 'Practice', 'Events', 'Tournaments', 'School'];
 const placeholderImages = Array.from({ length: 6 }, (_, idx) => ({ id: `placeholder-${idx + 1}` }));
 const placeholderVideos = Array.from({ length: 3 }, (_, idx) => ({ id: `video-placeholder-${idx + 1}` }));
 
@@ -18,6 +18,7 @@ const normalizeCategory = (rawCategory = '') => {
   if (value.startsWith('practice')) return 'Practice';
   if (value.startsWith('event')) return 'Events';
   if (value.startsWith('tournament') || value.startsWith('tournamenst')) return 'Tournaments';
+  if (value.startsWith('school')) return 'School';
 
   return 'Matches';
 };

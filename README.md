@@ -161,7 +161,7 @@ Access the admin panel at `/admin`:
 - **Framer Motion** — Smooth page transitions and scroll-triggered animations
 - **Responsive Design** — Mobile-first, optimized for all screen sizes
 - **Plans & Pricing** — Monthly, 6-month, and annual training packages
-- **School Bundle** — St. Anthony's School + Hostel + Cricket (75% scholarship)
+- **School Bundle** — Sri Sai School + Hostel + Cricket (75% scholarship)
 - **WhatsApp-First Flow** — Direct enrollment via WhatsApp CTAs
 - **AI Academy Assistant** — Floating chatbot powered by OpenAI for academy queries
 - **Masonry Gallery** — Filterable image gallery with lightbox viewer
