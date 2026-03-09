@@ -6,12 +6,15 @@ export const getHomeContent = async () => {
 };
 
 export const getGallery = async (category = 'All') => {
-  const horizontalImages = [
+  const matchImages = [
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983590/20250112_080800_wy4o03.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983586/IMG-20251007-WA0062.jpg_posje4.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983585/20250120_075913_bbzplc.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983586/IMG-20250514-WA0018.jpg_vwivci.jpg",
-    "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983585/IMG-20251228-WA0018.jpg_f6fiae.jpg",
+    "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983585/IMG-20251228-WA0018.jpg_f6fiae.jpg"
+  ];
+
+  const eventImages = [
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983585/IMG-20251004-WA0107.jpg_cf5ole.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983583/20250112_080002_ibkk6a.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983583/20250131_181446_kod0mu.jpg",
@@ -20,7 +23,8 @@ export const getGallery = async (category = 'All') => {
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983574/20250630_180140_qeldst.jpg",
     "https://res.cloudinary.com/dt37ji5yp/video/upload/v1772983562/VID-20250603-WA0019_c72hkl.mp4"
   ];
-  const netPractice = [
+
+  const netPracticeImages = [
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983578/20241122_181744.jpg_y5xwvc.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983579/20250212_184753_attre2.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983583/WhatsApp_Image_2026-03-08_at_8.29.57_PM_yd2zyx.jpg",
@@ -29,27 +33,15 @@ export const getGallery = async (category = 'All') => {
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983570/20250812_194415_dbth4l.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983570/20241122_180325.jpg_pw9vgs.jpg"
   ];
-  const instaImages = [
-    "https://res.cloudinary.com/dt37ji5yp/video/upload/v1772983627/20250626_090239_pdbdzr.mp4",
-    "https://res.cloudinary.com/dt37ji5yp/video/upload/v1772983655/20250131_181911_qcqwvo.mp4",
-    "https://res.cloudinary.com/dt37ji5yp/video/upload/v1772983662/20251028_181703_fcl1oq.mp4",
-    "https://res.cloudinary.com/dt37ji5yp/video/upload/v1772983632/20241128_182310_gzfiwo.mp4",
-    "https://res.cloudinary.com/dt37ji5yp/video/upload/v1772983620/20250624_181326_f1rv8h.mp4",
-    "https://res.cloudinary.com/dt37ji5yp/video/upload/v1772983606/20241128_182059_n7jmz0.mp4",
-    "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983581/20250120_093312_0_viaofp.jpg",
-    "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983585/IMG-20251230-WA0055.jpg_rlrw9z.jpg",
-    "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983584/20250620_170147_o4x6hf.jpg",
-    "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983574/20241122_175017.jpg_nvelni.jpg",
-    "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983574/20250812_194421_iuofre.jpg",
-    "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983571/20241214_112403.jpg_s5opyo.jpg",
-    "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983568/20250513_194840_bpgbul.jpg",
-    "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983567/20250112_080036_ltwivm.jpg"
-  ];
+
+  const practiceImages = netPracticeImages.slice(0, 4);
+  const tournamentImages = netPracticeImages.slice(4);
   
   const galleryData = [
-    ...horizontalImages.map((url, i) => ({ _id: `match-${i}`, title: `Match Moment ${i + 1}`, category: 'Matches', imageUrl: url })),
-    ...netPractice.map((url, i) => ({ _id: `prac-${i}`, title: `Practice ${i + 1}`, category: 'Practice', imageUrl: url })),
-    ...instaImages.map((url, i) => ({ _id: `eve-${i}`, title: `Event ${i + 1}`, category: 'Events', imageUrl: url })),
+    ...matchImages.map((url, i) => ({ _id: `match-${i}`, title: `Match Moment ${i + 1}`, category: 'Matches', imageUrl: url })),
+    ...practiceImages.map((url, i) => ({ _id: `prac-${i}`, title: `Practice Session ${i + 1}`, category: 'Practice', imageUrl: url })),
+    ...eventImages.map((url, i) => ({ _id: `eve-${i}`, title: `Event Highlight ${i + 1}`, category: 'Events', imageUrl: url })),
+    ...tournamentImages.map((url, i) => ({ _id: `tour-${i}`, title: `Tournament Net Session ${i + 1}`, category: 'Tournaments', imageUrl: url })),
     { _id: 'school-1', title: 'Sri Sai School Campus', category: 'School', imageUrl: 'https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983586/Sri_sai_school_image_bd7pqw.jpg' }
   ];
 

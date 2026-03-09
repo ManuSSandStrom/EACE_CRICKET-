@@ -2,17 +2,15 @@ import { useEffect, useMemo, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FaWhatsapp, FaPhone, FaMapMarkerAlt, FaSchool, FaCheck, FaArrowRight, FaGraduationCap, FaStar } from 'react-icons/fa';
+import { FaWhatsapp, FaPhone, FaMapMarkerAlt, FaArrowRight, FaGraduationCap, FaStar, FaCheck } from 'react-icons/fa';
 import { getHomeContent, getTestimonials } from '../api/contentApi.js';
 import HeroSection from '../components/HeroSection.jsx';
-import SectionTitle from '../components/SectionTitle.jsx';
 import StatsCounter from '../components/StatsCounter.jsx';
 import TrustBand from '../components/TrustBand.jsx';
 import TrainingRoadmap from '../components/TrainingRoadmap.jsx';
 import CoachesSection from '../components/CoachesSection.jsx';
 import TestimonialsSlider from '../components/TestimonialsSlider.jsx';
 import CTASection from '../components/CTASection.jsx';
-import { riseIn, staggerContainer } from '../utils/motion.js';
 
 const fallbackContent = {
   heroHeadline: 'Train Like a Champion. Perform Like a Legend.',
@@ -58,7 +56,7 @@ const fallbackTestimonials = [
   {
     _id: '3',
     name: 'Pooja Narayanan',
-    role: 'Mother of U11 Student',
+    role: 'Mother of U12 Student',
     rating: 5,
     avatarUrl: 'https://i.pravatar.cc/160?img=5',
     message:
@@ -83,11 +81,6 @@ const fallbackTestimonials = [
       'What impressed us most is the seriousness in coaching. Every session has purpose, and my daughter has become mentally tougher.',
   },
 ];
-
-const normalizeStringList = (list, fallback) => {
-  const normalized = Array.isArray(list) ? list.map((item) => (typeof item === 'string' ? item.trim() : '')).filter(Boolean) : [];
-  return normalized.length ? normalized : fallback;
-};
 
 const normalizeCoaches = (list, fallback) => {
   const normalized = Array.isArray(list)
@@ -145,7 +138,19 @@ const normalizeTestimonials = (list, fallback) => {
   return normalized.length ? normalized : fallback;
 };
 
-/* ─── School Highlight Component ─── */
+const schoolFeatures = [
+  'Daily structured cricket practice with expert coaching',
+  'Integrated schooling for balanced academics and sports',
+  'Safe and supervised dormitory stay',
+  'Nutrition-focused meal planning',
+  'Practice matches and tournament exposure',
+  'Fitness and conditioning support',
+  'Annual domestic exposure tour',
+  'Video analysis for technical improvement',
+  'Physiotherapy support',
+  'Mental conditioning and focus routines',
+];
+
 const SchoolHighlight = () => {
   const whatsAppUrl =
     'https://wa.me/918123105849?text=Hello%2C%20I%20am%20interested%20in%20the%20School%20%2B%20Hostel%20%2B%20Cricket%20plan.%20Please%20share%20details.';
@@ -159,13 +164,17 @@ const SchoolHighlight = () => {
       className="mx-auto w-full max-w-7xl px-4 py-10 md:px-8"
     >
       <div className="overflow-hidden rounded-3xl border-2 border-[#790000]/25 shadow-lg">
-        {/* Header Banner */}
         <div className="bg-gradient-to-r from-[#790000] to-[#0B4192] px-6 py-5 text-white md:px-8">
           <div className="flex flex-col items-center gap-4 md:flex-row md:justify-between">
             <div className="text-center md:text-left">
               <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/70">Affiliated School Partner</p>
               <div className="mt-2 flex items-center justify-center gap-3 md:justify-start">
-                <img src="https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983586/Sri_sai_school_image_bd7pqw.jpg" alt="Sri Sai School Logo" className="h-10 w-10 sm:h-12 sm:w-12 rounded-full border border-white/50 object-cover shadow-sm bg-white" />
+                <img
+                  src="https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983586/Sri_sai_school_image_bd7pqw.jpg"
+                  alt="Sri Sai School Logo"
+                  className="h-10 w-10 rounded-full border border-white/50 bg-white object-cover shadow-sm sm:h-12 sm:w-12"
+                  loading="lazy"
+                />
                 <h3 className="font-heading text-2xl font-bold md:text-3xl">Sri Sai School</h3>
               </div>
               <p className="mt-1 text-sm text-white/90">Quality academic education with elite cricket training</p>
@@ -181,52 +190,40 @@ const SchoolHighlight = () => {
           </div>
         </div>
 
-        {/* Bundle Content */}
         <div className="bg-gradient-to-br from-white via-[#FDF5F5] to-[#F0F4FA] p-6 md:p-8">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-10">
-            {/* Features */}
             <div className="flex-1">
-              <h4 className="text-lg font-bold text-[#0B4192]">🏏 Residential Cricket Academy — All in One</h4>
+              <h4 className="text-lg font-bold text-[#0B4192]">Residential Cricket Academy</h4>
               <p className="mt-2 text-sm text-[#3A5A8C]">
-                A unique opportunity to combine high-standard academics, comfortable hostel living, and world-class cricket training at EACE.
+                A complete pathway that combines academics, hostel support, and structured cricket development for serious students.
               </p>
               <div className="mt-4 grid gap-2 sm:grid-cols-2">
-                {[
-                  '🏏 Daily 5hours of practice , mastering the art of Batting, bowling, keeping and fielding overall with experts',
-                  '🏫 Integrated Schooling (Balance sports & academics)',
-                  '🏠 Dormitory Stay (Safe & comfortable on-campus living)',
-                  '🥗 Hygiene-First Nutrition (homely food)',
-                  '🏟️ Match Experience (Regular practice matches & tournaments, open nets)',
-                  '🏋️ Elite Fitness Sessions & Nutrition Consultancy',
-                  '✈️ Annual Domestic Tour (Exposure to different conditions)',
-                  '📹 Video analysis',
-                  '⚕️ Physiotherapy',
-                  '🧠 Mental balancing',
-                ].map((item) => (
+                {schoolFeatures.map((item) => (
                   <div key={item} className="flex items-start gap-2 text-sm text-[#2C3E6B]">
-                    {item}
+                    <FaCheck className="mt-0.5 shrink-0 text-xs text-[#790000]" />
+                    <span>{item}</span>
                   </div>
                 ))}
               </div>
             </div>
-            {/* Scholarship & CTA */}
             <div className="flex flex-col items-center rounded-2xl border-2 border-[#790000]/20 bg-gradient-to-b from-white to-[#FDF5F5] p-6 text-center shadow-md lg:min-w-[260px]">
               <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#790000]/10 text-[#790000]">
                 <FaGraduationCap className="text-xl" />
               </div>
-              <p className="mt-3 text-[10px] font-bold uppercase tracking-[0.15em] text-[#790000]/70">🔥 Exclusive Early Bird Offer 🔥</p>
+              <p className="mt-3 text-[10px] font-bold uppercase tracking-[0.15em] text-[#790000]/70">Exclusive Early Bird Offer</p>
               <p className="mt-2 text-5xl font-extrabold text-[#790000]">75%</p>
-              <p className="text-[11px] font-semibold text-[#790000] uppercase tracking-wider mt-1 text-center px-2">We are offering an Exclusive 75% Scholarship for the first 20 enrollments!</p>
-              <div className="mt-3 mb-1 flex flex-col gap-2 w-full">
+              <p className="mt-1 px-2 text-center text-[11px] font-semibold uppercase tracking-wider text-[#790000]">
+                Scholarship for the first 20 enrollments
+              </p>
+              <div className="mb-1 mt-3 flex w-full flex-col gap-2">
                 <div className="flex items-center justify-center gap-1.5 rounded-full bg-[#0B4192]/10 px-3 py-1.5">
                   <FaStar className="text-xs text-[#0B4192]" />
                   <p className="text-xs font-semibold text-[#0B4192]">Eligibility: Age 12 years and above</p>
                 </div>
-                <div className="rounded-lg bg-[#E8EEF8] py-2 border border-[#B8C9E8]">
-                  <p className="text-xs font-bold text-[#0B4192]">Status: Enrollment Open Now!</p>
+                <div className="rounded-lg border border-[#B8C9E8] bg-[#E8EEF8] py-2">
+                  <p className="text-xs font-bold text-[#0B4192]">Status: Enrollment Open</p>
                 </div>
               </div>
-              <p className="mt-1 text-[12px] font-bold text-red-600 animate-pulse uppercase tracking-wider">⌛ HURRY UP – Slots are filling fast! ⌛</p>
               <a
                 href={whatsAppUrl}
                 target="_blank"
@@ -250,7 +247,6 @@ const SchoolHighlight = () => {
   );
 };
 
-/* ─── Quick Links to Plans & Calendar ─── */
 const QuickLinks = () => (
   <section className="mx-auto w-full max-w-7xl px-4 py-8 md:px-8">
     <div className="grid gap-4 sm:grid-cols-2">
@@ -259,12 +255,12 @@ const QuickLinks = () => (
           whileHover={{ y: -4, scale: 1.01 }}
           className="flex items-center gap-5 rounded-2xl border border-[#B8C9E8] bg-white p-5 shadow-sm transition group-hover:shadow-md"
         >
-          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-[#E8EEF8] text-xl text-[#0B4192]">
-            🏏
+          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-[#E8EEF8] text-xl font-bold text-[#0B4192]">
+            P
           </div>
           <div>
             <h4 className="text-lg font-bold text-[#0B4192]">Plans & Pricing</h4>
-            <p className="text-xs text-[#3A5A8C]">Monthly, 6-month & yearly packages • 2 free trial classes • Professional coaching</p>
+            <p className="text-xs text-[#3A5A8C]">Monthly, 6-month and yearly packages with trial sessions</p>
           </div>
           <FaArrowRight className="ml-auto shrink-0 text-[#0B4192] opacity-0 transition group-hover:opacity-100" />
         </motion.div>
@@ -274,12 +270,12 @@ const QuickLinks = () => (
           whileHover={{ y: -4, scale: 1.01 }}
           className="flex items-center gap-5 rounded-2xl border border-[#B8C9E8] bg-white p-5 shadow-sm transition group-hover:shadow-md"
         >
-          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-[#E8EEF8] text-xl text-[#0B4192]">
-            📅
+          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-[#E8EEF8] text-xl font-bold text-[#0B4192]">
+            C
           </div>
           <div>
             <h4 className="text-lg font-bold text-[#0B4192]">Cricket Calendar</h4>
-            <p className="text-xs text-[#3A5A8C]">Training schedule, holidays & academy events • All age groups</p>
+            <p className="text-xs text-[#3A5A8C]">Training schedule, holidays and academy events for age 12 and above</p>
           </div>
           <FaArrowRight className="ml-auto shrink-0 text-[#0B4192] opacity-0 transition group-hover:opacity-100" />
         </motion.div>
@@ -288,7 +284,6 @@ const QuickLinks = () => (
   </section>
 );
 
-/* ─── HomePage ─── */
 const HomePage = () => {
   const [content, setContent] = useState(fallbackContent);
   const [testimonials, setTestimonials] = useState(fallbackTestimonials);
@@ -326,7 +321,6 @@ const HomePage = () => {
         subheading={content.heroSubheading?.trim() || fallbackContent.heroSubheading}
       />
 
-      {/* School Highlight — right after hero */}
       <SchoolHighlight />
 
       <StatsCounter stats={safeStats} />

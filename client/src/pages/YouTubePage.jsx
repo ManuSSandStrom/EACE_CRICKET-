@@ -8,6 +8,12 @@ import { toEmbedUrl } from '../utils/youtube.js';
 const YouTubePage = () => {
   const [videos, setVideos] = useState([]);
 
+  const pauseOtherVideos = (activeVideo) => {
+    document.querySelectorAll('video').forEach((videoElement) => {
+      if (videoElement !== activeVideo) videoElement.pause();
+    });
+  };
+
   useEffect(() => {
     const load = async () => {
       try {
@@ -52,6 +58,7 @@ const YouTubePage = () => {
                 controls
                 playsInline
                 preload="metadata"
+                onPlay={(event) => pauseOtherVideos(event.currentTarget)}
               />
             ) : (
               <iframe
@@ -88,6 +95,7 @@ const YouTubePage = () => {
                     controls
                     playsInline
                     preload="metadata"
+                    onPlay={(event) => pauseOtherVideos(event.currentTarget)}
                   />
                 ) : (
                   <iframe

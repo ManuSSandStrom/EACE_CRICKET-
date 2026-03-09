@@ -26,21 +26,25 @@ const seedGallery = async () => {
     await Video.deleteMany({});
     console.log('Cleared existing gallery and video data');
 
-    const horizontalImages = [
+    const matchImages = [
       "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983590/20250112_080800_wy4o03.heic",
       "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983586/IMG-20251007-WA0062.jpg_posje4.jpg",
       "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983585/20250120_075913_bbzplc.heic",
       "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983586/IMG-20250514-WA0018.jpg_vwivci.jpg",
-      "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983585/IMG-20251228-WA0018.jpg_f6fiae.jpg",
+      "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983585/IMG-20251228-WA0018.jpg_f6fiae.jpg"
+    ];
+
+    const eventImages = [
       "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983585/IMG-20251004-WA0107.jpg_cf5ole.jpg",
       "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983583/20250112_080002_ibkk6a.heic",
       "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983583/20250131_181446_kod0mu.heic",
       "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983582/20250115_104502_etdidx.heic",
       "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983577/20250428_142449_mdlyzp.heic",
-      "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983574/20250630_180140_qeldst.heic"
+      "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983574/20250630_180140_qeldst.heic",
+      "https://res.cloudinary.com/dt37ji5yp/video/upload/v1772983562/VID-20250603-WA0019_c72hkl.mp4"
     ];
 
-    const netPractice = [
+    const netPracticeImages = [
       "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983578/20241122_181744.jpg_y5xwvc.jpg",
       "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983579/20250212_184753_attre2.heic",
       "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983583/WhatsApp_Image_2026-03-08_at_8.29.57_PM_yd2zyx.jpg",
@@ -50,26 +54,8 @@ const seedGallery = async () => {
       "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983570/20241122_180325.jpg_pw9vgs.jpg"
     ];
 
-    const instaImages = [
-      "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983581/20250120_093312_0_viaofp.heic",
-      "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983585/IMG-20251230-WA0055.jpg_rlrw9z.jpg",
-      "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983584/20250620_170147_o4x6hf.heic",
-      "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983574/20241122_175017.jpg_nvelni.jpg",
-      "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983574/20250812_194421_iuofre.heic",
-      "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983571/20241214_112403.jpg_s5opyo.jpg",
-      "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983568/20250513_194840_bpgbul.heic",
-      "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983567/20250112_080036_ltwivm.heic"
-    ];
-
-    const instaVideos = [
-      "https://res.cloudinary.com/dt37ji5yp/video/upload/v1772983627/20250626_090239_pdbdzr.mp4",
-      "https://res.cloudinary.com/dt37ji5yp/video/upload/v1772983655/20250131_181911_qcqwvo.mp4",
-      "https://res.cloudinary.com/dt37ji5yp/video/upload/v1772983662/20251028_181703_fcl1oq.mp4",
-      "https://res.cloudinary.com/dt37ji5yp/video/upload/v1772983632/20241128_182310_gzfiwo.mp4",
-      "https://res.cloudinary.com/dt37ji5yp/video/upload/v1772983620/20250624_181326_f1rv8h.mp4",
-      "https://res.cloudinary.com/dt37ji5yp/video/upload/v1772983606/20241128_182059_n7jmz0.mp4",
-      "https://res.cloudinary.com/dt37ji5yp/video/upload/v1772983460/20250624_181326_exfrhf.mp4"
-    ];
+    const practiceImages = netPracticeImages.slice(0, 4);
+    const tournamentImages = netPracticeImages.slice(4);
 
     const youtubeList = [
       "https://res.cloudinary.com/dt37ji5yp/video/upload/v1772983657/20251006_185248_ltmxs4.mp4",
@@ -80,26 +66,31 @@ const seedGallery = async () => {
     ];
 
     const galleryData = [
-      ...horizontalImages.map((url, i) => ({
+      ...matchImages.map((url, i) => ({
         title: `Match Moment ${i + 1}`,
         category: 'Matches',
         imageUrl: formatUrl(url),
       })),
-      ...netPractice.map((url, i) => ({
-        title: `Net Practice ${i + 1}`,
+      ...practiceImages.map((url, i) => ({
+        title: `Practice Session ${i + 1}`,
         category: 'Practice',
         imageUrl: formatUrl(url),
       })),
-      ...instaImages.map((url, i) => ({
-        title: `Insta Highlight ${i + 1}`,
+      ...eventImages.map((url, i) => ({
+        title: `Event Highlight ${i + 1}`,
         category: 'Events',
         imageUrl: formatUrl(url),
       })),
-      ...instaVideos.map((url, i) => ({
-          title: `Action Reel ${i + 1}`,
-          category: 'Events',
-          imageUrl: formatUrl(url),
-      }))
+      ...tournamentImages.map((url, i) => ({
+        title: `Tournament Net Session ${i + 1}`,
+        category: 'Tournaments',
+        imageUrl: formatUrl(url),
+      })),
+      {
+        title: 'Sri Sai School Campus',
+        category: 'School',
+        imageUrl: formatUrl("https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983586/Sri_sai_school_image_bd7pqw.jpg"),
+      }
     ];
 
     await GalleryItem.insertMany(galleryData);

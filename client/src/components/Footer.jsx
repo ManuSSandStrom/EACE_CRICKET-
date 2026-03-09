@@ -16,7 +16,7 @@ const Footer = () => {
     <footer className="border-t border-[#D0D8E8] bg-white">
       <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-10 md:grid-cols-2 lg:grid-cols-4 md:px-8">
         <div>
-          <img src={EACE_LOGO_URL} alt="EACE Logo" className="mb-4 h-16 w-16 object-contain" loading="lazy" />
+          <img src={EACE_LOGO_URL} alt="Sri Sai School Logo" className="mb-4 h-16 w-16 object-contain" loading="lazy" />
           <h3 className="font-heading text-4xl text-[#0B4192]">Ekalavya Academy of Cricket Excellence</h3>
           <p className="mt-3 max-w-md text-sm text-[#2C3E6B]">
             Elite cricket training ecosystem designed to build disciplined, high-performing athletes.

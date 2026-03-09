@@ -6,6 +6,7 @@ import SectionTitle from '../components/SectionTitle.jsx';
 import Lightbox from '../components/Lightbox.jsx';
 import { toEmbedUrl } from '../utils/youtube.js';
 import { riseIn, staggerContainer } from '../utils/motion.js';
+import { optimizeCloudinaryImage } from '../utils/media.js';
 
 const filters = ['All', 'Matches', 'Practice', 'Events', 'Tournaments', 'School'];
 const placeholderImages = Array.from({ length: 6 }, (_, idx) => ({ id: `placeholder-${idx + 1}` }));
@@ -28,6 +29,12 @@ const GalleryPage = () => {
   const [allItems, setAllItems] = useState([]);
   const [videos, setVideos] = useState([]);
   const [preview, setPreview] = useState('');
+
+  const pauseOtherVideos = (activeVideo) => {
+    document.querySelectorAll('video').forEach((videoElement) => {
+      if (videoElement !== activeVideo) videoElement.pause();
+    });
+  };
 
   useEffect(() => {
     const load = async () => {
@@ -58,13 +65,17 @@ const GalleryPage = () => {
       allItems.map((item, idx) => {
         const raw = typeof item?.imageUrl === 'string' ? item.imageUrl.trim() : '';
         const hasImage = raw.startsWith('http') || raw.startsWith('/uploads');
+        const isVideo = raw.toLowerCase().endsWith('.mp4');
 
         return {
           ...item,
           _id: item?._id || `gallery-${idx}`,
           title: typeof item?.title === 'string' && item.title.trim() ? item.title.trim() : `Training Moment ${idx + 1}`,
           category: normalizeCategory(item?.category),
+          previewUrl: hasImage ? (isVideo ? raw : optimizeCloudinaryImage(raw, 1400)) : '',
+          thumbUrl: hasImage ? (isVideo ? raw : optimizeCloudinaryImage(raw, 900)) : '',
           imageUrl: hasImage ? raw : '',
+          isVideo,
           hasImage,
         };
       }),
@@ -90,7 +101,7 @@ const GalleryPage = () => {
       <SectionTitle
         eyebrow="Gallery"
         title="Training & Match Moments"
-        subtitle="Explore EACE life through curated photos from matches, practice, events, and tournaments."
+        subtitle="Explore academy life through curated photos from matches, practice, events, tournaments, and Sri Sai School moments."
       />
 
       <div className="mb-8 flex flex-wrap justify-center gap-3">
@@ -129,11 +140,11 @@ const GalleryPage = () => {
                     whileHover={{ y: -6, scale: 1.01 }}
                     onClick={(e) => {
                       e.preventDefault();
-                      setPreview(item.imageUrl);
+                      setPreview(item.previewUrl || item.imageUrl);
                     }}
                     className="masonry-item mb-4 overflow-hidden rounded-xl border border-sportsBlue/25 bg-cream shadow-sm relative group cursor-pointer w-full text-left"
                   >
-                    {item.imageUrl.toLowerCase().endsWith('.mp4') ? (
+                    {item.isVideo ? (
                       <div className="relative w-full h-full min-h-[220px]">
                         <video
                           src={item.imageUrl}
@@ -149,9 +160,11 @@ const GalleryPage = () => {
                       </div>
                     ) : (
                       <img
-                        src={item.imageUrl}
+                        src={item.thumbUrl}
                         alt={item.title || 'EACE Gallery'}
                         loading="lazy"
+                        decoding="async"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         className="h-full w-full object-cover transition duration-500 group-hover:scale-110 min-h-[220px]"
                       />
                     )}
@@ -219,6 +232,7 @@ const GalleryPage = () => {
                         controls
                         playsInline
                         preload="metadata"
+                        onPlay={(event) => pauseOtherVideos(event.currentTarget)}
                       />
                     ) : (
                       <iframe

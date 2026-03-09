@@ -6,12 +6,12 @@ const defaultSlides = [
   {
     title: 'Foundation Program',
     description: 'Build technical fluency, movement quality, and training discipline from day one.',
-    badge: 'Age 7-12',
+    badge: 'Age 12-14',
   },
   {
     title: 'Advanced Development',
     description: 'Refine game awareness, pressure response, and match execution under coach supervision.',
-    badge: 'Age 13-17',
+    badge: 'Age 15-17',
   },
   {
     title: 'Elite Pathway',

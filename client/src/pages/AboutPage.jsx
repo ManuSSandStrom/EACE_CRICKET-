@@ -4,16 +4,16 @@ import SectionTitle from '../components/SectionTitle.jsx';
 
 const timeline = [
   {
-    year: 'Foundation Stage',
-    text: 'Strong technical basics in batting, bowling, fielding, and discipline routines.',
+    year: 'Stage 1: Ages 12-14',
+    text: 'Build technical foundations, movement efficiency, and disciplined routines.',
   },
   {
-    year: 'Performance Build',
-    text: 'Specialized sessions, tactical awareness, match simulation, and assessment loops.',
+    year: 'Stage 2: Ages 15-17',
+    text: 'Advance tactical awareness, role clarity, and match-pressure decision making.',
   },
   {
-    year: 'Competitive Pathway',
-    text: 'Tournament readiness, selection preparation, and advanced athletic conditioning.',
+    year: 'Stage 3: Ages 18+',
+    text: 'High-performance preparation with tournament intensity and competitive benchmarks.',
   },
 ];
 
@@ -21,47 +21,61 @@ const AboutPage = () => {
   return (
     <section className="mx-auto w-full max-w-7xl px-4 py-14 md:px-8">
       <Helmet>
-        <title>About EACE</title>
+        <title>About Sri Sai School & Academy</title>
       </Helmet>
 
       <SectionTitle
         eyebrow="About"
-        title="Vision, Mission & Training Philosophy"
-        subtitle="A high-standard academy system focused on skill depth, discipline, and sustainable growth."
+        title="Sri Sai School Partnership"
+        subtitle="A professional school and cricket training environment focused on academic quality, athlete development, and long-term growth."
       />
 
       <div className="grid gap-6 md:grid-cols-2">
         <article className="sports-card rounded-2xl p-7 shadow-sm">
           <h3 className="text-2xl font-semibold text-sportsBlue">Vision</h3>
           <p className="mt-3 text-sm leading-7 text-muted">
-            To build internationally competitive cricketers through scientific coaching, ethics, and performance culture.
+            Develop disciplined student-athletes through strong academics, structured training, and a performance-first culture.
           </p>
         </article>
         <article className="sports-card rounded-2xl p-7 shadow-sm">
           <h3 className="text-2xl font-semibold text-sportsBlue">Mission</h3>
           <p className="mt-3 text-sm leading-7 text-muted">
-            Deliver world-class training, athlete monitoring, and development opportunities in a trusted academy environment.
+            Deliver consistent coaching quality, responsible care, and measurable progress for students aged 12 and above.
           </p>
         </article>
       </div>
 
       <div className="mt-10 grid gap-6 md:grid-cols-2">
         <article className="sports-card rounded-2xl p-7 shadow-sm">
-          <h3 className="text-xl font-semibold text-paper">Affiliation</h3>
-          <p className="mt-3 text-sm text-muted">
-            Karnataka State Cricket Association affiliated academy with professional standards in coaching and progression.
+          <div className="flex items-center gap-4">
+            <img
+              src="https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983586/Sri_sai_school_image_bd7pqw.jpg"
+              alt="Sri Sai School Logo"
+              className="h-16 w-16 rounded-full border border-sportsBlue/20 object-cover"
+              loading="lazy"
+            />
+            <div>
+              <h3 className="text-xl font-semibold text-paper">Sri Sai School</h3>
+              <p className="text-sm text-muted">Begur-Koppa Road, Yelenahalli, Bangalore - 560068</p>
+            </div>
+          </div>
+          <p className="mt-4 text-sm text-muted">
+            Sri Sai School supports students with balanced academics, responsible supervision, and a growth-oriented campus culture.
           </p>
         </article>
         <article className="sports-card rounded-2xl p-7 shadow-sm">
           <h3 className="text-xl font-semibold text-paper">Training Philosophy</h3>
           <p className="mt-3 text-sm text-muted">
-            Balance technique, match intelligence, physical conditioning, and mindset under structured coaching blocks.
+            Coaching combines technique, match awareness, strength and conditioning, and mental readiness under structured cycles.
+          </p>
+          <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-[#0B4192]">
+            Eligibility: Age 12 years and above
           </p>
         </article>
       </div>
 
       <div className="mt-14">
-        <SectionTitle eyebrow="Student Growth Path" title="From Basics to Competitive Excellence" />
+        <SectionTitle eyebrow="Student Pathway" title="From Foundation to Competitive Cricket" />
         <div className="relative mx-auto max-w-4xl">
           <div className="absolute left-[15px] top-0 h-full w-px bg-[#0B4192]/30" />
           <div className="space-y-6">

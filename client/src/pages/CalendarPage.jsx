@@ -1,16 +1,14 @@
 import { useMemo, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import SectionTitle from '../components/SectionTitle.jsx';
 import { riseIn, staggerContainer } from '../utils/motion.js';
 
-/* ─── Training Timings ─── */
 const trainingSlots = [
-  { batch: 'Mini Stars (6–10 yrs)', morning: '6:00 AM – 7:30 AM', evening: '4:00 PM – 5:30 PM' },
-  { batch: 'Rising Cubs (11–14 yrs)', morning: '6:00 AM – 8:00 AM', evening: '4:00 PM – 6:00 PM' },
-  { batch: 'Academy Elite (15–18 yrs)', morning: '5:30 AM – 8:00 AM', evening: '4:00 PM – 6:30 PM' },
-  { batch: 'Pro Circuit (19–30 yrs)', morning: '5:30 AM – 8:00 AM', evening: '4:30 PM – 7:00 PM' },
+  { batch: 'Foundation Batch (12-14 yrs)', morning: '6:00 AM - 7:30 AM', evening: '4:00 PM - 5:30 PM' },
+  { batch: 'Performance Batch (15-17 yrs)', morning: '6:00 AM - 8:00 AM', evening: '4:00 PM - 6:00 PM' },
+  { batch: 'Elite Batch (18+ yrs)', morning: '5:30 AM - 8:00 AM', evening: '4:30 PM - 7:00 PM' },
 ];
 
 const weeklySchedule = [
@@ -23,7 +21,6 @@ const weeklySchedule = [
   { day: 'Sunday', focus: 'Rest / Optional Fitness', type: 'rest' },
 ];
 
-/* ─── Government Holidays 2026 (Karnataka) ─── */
 const governmentHolidays = [
   { date: '2026-01-14', name: 'Makar Sankranti' },
   { date: '2026-01-26', name: 'Republic Day' },
@@ -52,7 +49,6 @@ const governmentHolidays = [
   { date: '2026-12-25', name: 'Christmas' },
 ];
 
-/* Academy-specific holidays/breaks */
 const academyBreaks = [
   { date: '2026-04-13', name: 'Academy Annual Day' },
   { date: '2026-06-01', name: 'Summer Camp Starts' },
@@ -74,39 +70,48 @@ const CalendarPage = () => {
   const [month, setMonth] = useState(now.getFullYear() === 2026 ? now.getMonth() : 0);
 
   const prevMonth = () => {
-    if (month === 0) { setMonth(11); setYear((prev) => prev - 1); }
-    else setMonth((prev) => prev - 1);
+    if (month === 0) {
+      setMonth(11);
+      setYear((prev) => prev - 1);
+      return;
+    }
+    setMonth((prev) => prev - 1);
   };
+
   const nextMonth = () => {
-    if (month === 11) { setMonth(0); setYear((prev) => prev + 1); }
-    else setMonth((prev) => prev + 1);
+    if (month === 11) {
+      setMonth(0);
+      setYear((prev) => prev + 1);
+      return;
+    }
+    setMonth((prev) => prev + 1);
   };
 
   const calendarDays = useMemo(() => {
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const cells = [];
-    for (let i = 0; i < firstDay; i++) cells.push(null);
-    for (let d = 1; d <= daysInMonth; d++) cells.push(d);
+    for (let i = 0; i < firstDay; i += 1) cells.push(null);
+    for (let day = 1; day <= daysInMonth; day += 1) cells.push(day);
     return cells;
   }, [year, month]);
 
   const holidayMap = useMemo(() => {
     const map = {};
-    for (const h of governmentHolidays) {
-      const d = new Date(h.date);
-      if (d.getFullYear() === year && d.getMonth() === month) {
-        const day = d.getDate();
+    for (const holiday of governmentHolidays) {
+      const date = new Date(holiday.date);
+      if (date.getFullYear() === year && date.getMonth() === month) {
+        const day = date.getDate();
         if (!map[day]) map[day] = [];
-        map[day].push({ ...h, type: 'govt' });
+        map[day].push({ ...holiday, type: 'govt' });
       }
     }
-    for (const h of academyBreaks) {
-      const d = new Date(h.date);
-      if (d.getFullYear() === year && d.getMonth() === month) {
-        const day = d.getDate();
+    for (const holiday of academyBreaks) {
+      const date = new Date(holiday.date);
+      if (date.getFullYear() === year && date.getMonth() === month) {
+        const day = date.getDate();
         if (!map[day]) map[day] = [];
-        map[day].push({ ...h, type: 'academy' });
+        map[day].push({ ...holiday, type: 'academy' });
       }
     }
     return map;
@@ -114,13 +119,17 @@ const CalendarPage = () => {
 
   const monthHolidays = useMemo(() => {
     const list = [];
-    for (const h of governmentHolidays) {
-      const d = new Date(h.date);
-      if (d.getFullYear() === year && d.getMonth() === month) list.push({ ...h, type: 'govt' });
+    for (const holiday of governmentHolidays) {
+      const date = new Date(holiday.date);
+      if (date.getFullYear() === year && date.getMonth() === month) {
+        list.push({ ...holiday, type: 'govt' });
+      }
     }
-    for (const h of academyBreaks) {
-      const d = new Date(h.date);
-      if (d.getFullYear() === year && d.getMonth() === month) list.push({ ...h, type: 'academy' });
+    for (const holiday of academyBreaks) {
+      const date = new Date(holiday.date);
+      if (date.getFullYear() === year && date.getMonth() === month) {
+        list.push({ ...holiday, type: 'academy' });
+      }
     }
     return list.sort((a, b) => new Date(a.date) - new Date(b.date));
   }, [year, month]);
@@ -140,7 +149,10 @@ const CalendarPage = () => {
     <motion.section variants={riseIn} initial="hidden" animate="show" className="mx-auto w-full max-w-7xl px-4 py-14 md:px-8">
       <Helmet>
         <title>Cricket Calendar | EACE Academy</title>
-        <meta name="description" content="EACE cricket training calendar with session timings, government holidays, and academy schedule for all age groups." />
+        <meta
+          name="description"
+          content="EACE cricket training calendar with session timings, government holidays, and academy schedule for students aged 12 and above."
+        />
       </Helmet>
 
       <SectionTitle
@@ -149,9 +161,8 @@ const CalendarPage = () => {
         subtitle="Plan your training around holidays. All government holidays and academy breaks are marked."
       />
 
-      {/* Training Timings Table */}
       <div className="mb-14">
-        <h3 className="mb-5 text-center text-lg font-semibold text-[#0B4192]">Daily Training Timings</h3>
+        <h3 className="mb-5 text-center text-lg font-semibold text-[#0B4192]">Daily Training Timings (Age 12+)</h3>
         <div className="overflow-x-auto">
           <table className="w-full min-w-[540px] rounded-xl border border-[#B8C9E8] bg-white text-sm shadow-sm">
             <thead>
@@ -174,7 +185,6 @@ const CalendarPage = () => {
         </div>
       </div>
 
-      {/* Weekly Focus */}
       <div className="mb-14">
         <h3 className="mb-5 text-center text-lg font-semibold text-[#0B4192]">Weekly Training Focus</h3>
         <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true }} className="grid gap-3 sm:grid-cols-2 lg:grid-cols-7">
@@ -199,10 +209,8 @@ const CalendarPage = () => {
         </motion.div>
       </div>
 
-      {/* Calendar */}
       <div className="mx-auto max-w-3xl">
         <div className="overflow-hidden rounded-2xl border border-[#B8C9E8] bg-white shadow-sm">
-          {/* Calendar Header */}
           <div className="flex items-center justify-between bg-[#0B4192] px-5 py-4 text-white">
             <button onClick={prevMonth} className="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/20" aria-label="Previous month">
               <FaChevronLeft />
@@ -213,16 +221,14 @@ const CalendarPage = () => {
             </button>
           </div>
 
-          {/* Day Headers */}
           <div className="grid grid-cols-7 border-b border-[#D0D8E8] bg-[#F0F4FA]">
-            {DAYS.map((d) => (
-              <div key={d} className={`py-2.5 text-center text-[11px] font-bold uppercase tracking-widest ${d === 'Sun' ? 'text-[#790000]' : 'text-[#3A5A8C]'}`}>
-                {d}
+            {DAYS.map((dayLabel) => (
+              <div key={dayLabel} className={`py-2.5 text-center text-[11px] font-bold uppercase tracking-widest ${dayLabel === 'Sun' ? 'text-[#790000]' : 'text-[#3A5A8C]'}`}>
+                {dayLabel}
               </div>
             ))}
           </div>
 
-          {/* Calendar Grid */}
           <div className="grid grid-cols-7">
             {calendarDays.map((day, idx) => {
               const holidays = day ? (holidayMap[day] || []) : [];
@@ -231,7 +237,7 @@ const CalendarPage = () => {
 
               return (
                 <div
-                  key={idx}
+                  key={`${idx}-${day || 'empty'}`}
                   className={`relative min-h-[56px] border-b border-r border-[#E8EDF5] p-1.5 text-center md:min-h-[72px] md:p-2 ${
                     !day ? 'bg-[#FAFBFD]' : today ? 'bg-[#E8EEF8]' : ''
                   }`}
@@ -245,7 +251,7 @@ const CalendarPage = () => {
                             : sunday
                               ? 'text-[#790000]'
                               : holidays.length > 0
-                                ? 'text-[#790000] font-bold'
+                                ? 'font-bold text-[#790000]'
                                 : 'text-[#2C3E6B]'
                         }`}
                       >
@@ -253,15 +259,15 @@ const CalendarPage = () => {
                       </span>
                       {holidays.length > 0 && (
                         <div className="mt-0.5">
-                          {holidays.map((h, hIdx) => (
+                          {holidays.map((holiday, hIdx) => (
                             <div
-                              key={hIdx}
+                              key={`${holiday.name}-${hIdx}`}
                               className={`mt-0.5 truncate rounded px-0.5 text-[8px] font-medium leading-tight md:text-[9px] ${
-                                h.type === 'govt' ? 'bg-[#790000]/10 text-[#790000]' : 'bg-[#0B4192]/10 text-[#0B4192]'
+                                holiday.type === 'govt' ? 'bg-[#790000]/10 text-[#790000]' : 'bg-[#0B4192]/10 text-[#0B4192]'
                               }`}
-                              title={h.name}
+                              title={holiday.name}
                             >
-                              {h.name}
+                              {holiday.name}
                             </div>
                           ))}
                         </div>
@@ -274,7 +280,6 @@ const CalendarPage = () => {
           </div>
         </div>
 
-        {/* Legend */}
         <div className="mt-4 flex flex-wrap items-center justify-center gap-4 text-xs">
           <span className="flex items-center gap-1.5">
             <span className="h-3 w-3 rounded-full bg-[#0B4192]" /> Today
@@ -290,23 +295,22 @@ const CalendarPage = () => {
           </span>
         </div>
 
-        {/* Month Holidays List */}
         {monthHolidays.length > 0 && (
           <div className="mt-6 rounded-xl border border-[#B8C9E8] bg-white p-5 shadow-sm">
             <h4 className="mb-3 text-sm font-semibold text-[#0B4192]">Holidays & Events in {MONTHS[month]}</h4>
             <div className="space-y-2">
-              {monthHolidays.map((h) => {
-                const d = new Date(h.date);
+              {monthHolidays.map((holiday) => {
+                const date = new Date(holiday.date);
                 return (
-                  <div key={`${h.date}-${h.name}`} className="flex items-center gap-3 text-sm">
+                  <div key={`${holiday.date}-${holiday.name}`} className="flex items-center gap-3 text-sm">
                     <span className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-xs font-bold ${
-                      h.type === 'govt' ? 'bg-[#790000]/10 text-[#790000]' : 'bg-[#0B4192]/10 text-[#0B4192]'
+                      holiday.type === 'govt' ? 'bg-[#790000]/10 text-[#790000]' : 'bg-[#0B4192]/10 text-[#0B4192]'
                     }`}>
-                      {d.getDate()}
+                      {date.getDate()}
                     </span>
                     <div>
-                      <p className="font-medium text-[#1a1a2e]">{h.name}</p>
-                      <p className="text-[10px] text-[#3A5A8C]">{h.type === 'govt' ? 'Government Holiday' : 'Academy Event'}</p>
+                      <p className="font-medium text-[#1a1a2e]">{holiday.name}</p>
+                      <p className="text-[10px] text-[#3A5A8C]">{holiday.type === 'govt' ? 'Government Holiday' : 'Academy Event'}</p>
                     </div>
                   </div>
                 );
@@ -316,20 +320,18 @@ const CalendarPage = () => {
         )}
       </div>
 
-      {/* Training Note */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         className="mx-auto mt-10 max-w-2xl rounded-xl border border-[#B8C9E8] bg-[#F0F4FA] p-5 text-center"
       >
-        <p className="text-sm font-semibold text-[#0B4192]">📋 Training runs 6 days a week (Monday to Saturday)</p>
+        <p className="text-sm font-semibold text-[#0B4192]">Training runs 6 days a week (Monday to Saturday)</p>
         <p className="mt-2 text-xs text-[#3A5A8C]">
-          Sessions are held rain or shine. Indoor net sessions available during monsoon. Government and academy holidays are observed.
-          Contact us for any schedule queries.
+          Sessions are conducted for students aged 12 and above. Indoor net sessions are available during monsoon.
+          Government and academy holidays are observed.
         </p>
       </motion.div>
-
     </motion.section>
   );
 };

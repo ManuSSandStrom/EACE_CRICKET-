@@ -17,8 +17,8 @@ const Lightbox = ({ image, onClose }) => {
             <motion.video
               src={image}
               controls
-              autoPlay
               playsInline
+              preload="metadata"
               initial={{ scale: 0.92, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}

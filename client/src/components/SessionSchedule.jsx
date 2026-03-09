@@ -4,10 +4,10 @@ import SectionTitle from './SectionTitle.jsx';
 import { staggerContainer, slideInRight } from '../utils/motion.js';
 
 const sessions = [
-  { batch: 'U10 Batch', time: 'Morning 6:30 AM', slot: 'Foundation Skills' },
-  { batch: 'U14 Batch', time: 'Morning 7:30 AM', slot: 'Technical Development' },
-  { batch: 'Advanced Batch', time: 'Evening 4:30 PM', slot: 'Match Simulation' },
-  { batch: 'Elite Batch', time: 'Evening 6:00 PM', slot: 'Performance Pathway' },
+  { batch: 'Foundation Batch (12-14)', time: 'Morning 6:30 AM', slot: 'Technical Foundation' },
+  { batch: 'Performance Batch (15-17)', time: 'Morning 7:30 AM', slot: 'Advanced Development' },
+  { batch: 'Elite Batch (18+)', time: 'Evening 4:30 PM', slot: 'Match Simulation' },
+  { batch: 'High Performance Batch (18+)', time: 'Evening 6:00 PM', slot: 'Performance Pathway' },
 ];
 
 const SessionSchedule = () => {

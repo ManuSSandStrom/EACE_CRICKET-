@@ -50,7 +50,7 @@ const buildFallbackReply = (rawMessage) => {
   }
 
   if (/time|timing|schedule|batch|session/.test(message)) {
-    return 'Current batch timings: U10 6:30 AM, U14 7:30 AM, Advanced 4:30 PM, Elite 6:00 PM. For confirmation, message us on WhatsApp: https://wa.me/918123105849.';
+    return 'Current batch timings (age 12+): Foundation 6:30 AM, Performance 7:30 AM, Elite 4:30 PM, High Performance 6:00 PM. For confirmation, message us on WhatsApp: https://wa.me/918123105849.';
   }
 
   if (/where|location|address|map/.test(message)) {
