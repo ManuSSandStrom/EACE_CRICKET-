@@ -81,7 +81,7 @@ const GalleryPage = () => {
       <SectionTitle
         eyebrow="Gallery"
         title="Training & Match Moments"
-        subtitle="Explore academy life through curated photos from matches, practice, events, tournaments, and Sri Sai School moments."
+        subtitle="Explore academy life through our curated photos and video highlights."
       />
 
       <motion.div
