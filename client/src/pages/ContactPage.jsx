@@ -9,7 +9,7 @@ const fallback = {
   address: 'Begur-Koppa Road, Yelenahalli, Bangalore - 560068',
   phones: ['8123149416'],
   whatsapp: '8123105849',
-  email: 'manoharbasappagari18@gmail.com',
+  email: 'Eace.cricket@gmail.com',
   mapEmbedUrl: 'https://www.google.com/maps?q=12.901401,77.620572&output=embed',
 };
 

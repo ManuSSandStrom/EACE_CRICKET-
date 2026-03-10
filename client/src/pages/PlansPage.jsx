@@ -1,58 +1,69 @@
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { FaCheck, FaWhatsapp, FaChild, FaGraduationCap, FaStar, FaQuoteLeft } from 'react-icons/fa';
+import { FaCheck, FaWhatsapp, FaChild, FaGraduationCap, FaStar, FaQuoteLeft, FaTrophy } from 'react-icons/fa';
 import SectionTitle from '../components/SectionTitle.jsx';
 import { riseIn, staggerContainer } from '../utils/motion.js';
 
 const plans = [
   {
-    id: 'monthly',
-    name: 'Monthly',
-    duration: '1 Month',
-    price: 'Rs 3,500',
-    period: '/month',
-    popular: false,
+    id: 'yearly-pro',
+    name: 'Pro Annual Plan',
+    duration: '6 Days a Week',
+    price: 'Rs 45,000',
+    period: '/year',
+    popular: true,
+    savings: 'Summer Camp Included',
     features: [
-      'Full access to training sessions',
-      'Professional coaching: batting, bowling, and fielding',
-      'Fitness and conditioning sessions',
+      'Full training access, 6 days a week',
+      'Professional coaching for all skills',
+      'Advanced fitness & conditioning',
+      'Video analysis and performance tracking',
+      'Tournament participation support',
+    ],
+  },
+  {
+    id: 'yearly-standard',
+    name: 'Standard Annual Plan',
+    duration: '3-4 Days a Week',
+    price: 'Rs 38,000',
+    period: '/year',
+    popular: false,
+    savings: 'Summer Camp Included',
+    features: [
+      'Flexible training, 3-4 days a week',
+      'Core skill development sessions',
       'Weekly progress review',
       'Access to academy ground and nets',
+      'Ideal for balanced development',
     ],
   },
   {
-    id: 'half-yearly',
-    name: '6 Months',
-    duration: '6 Months',
-    price: 'Rs 18,000',
-    period: '/6 months',
-    popular: true,
-    savings: 'Save Rs 3,000',
-    features: [
-      'Everything in Monthly plan',
-      'Monthly performance report',
-      'Match simulation sessions',
-      'Priority batch selection',
-      'Parent-coach review meetings',
-    ],
-  },
-  {
-    id: 'yearly',
-    name: 'Annual',
-    duration: '12 Months',
+    id: 'yearly-weekend',
+    name: 'Weekend Annual Plan',
+    duration: '2 Days a Week',
     price: 'Rs 30,000',
     period: '/year',
     popular: false,
-    savings: 'Save Rs 12,000',
+    savings: 'Summer Camp Included',
     features: [
-      'Everything in 6 Months plan',
-      'Tournament participation support',
-      'Video analysis sessions',
-      'Focused coaching attention',
-      'Completion certificate',
-      'Selection trial preparation',
+      'Weekend-focused training, 2 days a week',
+      'Concentrated coaching sessions',
+      'Ideal for balancing school/work',
+      'Fundamental skill enhancement',
+      'Introduction to structured training',
     ],
   },
+];
+
+const matchPackages = [
+  { name: 'Starter Match Pack', matches: 20, price: 'Rs 13,500', desc: 'Ideal for gaining initial match exposure.' },
+  {
+    name: 'Advanced Match Pack',
+    matches: 40,
+    price: 'Rs 27,000',
+    desc: 'For players seeking regular competitive action.',
+  },
+  { name: 'Elite Match Pack', matches: 60, price: 'Rs 40,500', desc: 'Comprehensive match play for serious athletes.' },
 ];
 
 const schoolBundle = {
@@ -72,9 +83,10 @@ const schoolBundle = {
 };
 
 const ageBatches = [
+  { range: '5-11 years', label: 'Junior Foundation', desc: 'Introduction to cricket, fun drills, and basic motor skills' },
   { range: '12-14 years', label: 'Foundation Batch', desc: 'Technical basics, athletic movement, and game understanding' },
   { range: '15-18 years', label: 'Performance Batch', desc: 'Advanced skill-building, tactical awareness, and match execution' },
-  { range: '19+ years', label: 'Elite Batch', desc: 'High-intensity training, competitive readiness, and selection support' },
+  { range: '19+ years', label: 'Elite Batch', desc: 'High-intensity training, competitive readiness, and professional guidance' },
 ];
 
 const PlansPage = () => {
@@ -96,7 +108,7 @@ const PlansPage = () => {
       <SectionTitle
         eyebrow="Plans & Pricing"
         title="Invest in Your Cricket Future"
-        subtitle="Structured training packages for students aged 12 and above. All plans include professional coaching, ground access, and fitness sessions."
+        subtitle="Structured training packages for students aged 5 and above. All plans include professional coaching, ground access, and fitness sessions."
       />
 
       <motion.div
@@ -122,7 +134,7 @@ const PlansPage = () => {
       </motion.div>
 
       <div className="mb-14">
-        <h3 className="mb-6 text-center text-lg font-semibold text-[#0B4192]">Training for Ages 12 and Above</h3>
+        <h3 className="mb-6 text-center text-lg font-semibold text-[#0B4192]">Training Batches by Age Group</h3>
         <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true }} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {ageBatches.map((batch) => (
             <motion.div
@@ -190,6 +202,37 @@ const PlansPage = () => {
           </motion.article>
         ))}
       </motion.div>
+
+      <div className="mt-14">
+        <h3 className="mb-4 text-center text-lg font-semibold text-[#0B4192]">Annual Match Packages</h3>
+        <p className="mb-8 text-center text-sm text-muted">
+          Get real match experience with our discounted packages. A <span className="font-bold">25% discount</span> is
+          included in the prices below.
+        </p>
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {matchPackages.map((pack) => (
+            <motion.div
+              key={pack.name}
+              variants={riseIn}
+              className="rounded-xl border border-[#B8C9E8] bg-white p-5 text-center shadow-sm"
+            >
+              <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-[#E8EEF8] text-[#0B4192]">
+                <FaTrophy />
+              </div>
+              <p className="mt-3 text-lg font-bold text-[#0B4192]">{pack.name}</p>
+              <p className="text-sm font-semibold text-[#790000]">{pack.matches} Matches / Year</p>
+              <p className="mt-2 text-2xl font-bold text-[#0B4192]">{pack.price}</p>
+              <p className="mt-2 text-xs text-[#3A5A8C]">{pack.desc}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
 
       <motion.div
         initial={{ opacity: 0, y: 24 }}

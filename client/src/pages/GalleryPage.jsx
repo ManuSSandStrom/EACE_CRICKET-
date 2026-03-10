@@ -51,16 +51,14 @@ const GalleryPage = () => {
       allItems.map((item, idx) => {
         const raw = typeof item?.imageUrl === 'string' ? item.imageUrl.trim() : '';
         const hasImage = raw.startsWith('http') || raw.startsWith('/uploads');
-        const isVideo = raw.toLowerCase().endsWith('.mp4');
 
         return {
           ...item,
           _id: item?._id || `gallery-${idx}`,
           title: typeof item?.title === 'string' && item.title.trim() ? item.title.trim() : `Training Moment ${idx + 1}`,
-          previewUrl: hasImage ? (isVideo ? raw : optimizeCloudinaryImage(raw, 1400)) : '',
-          thumbUrl: hasImage ? (isVideo ? raw : optimizeCloudinaryImage(raw, 900)) : '',
+          previewUrl: hasImage ? optimizeCloudinaryImage(raw, 1400) : '',
+          thumbUrl: hasImage ? optimizeCloudinaryImage(raw, 900) : '',
           imageUrl: hasImage ? raw : '',
-          isVideo,
           hasImage,
         };
       }),
@@ -106,21 +104,6 @@ const GalleryPage = () => {
                     }}
                     className="masonry-item mb-4 overflow-hidden rounded-xl border border-sportsBlue/25 bg-cream shadow-sm relative group cursor-pointer w-full text-left"
                   >
-                    {item.isVideo ? (
-                      <div className="relative w-full h-full min-h-[220px]">
-                        <video
-                          src={item.imageUrl}
-                          title={item.title}
-                          preload="metadata"
-                          className="h-full w-full object-cover transition duration-500 group-hover:scale-110 min-h-[220px] pointer-events-none"
-                        />
-                        <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition">
-                           <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg">
-                             <div className="w-0 h-0 border-t-8 border-b-8 border-l-[14px] border-t-transparent border-b-transparent border-l-[#0B4192] ml-1"></div>
-                           </div>
-                        </div>
-                      </div>
-                    ) : (
                       <img
                         src={item.thumbUrl}
                         alt={item.title || 'EACE Gallery'}
@@ -129,7 +112,6 @@ const GalleryPage = () => {
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         className="h-full w-full object-cover transition duration-500 group-hover:scale-110 min-h-[220px]"
                       />
-                    )}
                   </motion.button>
                 ) : (
                   <motion.div

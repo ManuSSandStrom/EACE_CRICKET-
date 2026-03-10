@@ -163,7 +163,7 @@ const CalendarPage = () => {
       />
 
       <div className="mb-14">
-        <h3 className="mb-5 text-center text-lg font-semibold text-[#0B4192]">Daily Training Timings (Age 12+)</h3>
+        <h3 className="mb-5 text-center text-lg font-semibold text-[#0B4192]">Daily Training Timings</h3>
         <div className="overflow-x-auto">
           <table className="w-full min-w-[540px] rounded-xl border border-[#B8C9E8] bg-white text-sm shadow-sm">
             <thead>
@@ -329,8 +329,8 @@ const CalendarPage = () => {
       >
         <p className="text-sm font-semibold text-[#0B4192]">Training runs 6 days a week (Monday to Saturday)</p>
         <p className="mt-2 text-xs text-[#3A5A8C]">
-          Sessions are conducted for students aged 12 and above. Indoor net sessions are available during monsoon.
-          Government and academy holidays are observed.
+          Sessions are conducted for students aged 5 and above, with specific batches for different age groups. Indoor net
+          sessions are available during monsoon. Government and academy holidays are observed.
         </p>
       </motion.div>
     </motion.section>

@@ -139,7 +139,7 @@ const normalizeTestimonials = (list, fallback) => {
 };
 
 const schoolFeatures = [
-  'Daily 5hours of practice, mastering the art of Batting, bowling, keeping and fielding overall with experts',
+  'Daily 5-hour practice sessions with expert coaches covering batting, bowling, keeping, and fielding.',
   '🏫 Integrated Schooling (Balance sports & academics)',
   '🏠 Dormitory Stay (Safe & comfortable on-campus living)',
   '🥗 Hygiene-First Nutrition (homely food)',

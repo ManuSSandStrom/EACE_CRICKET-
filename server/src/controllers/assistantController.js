@@ -5,7 +5,7 @@ const systemPrompt =
 
 const buildAcademyContext = () => {
   const contactPhone = process.env.CONTACT_PHONE || '8123149416';
-  const contactEmail = process.env.CONTACT_EMAIL || 'manoharbasappagari18@gmail.com';
+  const contactEmail = process.env.CONTACT_EMAIL || 'Eace.cricket@gmail.com';
 
   return `
 Academy: Ekalavya Academy of Cricket Excellence (EACE)
@@ -58,7 +58,7 @@ const buildFallbackReply = (rawMessage) => {
   }
 
   if (/phone|call|contact|whatsapp|email/.test(message)) {
-    return 'Contact EACE at +91 81231 49416 or email manoharbasappagari18@gmail.com. WhatsApp enrollment link: https://wa.me/918123105849.';
+    return 'Contact EACE at +91 81231 49416 or email Eace.cricket@gmail.com. WhatsApp enrollment link: https://wa.me/918123105849.';
   }
 
   if (/program|coaching|facility|coach|training/.test(message)) {

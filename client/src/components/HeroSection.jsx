@@ -201,7 +201,7 @@ const HeroSection = ({ headline, subheading }) => {
         loop
         muted
         playsInline
-        preload="auto"
+        preload="metadata"
         style={{ opacity: 0.8 }}
       >
         <source src={HERO_BG_VIDEO} type="video/mp4" />
@@ -237,7 +237,7 @@ const HeroSection = ({ headline, subheading }) => {
       </div>
 
       <div ref={textRef} className="relative z-20 mx-auto w-full max-w-6xl text-center">
-        <img src={EACE_LOGO_URL} alt="EACE Logo" className="mx-auto mb-7 h-28 w-28 object-contain drop-shadow-lg md:h-36 md:w-36 lg:h-40 lg:w-40" loading="eager" />
+        <img src={EACE_LOGO_URL} alt="EACE Logo" className="mx-auto mb-7 h-32 w-32 object-contain drop-shadow-lg md:h-40 md:w-40 lg:h-48 lg:w-48" loading="eager" />
 
         <p className="font-subheading text-xs uppercase tracking-[0.4em] text-aqua">Premier Cricket Training Destination</p>
 

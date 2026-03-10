@@ -6,47 +6,39 @@ export const getHomeContent = async () => {
 };
 
 export const getGallery = async (category = 'All') => {
-  const matchImages = [
+  const allImages = [
+    // Match Images
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983590/20250112_080800_wy4o03.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983586/IMG-20251007-WA0062.jpg_posje4.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983585/20250120_075913_bbzplc.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983586/IMG-20250514-WA0018.jpg_vwivci.jpg",
-    "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983585/IMG-20251228-WA0018.jpg_f6fiae.jpg"
-  ];
-
-  const eventImages = [
+    "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983585/IMG-20251228-WA0018.jpg_f6fiae.jpg",
+    // Event Images
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983585/IMG-20251004-WA0107.jpg_cf5ole.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983583/20250112_080002_ibkk6a.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983583/20250131_181446_kod0mu.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983582/20250115_104502_etdidx.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983577/20250428_142449_mdlyzp.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983574/20250630_180140_qeldst.jpg",
-    "https://res.cloudinary.com/dt37ji5yp/video/upload/v1772983562/VID-20250603-WA0019_c72hkl.mp4"
-  ];
-
-  const netPracticeImages = [
+    // Net Practice & Tournament Images
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983578/20241122_181744.jpg_y5xwvc.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983579/20250212_184753_attre2.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983583/WhatsApp_Image_2026-03-08_at_8.29.57_PM_yd2zyx.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983577/20250620_170140_edif9u.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983573/20241122_181409.jpg_pcoaxl.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983570/20250812_194415_dbth4l.jpg",
-    "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983570/20241122_180325.jpg_pw9vgs.jpg"
+    "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983570/20241122_180325.jpg_pw9vgs.jpg",
+    // School Image
+    "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983586/Sri_sai_school_image_bd7pqw.jpg",
   ];
 
-  const practiceImages = netPracticeImages.slice(0, 4);
-  const tournamentImages = netPracticeImages.slice(4);
-  
-  const galleryData = [
-    ...matchImages.map((url, i) => ({ _id: `match-${i}`, title: `Match Moment ${i + 1}`, category: 'Matches', imageUrl: url })),
-    ...practiceImages.map((url, i) => ({ _id: `prac-${i}`, title: `Practice Session ${i + 1}`, category: 'Practice', imageUrl: url })),
-    ...eventImages.map((url, i) => ({ _id: `eve-${i}`, title: `Event Highlight ${i + 1}`, category: 'Events', imageUrl: url })),
-    ...tournamentImages.map((url, i) => ({ _id: `tour-${i}`, title: `Tournament Net Session ${i + 1}`, category: 'Tournaments', imageUrl: url })),
-    { _id: 'school-1', title: 'Sri Sai School Campus', category: 'School', imageUrl: 'https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983586/Sri_sai_school_image_bd7pqw.jpg' }
-  ];
+  // The video from eventImages is already present in getVideos, so it's omitted here.
 
-  if (category === 'All') return galleryData;
-  return galleryData.filter(d => d.category === category);
+  return allImages.map((url, i) => ({
+    _id: `gallery-img-${i}`,
+    title: `Gallery Image ${i + 1}`,
+    imageUrl: url,
+  }));
 };
 
 export const getTestimonials = async () => {
@@ -65,7 +57,7 @@ export const getVideos = async () => {
   
   return youtubeList.map((url, i) => ({
     _id: `vid-${i}`,
-    title: i === 0 ? 'Featured Showcase Match' : `Highlight Clip ${i}`,
+    title: i === 0 ? 'Featured Showcase Match' : `Highlight Clip ${i + 1}`,
     youtubeUrl: url,
     featured: i === 0,
   }));

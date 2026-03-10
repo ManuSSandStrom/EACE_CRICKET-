@@ -67,7 +67,7 @@ const Footer = () => {
         <div>
           <h4 className="font-heading text-3xl text-[#0B4192]">Contact</h4>
           <p className="mt-3 text-sm text-[#2C3E6B]">+91 8123149416</p>
-          <p className="text-sm text-[#2C3E6B]">manoharbasappagari18@gmail.com</p>
+          <p className="text-sm text-[#2C3E6B]">Eace.cricket@gmail.com</p>
           <p className="mt-2 text-sm text-[#2C3E6B]">
             Begur-Koppa Road, Yelenahalli, Bangalore - 560068
           </p>

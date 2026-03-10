@@ -191,7 +191,7 @@ Access the admin panel at `/admin`:
 **Ekalavya Academy of Cricket Excellence (EACE)**
 
 - 📱 Phone: +91 8123149416
-- 📧 Email: manoharbasappagari18@gmail.com
+- 📧 Email: Eace.cricket@gmail.com
 - 📍 Bengaluru, Karnataka, India
 
 ---
