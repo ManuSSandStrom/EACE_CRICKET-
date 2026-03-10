@@ -139,16 +139,16 @@ const normalizeTestimonials = (list, fallback) => {
 };
 
 const schoolFeatures = [
-  'Daily structured cricket practice with expert coaching',
-  'Integrated schooling for balanced academics and sports',
-  'Safe and supervised dormitory stay',
-  'Nutrition-focused meal planning',
-  'Practice matches and tournament exposure',
-  'Fitness and conditioning support',
-  'Annual domestic exposure tour',
-  'Video analysis for technical improvement',
-  'Physiotherapy support',
-  'Mental conditioning and focus routines',
+  'Daily 5hours of practice, mastering the art of Batting, bowling, keeping and fielding overall with experts',
+  '🏫 Integrated Schooling (Balance sports & academics)',
+  '🏠 Dormitory Stay (Safe & comfortable on-campus living)',
+  '🥗 Hygiene-First Nutrition (homely food)',
+  '🏟️ Match Experience (Regular practice matches & tournaments, open nets)',
+  '🏋️ Elite Fitness Sessions & Nutrition Consultancy',
+  '✈️ Annual Domestic Tour (Exposure to different conditions)',
+  'Video analysis',
+  'Physiotherapy',
+  'Mental balancing',
 ];
 
 const SchoolHighlight = () => {

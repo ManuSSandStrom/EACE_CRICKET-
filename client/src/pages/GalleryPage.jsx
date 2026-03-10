@@ -8,24 +8,10 @@ import { toEmbedUrl } from '../utils/youtube.js';
 import { riseIn, staggerContainer } from '../utils/motion.js';
 import { optimizeCloudinaryImage } from '../utils/media.js';
 
-const filters = ['All', 'Matches', 'Practice', 'Events', 'Tournaments', 'School'];
 const placeholderImages = Array.from({ length: 6 }, (_, idx) => ({ id: `placeholder-${idx + 1}` }));
 const placeholderVideos = Array.from({ length: 3 }, (_, idx) => ({ id: `video-placeholder-${idx + 1}` }));
 
-const normalizeCategory = (rawCategory = '') => {
-  const value = String(rawCategory).trim().toLowerCase();
-
-  if (value.startsWith('match')) return 'Matches';
-  if (value.startsWith('practice')) return 'Practice';
-  if (value.startsWith('event')) return 'Events';
-  if (value.startsWith('tournament') || value.startsWith('tournamenst')) return 'Tournaments';
-  if (value.startsWith('school')) return 'School';
-
-  return 'Matches';
-};
-
 const GalleryPage = () => {
-  const [active, setActive] = useState('All');
   const [allItems, setAllItems] = useState([]);
   const [videos, setVideos] = useState([]);
   const [preview, setPreview] = useState('');
@@ -60,7 +46,7 @@ const GalleryPage = () => {
     loadVideos();
   }, []);
 
-  const normalizedAll = useMemo(
+  const normalized = useMemo(
     () =>
       allItems.map((item, idx) => {
         const raw = typeof item?.imageUrl === 'string' ? item.imageUrl.trim() : '';
@@ -71,7 +57,6 @@ const GalleryPage = () => {
           ...item,
           _id: item?._id || `gallery-${idx}`,
           title: typeof item?.title === 'string' && item.title.trim() ? item.title.trim() : `Training Moment ${idx + 1}`,
-          category: normalizeCategory(item?.category),
           previewUrl: hasImage ? (isVideo ? raw : optimizeCloudinaryImage(raw, 1400)) : '',
           thumbUrl: hasImage ? (isVideo ? raw : optimizeCloudinaryImage(raw, 900)) : '',
           imageUrl: hasImage ? raw : '',
@@ -81,11 +66,6 @@ const GalleryPage = () => {
       }),
     [allItems],
   );
-
-  const normalized = useMemo(() => {
-    if (active === 'All') return normalizedAll;
-    return normalizedAll.filter((item) => item.category === active);
-  }, [normalizedAll, active]);
 
   return (
     <motion.section
@@ -103,24 +83,6 @@ const GalleryPage = () => {
         title="Training & Match Moments"
         subtitle="Explore academy life through curated photos from matches, practice, events, tournaments, and Sri Sai School moments."
       />
-
-      <div className="mb-8 flex flex-wrap justify-center gap-3">
-        {filters.map((filter) => (
-          <motion.button
-            key={filter}
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.96 }}
-            onClick={() => setActive(filter)}
-            className={`rounded-full px-4 py-2 text-sm font-medium transition ${
-              active === filter
-                ? 'bg-[#E8EEF8] text-[#0B4192] shadow-lg shadow-[#0B4192]/15'
-                : 'border border-sportsBlue/40 bg-cream text-plum hover:border-coral hover:text-coral'
-            }`}
-          >
-            {filter}
-          </motion.button>
-        ))}
-      </div>
 
       <motion.div
         variants={staggerContainer}
@@ -191,9 +153,9 @@ const GalleryPage = () => {
                   className="masonry-item mb-4 rounded-xl border border-dashed border-sportsBlue/35 bg-cream p-5"
                 >
                   <div className="flex min-h-[220px] items-center justify-center rounded-lg border border-dashed border-sportsBlue/35 bg-[linear-gradient(135deg,rgba(255,255,255,1),rgba(243,231,201,0.65))] text-center text-sm text-muted">
-                    {active} gallery is empty
+                    Gallery is empty
                     <br />
-                    Add {active === 'All' ? 'gallery' : active.toLowerCase()} photos from admin panel
+                    Add photos from admin panel
                   </div>
                 </motion.div>
               ))}

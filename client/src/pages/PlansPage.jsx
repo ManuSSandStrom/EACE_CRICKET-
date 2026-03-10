@@ -58,16 +58,16 @@ const plans = [
 const schoolBundle = {
   scholarship: '75%',
   features: [
-    'Daily structured cricket practice with specialist coaches',
-    'Integrated schooling with balanced academics and sports',
-    'Safe and supervised hostel environment',
-    'Nutritious meal planning for student-athletes',
-    'Regular practice matches and tournament exposure',
-    'Fitness conditioning with performance guidance',
-    'Annual domestic exposure tour',
-    'Video analysis and correction sessions',
-    'Physiotherapy support',
-    'Mental conditioning and focus training',
+    'Daily 5hours of practice, mastering the art of Batting, bowling, keeping and fielding overall with experts',
+    '🏫 Integrated Schooling (Balance sports & academics)',
+    '🏠 Dormitory Stay (Safe & comfortable on-campus living)',
+    '🥗 Hygiene-First Nutrition (homely food)',
+    '🏟️ Match Experience (Regular practice matches & tournaments, open nets)',
+    '🏋️ Elite Fitness Sessions & Nutrition Consultancy',
+    '✈️ Annual Domestic Tour (Exposure to different conditions)',
+    'Video analysis',
+    'Physiotherapy',
+    'Mental balancing',
   ],
 };
 
