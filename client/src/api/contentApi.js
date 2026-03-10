@@ -7,28 +7,26 @@ export const getHomeContent = async () => {
 
 export const getGallery = async (category = 'All') => {
   const allImages = [
-    // Match Images
+    // New & Featured Images
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983590/20250112_080800_wy4o03.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983586/IMG-20251007-WA0062.jpg_posje4.jpg",
-    "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983585/20250120_075913_bbzplc.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983586/IMG-20250514-WA0018.jpg_vwivci.jpg",
+    "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983585/20250120_075913_bbzplc.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983585/IMG-20251228-WA0018.jpg_f6fiae.jpg",
-    // Event Images
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983585/IMG-20251004-WA0107.jpg_cf5ole.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983583/20250112_080002_ibkk6a.jpg",
-    "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983583/20250131_181446_kod0mu.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983582/20250115_104502_etdidx.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983577/20250428_142449_mdlyzp.jpg",
+    "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983577/20250620_170140_edif9u.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983574/20250630_180140_qeldst.jpg",
-    // Net Practice & Tournament Images
+    // Archive & Practice Images
+    "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983583/20250131_181446_kod0mu.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983578/20241122_181744.jpg_y5xwvc.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983579/20250212_184753_attre2.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983583/WhatsApp_Image_2026-03-08_at_8.29.57_PM_yd2zyx.jpg",
-    "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983577/20250620_170140_edif9u.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983573/20241122_181409.jpg_pcoaxl.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983570/20250812_194415_dbth4l.jpg",
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983570/20241122_180325.jpg_pw9vgs.jpg",
-    // School Image
     "https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983586/Sri_sai_school_image_bd7pqw.jpg",
   ];
 

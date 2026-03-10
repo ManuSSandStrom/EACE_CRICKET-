@@ -91,7 +91,7 @@ const GalleryPage = () => {
       >
         <AnimatePresence mode="popLayout">
           {normalized.length > 0
-            ? normalized.map((item) =>
+            ? normalized.map((item, index) =>
                 item.hasImage ? (
                   <motion.button
                     layout
@@ -107,7 +107,7 @@ const GalleryPage = () => {
                       <img
                         src={item.thumbUrl}
                         alt={item.title || 'EACE Gallery'}
-                        loading="lazy"
+                        loading={index < 6 ? "eager" : "lazy"}
                         decoding="async"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         className="h-full w-full object-cover transition duration-500 group-hover:scale-110 min-h-[220px]"
