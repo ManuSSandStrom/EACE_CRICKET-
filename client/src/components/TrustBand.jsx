@@ -4,7 +4,6 @@ import { GiCricketBat } from 'react-icons/gi';
 import { riseIn, staggerContainer } from '../utils/motion.js';
 
 const badges = [
-  { icon: FaAward, title: 'KSCA Affiliated', desc: 'Recognized academy training structure' },
   { icon: FaUserCheck, title: 'Certified Coaching Staff', desc: 'Experienced mentors for every skill level' },
   { icon: GiCricketBat, title: 'Professional Turf Wickets', desc: 'Match-standard surfaces and drills' },
   { icon: FaVideo, title: 'Video Analysis Training', desc: 'Performance review with technical feedback' },
