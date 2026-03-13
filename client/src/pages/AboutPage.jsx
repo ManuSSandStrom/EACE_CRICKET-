@@ -25,22 +25,30 @@ const AboutPage = () => {
       </Helmet>
 
       <SectionTitle
-        eyebrow="About"
-        title="Sri Sai School Partnership"
-        subtitle="A professional school and cricket training environment focused on academic quality, athlete development, and long-term growth."
+        eyebrow="About Us"
+        title="Ekalavya Academy of Cricket Excellence"
+        subtitle="Empowering Cricketing Dreams, Bridging Socio-Economic Gaps"
       />
+
+      <div className="mb-10 sports-card rounded-2xl p-7 shadow-sm">
+        <p className="text-sm leading-7 text-muted">
+          Coming from a middle-class background, our founder understands the challenges of pursuing cricketing dreams with limited resources. With the guidance of a dedicated coach, he overcame obstacles to chase his passion. Now, we're committed to providing opportunities for talented cricketers to thrive, offering affordable access to top-notch facilities, coaching, and support, because cricket should be a game for all, not just the privileged few.
+        </p>
+      </div>
 
       <div className="grid gap-6 md:grid-cols-2">
         <article className="sports-card rounded-2xl p-7 shadow-sm">
           <h3 className="text-2xl font-semibold text-sportsBlue">Vision</h3>
           <p className="mt-3 text-sm leading-7 text-muted">
-            Develop disciplined student-athletes through strong academics, structured training, and a performance-first culture.
+            <strong>Transforming Lives Through Cricket</strong><br/><br/>
+            To create a platform where cricket is a pathway to success for talented individuals from all walks of life, regardless of financial constraints, and to foster a community that promotes excellence, inclusivity, and social mobility through the spirit of cricket.
           </p>
         </article>
         <article className="sports-card rounded-2xl p-7 shadow-sm">
           <h3 className="text-2xl font-semibold text-sportsBlue">Mission</h3>
           <p className="mt-3 text-sm leading-7 text-muted">
-            Deliver consistent coaching quality, responsible care, and measurable progress for students aged 12 and above.
+            <strong>Empowering Cricketing Dreams, Bridging Socio-Economic Gaps</strong><br/><br/>
+            We aim to identify and nurture talented cricketers from middle-class and underprivileged backgrounds, providing them with world-class facilities and support to pursue their cricketing aspirations, making the sport inclusive and accessible to all.
           </p>
         </article>
       </div>
@@ -49,7 +57,7 @@ const AboutPage = () => {
         <article className="sports-card rounded-2xl p-7 shadow-sm">
           <div className="flex items-center gap-4">
             <img
-              src="https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983586/Sri_sai_school_image_bd7pqw.jpg"
+              src="https://res.cloudinary.com/dt37ji5yp/image/upload/q_auto,f_auto/v1772983586/Sri_sai_school_image_bd7pqw.jpg"
               alt="Sri Sai School Logo"
               className="h-16 w-16 rounded-full border border-sportsBlue/20 object-cover"
               loading="lazy"

@@ -70,12 +70,12 @@ const schoolBundle = {
   scholarship: '75%',
   features: [
     'Daily 5hours of practice, mastering the art of Batting, bowling, keeping and fielding overall with experts',
-    '🏫 Integrated Schooling (Balance sports & academics)',
-    '🏠 Dormitory Stay (Safe & comfortable on-campus living)',
-    '🥗 Hygiene-First Nutrition (homely food)',
-    '🏟️ Match Experience (Regular practice matches & tournaments, open nets)',
-    '🏋️ Elite Fitness Sessions & Nutrition Consultancy',
-    '✈️ Annual Domestic Tour (Exposure to different conditions)',
+    ' Integrated Schooling (Balance sports & academics)',
+    ' Dormitory Stay (Safe & comfortable on-campus living)',
+    ' Hygiene-First Nutrition (homely food)',
+    '️ Match Experience (Regular practice matches & tournaments, open nets)',
+    '️ Elite Fitness Sessions & Nutrition Consultancy',
+    '️ Annual Domestic Tour (Exposure to different conditions)',
     'Video analysis',
     'Physiotherapy',
     'Mental balancing',
@@ -250,7 +250,7 @@ const PlansPage = () => {
               <div className="flex-1">
                 <div className="flex flex-col items-center gap-4 rounded-xl border border-[#B8C9E8] bg-white p-5 sm:flex-row sm:items-start">
                   <img
-                    src="https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983586/Sri_sai_school_image_bd7pqw.jpg"
+                    src="https://res.cloudinary.com/dt37ji5yp/image/upload/q_auto,f_auto/v1772983586/Sri_sai_school_image_bd7pqw.jpg"
                     alt="Sri Sai School Logo"
                     className="h-14 w-14 rounded-full object-cover shadow-sm sm:h-16 sm:w-16"
                     loading="lazy"

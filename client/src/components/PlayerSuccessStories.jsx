@@ -7,17 +7,17 @@ const stories = [
   {
     name: 'Rohit S',
     achievement: 'Selected for Karnataka U16',
-    image: 'https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983584/20250620_170147_o4x6hf.jpg'
+    image: 'https://res.cloudinary.com/dt37ji5yp/image/upload/q_auto,f_auto/v1772983584/20250620_170147_o4x6hf.jpg'
   },
   {
     name: 'Ananya R',
     achievement: 'District Level Champion',
-    image: 'https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983574/20241122_175017.jpg_nvelni.jpg'
+    image: 'https://res.cloudinary.com/dt37ji5yp/image/upload/q_auto,f_auto/v1772983574/20241122_175017.jpg_nvelni.jpg'
   },
   {
     name: 'Aditya K',
     achievement: 'KSCA League Player',
-    image: 'https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983571/20241214_112403.jpg_s5opyo.jpg'
+    image: 'https://res.cloudinary.com/dt37ji5yp/image/upload/q_auto,f_auto/v1772983571/20241214_112403.jpg_s5opyo.jpg'
   },
 ];
 

@@ -13,8 +13,8 @@ import TestimonialsSlider from '../components/TestimonialsSlider.jsx';
 import CTASection from '../components/CTASection.jsx';
 
 const fallbackContent = {
-  heroHeadline: 'Train Like a Champion. Perform Like a Legend.',
-  heroSubheading: 'Karnataka State Cricket Association Affiliated Academy',
+  heroHeadline: 'Transforming Lives Through Cricket',
+  heroSubheading: 'Empowering Cricketing Dreams, Bridging Socio-Economic Gaps',
   stats: [
     { label: 'Students Trained', value: 1200 },
     { label: 'State Selections', value: 90 },
@@ -140,12 +140,12 @@ const normalizeTestimonials = (list, fallback) => {
 
 const schoolFeatures = [
   'Daily 5-hour practice sessions with expert coaches covering batting, bowling, keeping, and fielding.',
-  '🏫 Integrated Schooling (Balance sports & academics)',
-  '🏠 Dormitory Stay (Safe & comfortable on-campus living)',
-  '🥗 Hygiene-First Nutrition (homely food)',
-  '🏟️ Match Experience (Regular practice matches & tournaments, open nets)',
-  '🏋️ Elite Fitness Sessions & Nutrition Consultancy',
-  '✈️ Annual Domestic Tour (Exposure to different conditions)',
+  ' Integrated Schooling (Balance sports & academics)',
+  ' Dormitory Stay (Safe & comfortable on-campus living)',
+  ' Hygiene-First Nutrition (homely food)',
+  '️ Match Experience (Regular practice matches & tournaments, open nets)',
+  '️ Elite Fitness Sessions & Nutrition Consultancy',
+  '️ Annual Domestic Tour (Exposure to different conditions)',
   'Video analysis',
   'Physiotherapy',
   'Mental balancing',
@@ -170,7 +170,7 @@ const SchoolHighlight = () => {
               <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/70">Affiliated School Partner</p>
               <div className="mt-2 flex items-center justify-center gap-3 md:justify-start">
                 <img
-                  src="https://res.cloudinary.com/dt37ji5yp/image/upload/v1772983586/Sri_sai_school_image_bd7pqw.jpg"
+                  src="https://res.cloudinary.com/dt37ji5yp/image/upload/q_auto,f_auto/v1772983586/Sri_sai_school_image_bd7pqw.jpg"
                   alt="Sri Sai School Logo"
                   className="h-10 w-10 rounded-full border border-white/50 bg-white object-cover shadow-sm sm:h-12 sm:w-12"
                   loading="lazy"

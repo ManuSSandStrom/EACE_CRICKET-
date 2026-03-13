@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { EACE_LOGO_URL } from '../utils/branding.js';
 
-
 const particles = [
   { left: '8%', top: '72%', size: 4, dur: '9s', delay: '0s' },
   { left: '15%', top: '40%', size: 5, dur: '8.6s', delay: '1.8s' },
@@ -18,179 +17,18 @@ const particles = [
 ];
 
 const HERO_BG_VIDEO =
-  'https://res.cloudinary.com/dt37ji5yp/video/upload/v1772864727/ease_website_back_vid_1_1_xvxy68.mp4';
-
-const sparkOffsets = [
-  { x: -34, y: -28 },
-  { x: -22, y: 20 },
-  { x: -8, y: -34 },
-  { x: 14, y: -24 },
-  { x: 24, y: 10 },
-  { x: 34, y: -8 },
-  { x: 18, y: 26 },
-  { x: -16, y: 30 },
-];
+  'https://res.cloudinary.com/dt37ji5yp/video/upload/q_auto,f_auto/v1772864727/ease_website_back_vid_1_1_xvxy68.mp4';
 
 const HeroSection = ({ headline, subheading }) => {
   const heroRef = useRef(null);
   const textRef = useRef(null);
-  const ballRef = useRef(null);
-  const trailRef = useRef(null);
-  const batRef = useRef(null);
-  const flashRef = useRef(null);
-  const sparkRefs = useRef([]);
-  const animationRef = useRef(null);
-
 
   useEffect(() => {
-    if (!heroRef.current || !textRef.current || !ballRef.current || !trailRef.current || !batRef.current || !flashRef.current) {
+    if (!heroRef.current || !textRef.current) {
       return;
     }
 
     gsap.fromTo(textRef.current, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.85, ease: 'power3.out' });
-
-
-
-    const runHeroAnimation = () => {
-      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduced) {
-        gsap.set([ballRef.current, trailRef.current, flashRef.current, ...sparkRefs.current], { opacity: 0 });
-        return;
-      }
-
-      const heroWidth = heroRef.current.offsetWidth;
-      const heroHeight = heroRef.current.offsetHeight;
-
-      const startY = heroHeight * (heroWidth < 768 ? 0.56 : 0.54);
-      const impactX = heroWidth * 0.5;
-      const exitX = heroWidth + 160;
-      const batX = impactX + 36;
-      const batY = startY - (heroWidth < 768 ? 96 : 120);
-
-      animationRef.current?.kill();
-
-      gsap.set(trailRef.current, { x: -170, y: startY + 11, width: 30, opacity: 0, scaleX: 1 });
-      gsap.set(ballRef.current, { x: -170, y: startY, rotation: 0, opacity: 1 });
-      gsap.set(batRef.current, { x: batX, y: batY, rotation: -12, transformOrigin: '84% 88%' });
-      gsap.set(flashRef.current, { x: impactX + 16, y: startY + 4, opacity: 0, scale: 0.4 });
-
-      sparkRefs.current.forEach((spark) => {
-        if (!spark) return;
-        gsap.set(spark, { x: impactX + 10, y: startY + 8, opacity: 0, scale: 0.4 });
-      });
-
-      const timeline = gsap.timeline({ delay: 0.45 });
-
-      timeline
-        .to(trailRef.current, {
-          opacity: 0.92,
-          width: impactX + 180,
-          duration: 1.02,
-          ease: 'power2.out',
-        })
-        .to(
-          ballRef.current,
-          {
-            x: impactX,
-            y: startY - 10,
-            rotation: 760,
-            duration: 1.02,
-            ease: 'power3.out',
-          },
-          '<',
-        )
-        .to(
-          batRef.current,
-          {
-            rotation: 28,
-            duration: 0.1,
-            ease: 'power2.out',
-          },
-          '-=0.06',
-        )
-        .to(
-          flashRef.current,
-          {
-            opacity: 1,
-            scale: 1.45,
-            duration: 0.08,
-          },
-          '<',
-        )
-        .to(flashRef.current, {
-          opacity: 0,
-          scale: 2.5,
-          duration: 0.2,
-        });
-
-      sparkOffsets.forEach((offset, index) => {
-        const spark = sparkRefs.current[index];
-        if (!spark) return;
-
-        timeline.to(
-          spark,
-          {
-            x: impactX + offset.x,
-            y: startY + offset.y,
-            opacity: 0,
-            scale: 1.25,
-            duration: 0.34,
-            ease: 'power2.out',
-          },
-          '<',
-        );
-      });
-
-      timeline
-        .to(
-          ballRef.current,
-          {
-            x: exitX,
-            y: startY - (heroWidth < 768 ? 90 : 130),
-            rotation: 1340,
-            duration: 0.86,
-            ease: 'power2.in',
-          },
-          '-=0.04',
-        )
-        .to(
-          trailRef.current,
-          {
-            width: 70,
-            opacity: 0,
-            duration: 0.52,
-            ease: 'power2.out',
-          },
-          '<',
-        )
-        .to(
-          batRef.current,
-          {
-            rotation: -10,
-            duration: 0.22,
-            ease: 'power2.inOut',
-          },
-          '<',
-        );
-
-      animationRef.current = timeline;
-    };
-
-    runHeroAnimation();
-
-    let resizeTimer;
-    const onResize = () => {
-      window.clearTimeout(resizeTimer);
-      resizeTimer = window.setTimeout(runHeroAnimation, 180);
-    };
-
-    window.addEventListener('resize', onResize);
-
-    return () => {
-      animationRef.current?.kill();
-      window.removeEventListener('resize', onResize);
-      window.clearTimeout(resizeTimer);
-    };
   }, []);
 
   return (
@@ -237,7 +75,7 @@ const HeroSection = ({ headline, subheading }) => {
       </div>
 
       <div ref={textRef} className="relative z-20 mx-auto w-full max-w-6xl text-center">
-        <img src={EACE_LOGO_URL} alt="EACE Logo" className="mx-auto mb-7 h-32 w-32 object-contain drop-shadow-lg md:h-40 md:w-40 lg:h-48 lg:w-48" loading="eager" />
+        <img src={EACE_LOGO_URL} alt="EACE Logo" className="mx-auto mb-7 h-32 w-32 object-contain drop-shadow-lg md:h-40 md:w-40 lg:h-48 lg:w-48" fetchpriority="high" />
 
         <p className="font-subheading text-xs uppercase tracking-[0.4em] text-aqua">Premier Cricket Training Destination</p>
 
@@ -271,30 +109,6 @@ const HeroSection = ({ headline, subheading }) => {
             Book Trial Session
           </motion.a>
         </div>
-
-
-      </div>
-
-      <div className="hero-ball-layer z-30">
-        <div ref={trailRef} className="hero-ball-trail" />
-        <div ref={ballRef} className="hero-ball" />
-
-        <div ref={batRef} className="hero-bat">
-          <div className="hero-bat-handle" />
-          <div className="hero-bat-blade" />
-        </div>
-
-        <div ref={flashRef} className="impact-flash" />
-
-        {sparkOffsets.map((_, idx) => (
-          <span
-            key={idx}
-            ref={(element) => {
-              sparkRefs.current[idx] = element;
-            }}
-            className="impact-spark"
-          />
-        ))}
       </div>
     </section>
   );

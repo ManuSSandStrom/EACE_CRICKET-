@@ -4,7 +4,7 @@ import SectionTitle from './SectionTitle.jsx';
 
 const renderStars = (rating = 5) => {
   const normalized = Math.max(1, Math.min(5, Math.round(rating)));
-  return Array.from({ length: 5 }, (_, idx) => (idx < normalized ? '★' : '☆')).join(' ');
+  return Array.from({ length: 5 }, (_, idx) => (idx < normalized ? '' : '')).join(' ');
 };
 
 const getInitials = (name = '') => {
