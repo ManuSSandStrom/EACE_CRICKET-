@@ -3,13 +3,15 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FaWhatsapp, FaPhone, FaMapMarkerAlt, FaArrowRight, FaGraduationCap, FaStar, FaCheck } from 'react-icons/fa';
-import { getHomeContent, getTestimonials } from '../api/contentApi.js';
+import { createLead, getHomeContent, getTestimonials } from '../api/contentApi.js';
 import HeroSection from '../components/HeroSection.jsx';
 import StatsCounter from '../components/StatsCounter.jsx';
 import TrainingRoadmap from '../components/TrainingRoadmap.jsx';
 import CoachesSection from '../components/CoachesSection.jsx';
 import TestimonialsSlider from '../components/TestimonialsSlider.jsx';
 import CTASection from '../components/CTASection.jsx';
+import LeadModal from '../components/LeadModal.jsx';
+import { buildLeadMessage, openWhatsApp } from '../utils/lead.js';
 
 const fallbackContent = {
   heroHeadline: 'Transforming Lives Through Cricket',
@@ -151,8 +153,18 @@ const schoolFeatures = [
 ];
 
 const SchoolHighlight = () => {
-  const whatsAppUrl =
-    'https://wa.me/918123105849?text=Hello%2C%20I%20am%20interested%20in%20the%20School%20%2B%20Hostel%20%2B%20Cricket%20plan.%20Please%20share%20details.';
+  const [leadOpen, setLeadOpen] = useState(false);
+
+  const handleSubmit = async (payload) => {
+    await createLead({
+      ...payload,
+      type: 'school',
+      source: 'home_school_highlight',
+    });
+    const text = buildLeadMessage({ ...payload, type: 'school', planName: 'School + Hostel + Cricket' });
+    openWhatsApp(text);
+    setLeadOpen(false);
+  };
 
   return (
     <motion.section
@@ -224,15 +236,14 @@ const SchoolHighlight = () => {
                   <p className="text-xs font-bold text-[#0B4192]">Status: Enrollment Open</p>
                 </div>
               </div>
-              <a
-                href={whatsAppUrl}
-                target="_blank"
-                rel="noreferrer"
+              <button
+                type="button"
+                onClick={() => setLeadOpen(true)}
                 className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-[#790000] px-5 py-3 text-sm font-semibold text-white transition hover:scale-105"
               >
                 <FaWhatsapp className="text-lg" />
                 Enquire Now
-              </a>
+              </button>
               <Link
                 to="/plans"
                 className="mt-3 flex items-center gap-1 text-xs font-medium text-[#0B4192] transition hover:gap-2"
@@ -243,6 +254,16 @@ const SchoolHighlight = () => {
           </div>
         </div>
       </div>
+
+      <LeadModal
+        open={leadOpen}
+        title="School + Hostel Enquiry"
+        subtitle="Share your details and we will confirm on WhatsApp."
+        contextLabel="School + Hostel + Cricket"
+        ctaLabel="Send Details"
+        onSubmit={handleSubmit}
+        onClose={() => setLeadOpen(false)}
+      />
     </motion.section>
   );
 };

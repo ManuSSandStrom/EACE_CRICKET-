@@ -1,6 +1,23 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
+import LeadModal from './LeadModal.jsx';
+import { createLead } from '../api/contentApi.js';
+import { buildLeadMessage, openWhatsApp } from '../utils/lead.js';
 
 const CTASection = () => {
+  const [leadOpen, setLeadOpen] = useState(false);
+
+  const submitLead = async (payload) => {
+    await createLead({
+      ...payload,
+      type: 'general',
+      source: 'cta_section',
+    });
+    const text = buildLeadMessage({ ...payload, type: 'general' });
+    openWhatsApp(text);
+    setLeadOpen(false);
+  };
+
   return (
     <section className="mx-auto w-full max-w-7xl px-4 py-16 md:px-8">
       <motion.div
@@ -17,16 +34,24 @@ const CTASection = () => {
           <p className="mx-auto mt-4 max-w-2xl text-[#2C3E6B]">
             Book your trial and begin high-performance cricket training with EACE coaches.
           </p>
-          <a
-            href="https://wa.me/918123105849?text=Hello,%20I%20want%20to%20enroll%20in%20Ekalavya%20Academy%20of%20Cricket%20Excellence."
-            target="_blank"
-            rel="noreferrer"
+          <button
+            type="button"
+            onClick={() => setLeadOpen(true)}
             className="btn-gold mt-8 inline-block rounded-full px-8 py-3 text-sm font-semibold uppercase tracking-[0.14em]"
           >
             Join EACE Academy
-          </a>
+          </button>
         </div>
       </motion.div>
+
+      <LeadModal
+        open={leadOpen}
+        title="Join EACE Academy"
+        subtitle="Share your details and our team will confirm on WhatsApp."
+        ctaLabel="Send Details"
+        onSubmit={submitLead}
+        onClose={() => setLeadOpen(false)}
+      />
     </section>
   );
 };

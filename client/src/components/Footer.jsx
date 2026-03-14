@@ -1,6 +1,10 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaInstagram, FaWhatsapp, FaYoutube } from 'react-icons/fa';
 import { EACE_LOGO_URL } from '../utils/branding.js';
+import LeadModal from './LeadModal.jsx';
+import { createLead } from '../api/contentApi.js';
+import { buildLeadMessage, openWhatsApp } from '../utils/lead.js';
 
 const quickLinks = [
   { to: '/', label: 'Home' },
@@ -9,9 +13,23 @@ const quickLinks = [
   { to: '/coaches', label: 'Coaches' },
   { to: '/gallery', label: 'Gallery' },
   { to: '/contact', label: 'Contact' },
+  { to: '/admin/login', label: 'Admin Login' },
 ];
 
 const Footer = () => {
+  const [leadOpen, setLeadOpen] = useState(false);
+
+  const submitLead = async (payload) => {
+    await createLead({
+      ...payload,
+      type: 'whatsapp',
+      source: 'footer_whatsapp',
+    });
+    const text = buildLeadMessage({ ...payload, type: 'whatsapp' });
+    openWhatsApp(text);
+    setLeadOpen(false);
+  };
+
   return (
     <footer className="border-t border-[#D0D8E8] bg-white">
       <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-10 md:grid-cols-2 lg:grid-cols-4 md:px-8">
@@ -47,15 +65,14 @@ const Footer = () => {
             >
               <FaYoutube />
             </a>
-            <a
-              href="https://wa.me/918123105849?text=Hello,%20I%20want%20to%20enroll%20in%20Ekalavya%20Academy%20of%20Cricket%20Excellence."
-              target="_blank"
-              rel="noreferrer"
+            <button
+              type="button"
+              onClick={() => setLeadOpen(true)}
               aria-label="WhatsApp"
               className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#B8C9E8] text-[#0B4192] transition hover:border-[#0B4192] hover:text-[#062D6B]"
             >
               <FaWhatsapp />
-            </a>
+            </button>
           </div>
         </div>
 
@@ -96,6 +113,15 @@ const Footer = () => {
       <div className="border-t border-[#D0D8E8] py-4 text-center text-xs text-[#3A5A8C]">
         Copyright {new Date().getFullYear()} EACE. All rights reserved.
       </div>
+
+      <LeadModal
+        open={leadOpen}
+        title="WhatsApp Enquiry"
+        subtitle="Share your details and we will confirm on WhatsApp."
+        ctaLabel="Send Details"
+        onSubmit={submitLead}
+        onClose={() => setLeadOpen(false)}
+      />
     </footer>
   );
 };

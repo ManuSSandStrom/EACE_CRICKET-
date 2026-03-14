@@ -1,7 +1,10 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { EACE_LOGO_URL } from '../utils/branding.js';
+import LeadModal from './LeadModal.jsx';
+import { createLead } from '../api/contentApi.js';
+import { buildLeadMessage, openWhatsApp } from '../utils/lead.js';
 
 const particles = [
   { left: '8%', top: '72%', size: 4, dur: '9s', delay: '0s' },
@@ -22,6 +25,18 @@ const HERO_BG_VIDEO =
 const HeroSection = ({ headline, subheading }) => {
   const heroRef = useRef(null);
   const textRef = useRef(null);
+  const [leadOpen, setLeadOpen] = useState(false);
+
+  const submitLead = async (payload) => {
+    await createLead({
+      ...payload,
+      type: 'general',
+      source: 'hero_cta',
+    });
+    const text = buildLeadMessage({ ...payload, type: 'general' });
+    openWhatsApp(text);
+    setLeadOpen(false);
+  };
 
   useEffect(() => {
     if (!heroRef.current || !textRef.current) {
@@ -95,16 +110,14 @@ const HeroSection = ({ headline, subheading }) => {
         <p className="mx-auto mt-2 max-w-3xl text-xs text-cream/80 md:text-base">{subheading}</p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <motion.a
+          <motion.button
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.97 }}
-            href="https://wa.me/918123105849?text=Hello,%20I%20want%20to%20join%20Ekalavya%20Academy%20of%20Cricket%20Excellence."
-            target="_blank"
-            rel="noreferrer"
             className="btn-gold rounded-full px-9 py-3 text-sm font-semibold uppercase tracking-[0.15em]"
+            onClick={() => setLeadOpen(true)}
           >
             Join Academy
-          </motion.a>
+          </motion.button>
 
           <motion.a
             whileHover={{ scale: 1.08 }}
@@ -116,6 +129,15 @@ const HeroSection = ({ headline, subheading }) => {
           </motion.a>
         </div>
       </div>
+
+      <LeadModal
+        open={leadOpen}
+        title="Join EACE Academy"
+        subtitle="Share your details and our team will confirm on WhatsApp."
+        ctaLabel="Send Details"
+        onSubmit={submitLead}
+        onClose={() => setLeadOpen(false)}
+      />
     </section>
   );
 };

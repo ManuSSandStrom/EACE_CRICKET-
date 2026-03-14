@@ -6,6 +6,7 @@ import {
   getVideos,
   getContact,
 } from '../controllers/publicController.js';
+import { createLead } from '../controllers/leadController.js';
 import { asyncHandler } from '../middleware/asyncHandler.js';
 
 const router = Router();
@@ -15,5 +16,6 @@ router.get('/gallery', asyncHandler(getGallery));
 router.get('/testimonials', asyncHandler(getTestimonials));
 router.get('/videos', asyncHandler(getVideos));
 router.get('/contact', getContact);
+router.post('/leads', asyncHandler(createLead));
 
 export default router;

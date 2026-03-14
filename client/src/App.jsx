@@ -8,6 +8,7 @@ import FloatingWhatsApp from './components/FloatingWhatsApp.jsx';
 import FloatingAssistant from './components/FloatingAssistant.jsx';
 import CursorGlow from './components/CursorGlow.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
+import EntryLeadPopup from './components/EntryLeadPopup.jsx';
 
 const HomePage = lazy(() => import('./pages/HomePage.jsx'));
 const GalleryPage = lazy(() => import('./pages/GalleryPage.jsx'));
@@ -113,6 +114,7 @@ const App = () => {
       <FloatingWhatsApp />
       {showEnhancements ? <CursorGlow /> : null}
       {showEnhancements ? <FloatingAssistant /> : null}
+      <EntryLeadPopup />
       <RouteShell />
     </>
   );

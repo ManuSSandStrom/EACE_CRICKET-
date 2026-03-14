@@ -1,8 +1,12 @@
+import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { FaCheck, FaWhatsapp, FaChild, FaGraduationCap, FaStar, FaQuoteLeft, FaTrophy } from 'react-icons/fa';
 import SectionTitle from '../components/SectionTitle.jsx';
 import { riseIn, staggerContainer } from '../utils/motion.js';
+import LeadModal from '../components/LeadModal.jsx';
+import { createLead } from '../api/contentApi.js';
+import { buildLeadMessage, openWhatsApp } from '../utils/lead.js';
 
 const plans = [
   {
@@ -70,12 +74,12 @@ const schoolBundle = {
   scholarship: '75%',
   features: [
     'Daily 5hours of practice, mastering the art of Batting, bowling, keeping and fielding overall with experts',
-    ' Integrated Schooling (Balance sports & academics)',
-    ' Dormitory Stay (Safe & comfortable on-campus living)',
-    ' Hygiene-First Nutrition (homely food)',
-    '️ Match Experience (Regular practice matches & tournaments, open nets)',
-    '️ Elite Fitness Sessions & Nutrition Consultancy',
-    '️ Annual Domestic Tour (Exposure to different conditions)',
+    'Integrated Schooling (Balance sports & academics)',
+    'Dormitory Stay (Safe & comfortable on-campus living)',
+    'Hygiene-First Nutrition (homely food)',
+    'Match Experience (Regular practice matches & tournaments, open nets)',
+    'Elite Fitness Sessions & Nutrition Consultancy',
+    'Annual Domestic Tour (Exposure to different conditions)',
     'Video analysis',
     'Physiotherapy',
     'Mental balancing',
@@ -90,10 +94,55 @@ const ageBatches = [
 ];
 
 const PlansPage = () => {
-  const whatsAppUrl =
-    'https://wa.me/918123105849?text=Hello%2C%20I%20am%20interested%20in%20joining%20EACE.%20Please%20share%20details%20about%20plans%20and%20pricing.';
-  const trialUrl =
-    'https://wa.me/918123105849?text=Hello%2C%20I%20want%20to%20book%202%20free%20trial%20classes%20at%20EACE.';
+  const [leadModal, setLeadModal] = useState({
+    open: false,
+    type: 'plan',
+    planId: '',
+    planName: '',
+    title: '',
+    contextLabel: '',
+  });
+
+  const openModal = (type, options = {}) => {
+    setLeadModal({
+      open: true,
+      type,
+      planId: options.planId || '',
+      planName: options.planName || '',
+      title: options.title || '',
+      contextLabel: options.contextLabel || '',
+    });
+  };
+
+  const closeModal = () => setLeadModal((prev) => ({ ...prev, open: false }));
+
+  const submitLead = async (payload) => {
+    await createLead({
+      ...payload,
+      type: leadModal.type,
+      source: 'plans_page',
+      planId: leadModal.planId,
+      planName: leadModal.planName,
+      message: payload.message,
+    });
+
+    const text = buildLeadMessage({
+      ...payload,
+      type: leadModal.type,
+      planName: leadModal.planName,
+      message: payload.message,
+    });
+    openWhatsApp(text);
+    closeModal();
+  };
+
+  const modalTitle =
+    leadModal.title ||
+    (leadModal.type === 'trial'
+      ? 'Book Free Trial'
+      : leadModal.type === 'school'
+        ? 'School + Hostel Enquiry'
+        : 'Plan Enquiry');
 
   return (
     <motion.section variants={riseIn} initial="hidden" animate="show" className="mx-auto w-full max-w-7xl px-4 py-14 md:px-8">
@@ -122,15 +171,19 @@ const PlansPage = () => {
         <p className="mx-auto mt-3 max-w-lg text-sm text-white/90">
           Experience our training before enrollment. Attend 2 free sessions and connect on WhatsApp for schedule confirmation.
         </p>
-        <a
-          href={trialUrl}
-          target="_blank"
-          rel="noreferrer"
+        <button
+          type="button"
+          onClick={() =>
+            openModal('trial', {
+              title: 'Book Free Trial',
+              contextLabel: '2 Free Trial Classes',
+            })
+          }
           className="mt-5 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#0B4192] transition hover:scale-105 hover:shadow-lg"
         >
           <FaWhatsapp className="text-lg text-green-600" />
           Book Free Trial on WhatsApp
-        </a>
+        </button>
       </motion.div>
 
       <div className="mb-14">
@@ -188,17 +241,23 @@ const PlansPage = () => {
                 </li>
               ))}
             </ul>
-            <a
-              href={whatsAppUrl}
-              target="_blank"
-              rel="noreferrer"
+            <button
+              type="button"
+              onClick={() =>
+                openModal('plan', {
+                  planId: plan.id,
+                  planName: plan.name,
+                  title: 'Plan Enquiry',
+                  contextLabel: plan.name,
+                })
+              }
               className={`mt-6 flex w-full items-center justify-center gap-2 rounded-lg py-3 text-sm font-semibold transition hover:scale-[1.03] ${
                 plan.popular ? 'bg-[#0B4192] text-white' : 'border border-[#0B4192] text-[#0B4192] hover:bg-[#0B4192] hover:text-white'
               }`}
             >
               <FaWhatsapp className="text-lg" />
-              Enroll via WhatsApp
-            </a>
+              Enquire via WhatsApp
+            </button>
           </motion.article>
         ))}
       </motion.div>
@@ -289,15 +348,19 @@ const PlansPage = () => {
                     <p className="text-xs font-bold text-[#0B4192]">Status: Enrollment Open</p>
                   </div>
                 </div>
-                <a
-                  href={whatsAppUrl}
-                  target="_blank"
-                  rel="noreferrer"
+                <button
+                  type="button"
+                  onClick={() =>
+                    openModal('school', {
+                      title: 'School + Hostel Enquiry',
+                      contextLabel: 'School + Hostel + Cricket',
+                    })
+                  }
                   className="mt-4 flex items-center justify-center gap-2 rounded-lg bg-[#790000] px-6 py-3 text-sm font-semibold text-white transition hover:scale-105"
                 >
                   <FaWhatsapp className="text-lg" />
                   Enquire Now
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -315,8 +378,19 @@ const PlansPage = () => {
           </div>
         </div>
       </motion.div>
+
+      <LeadModal
+        open={leadModal.open}
+        title={modalTitle}
+        subtitle="Share your details and we will confirm everything on WhatsApp."
+        contextLabel={leadModal.contextLabel}
+        ctaLabel="Send Details"
+        onSubmit={submitLead}
+        onClose={closeModal}
+      />
     </motion.section>
   );
 };
 
 export default PlansPage;
+

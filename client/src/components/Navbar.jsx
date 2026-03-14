@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { HiOutlineMenuAlt3, HiX } from 'react-icons/hi';
 import { EACE_LOGO_URL } from '../utils/branding.js';
+import LeadModal from './LeadModal.jsx';
+import { createLead } from '../api/contentApi.js';
+import { buildLeadMessage, openWhatsApp } from '../utils/lead.js';
 
 const navItems = [
   { to: '/', label: 'Home' },
@@ -16,6 +19,18 @@ const navItems = [
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [leadOpen, setLeadOpen] = useState(false);
+
+  const submitLead = async (payload) => {
+    await createLead({
+      ...payload,
+      type: 'general',
+      source: 'navbar_cta',
+    });
+    const text = buildLeadMessage({ ...payload, type: 'general' });
+    openWhatsApp(text);
+    setLeadOpen(false);
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 18);
@@ -59,14 +74,13 @@ const Navbar = () => {
               {item.label}
             </NavLink>
           ))}
-          <a
-            href="https://wa.me/918123105849?text=Hello,%20I%20want%20to%20join%20Ekalavya%20Academy%20of%20Cricket%20Excellence."
-            target="_blank"
-            rel="noreferrer"
+          <button
+            type="button"
+            onClick={() => setLeadOpen(true)}
             className="btn-gold rounded-full px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.16em]"
           >
             Join Academy
-          </a>
+          </button>
         </nav>
 
         <button
@@ -95,17 +109,28 @@ const Navbar = () => {
                 {item.label}
               </NavLink>
             ))}
-            <a
-              href="https://wa.me/918123105849?text=Hello,%20I%20want%20to%20join%20Ekalavya%20Academy%20of%20Cricket%20Excellence."
-              target="_blank"
-              rel="noreferrer"
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(false);
+                setLeadOpen(true);
+              }}
               className="btn-gold mt-2 rounded-lg px-3 py-2 text-center text-sm font-semibold uppercase tracking-[0.12em]"
             >
               Join Academy
-            </a>
+            </button>
           </div>
         </div>
       ) : null}
+
+      <LeadModal
+        open={leadOpen}
+        title="Join EACE Academy"
+        subtitle="Share your details and our team will confirm on WhatsApp."
+        ctaLabel="Send Details"
+        onSubmit={submitLead}
+        onClose={() => setLeadOpen(false)}
+      />
     </header>
   );
 };

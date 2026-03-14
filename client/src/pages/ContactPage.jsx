@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { getContact } from '../api/contentApi.js';
+import { createLead, getContact } from '../api/contentApi.js';
 import SectionTitle from '../components/SectionTitle.jsx';
 import { riseIn, slideInLeft, slideInRight } from '../utils/motion.js';
+import { buildLeadMessage, openWhatsApp } from '../utils/lead.js';
 
 const fallback = {
   address: 'Begur-Koppa Road, Yelenahalli, Bangalore - 560068',
@@ -15,7 +16,8 @@ const fallback = {
 
 const ContactPage = () => {
   const [contact, setContact] = useState(fallback);
-  const [form, setForm] = useState({ name: '', number: '', email: '', message: '' });
+  const [form, setForm] = useState({ name: '', number: '', age: '', location: '', email: '', message: '' });
+  const [status, setStatus] = useState('');
 
   useEffect(() => {
     const load = async () => {
@@ -29,14 +31,33 @@ const ContactPage = () => {
     load();
   }, []);
 
-  const sendViaWhatsApp = (event) => {
+  const sendViaWhatsApp = async (event) => {
     event.preventDefault();
+    setStatus('');
 
-    const text = `Hello EACE,%0A%0AName: ${encodeURIComponent(form.name)}%0ANumber: ${encodeURIComponent(
-      form.number,
-    )}%0AEmail: ${encodeURIComponent(form.email)}%0AMessage: ${encodeURIComponent(form.message)}`;
+    const combinedMessage = `${form.message}${form.email ? `\nEmail: ${form.email}` : ''}`.trim();
+    const payload = {
+      name: form.name,
+      phone: form.number,
+      age: form.age,
+      location: form.location,
+      message: combinedMessage,
+    };
 
-    window.open(`https://wa.me/91${contact.whatsapp}?text=${text}`, '_blank');
+    try {
+      await createLead({
+        ...payload,
+        type: 'contact',
+        source: 'contact_page',
+      });
+
+      const text = buildLeadMessage({ ...payload, type: 'contact' });
+      openWhatsApp(text, `91${contact.whatsapp}`);
+      setStatus('Submitted. Our team will connect with you shortly.');
+      setForm({ name: '', number: '', age: '', location: '', email: '', message: '' });
+    } catch (_error) {
+      setStatus('Unable to submit right now. Please try again.');
+    }
   };
 
   return (
@@ -101,9 +122,27 @@ const ContactPage = () => {
               onChange={(event) => setForm((prev) => ({ ...prev, number: event.target.value }))}
               className="mt-3 w-full rounded-lg border border-sportsBlue/25 bg-cream px-3 py-2 text-sm text-paper outline-none placeholder:text-muted transition focus:border-royal focus:ring-2 focus:ring-royal/20"
             />
+            <div className="mt-3 grid gap-3 sm:grid-cols-2">
+              <input
+                type="number"
+                min="5"
+                required
+                placeholder="Age"
+                value={form.age}
+                onChange={(event) => setForm((prev) => ({ ...prev, age: event.target.value }))}
+                className="w-full rounded-lg border border-sportsBlue/25 bg-cream px-3 py-2 text-sm text-paper outline-none placeholder:text-muted transition focus:border-royal focus:ring-2 focus:ring-royal/20"
+              />
+              <input
+                type="text"
+                required
+                placeholder="Location"
+                value={form.location}
+                onChange={(event) => setForm((prev) => ({ ...prev, location: event.target.value }))}
+                className="w-full rounded-lg border border-sportsBlue/25 bg-cream px-3 py-2 text-sm text-paper outline-none placeholder:text-muted transition focus:border-royal focus:ring-2 focus:ring-royal/20"
+              />
+            </div>
             <input
               type="email"
-              required
               placeholder="Email"
               value={form.email}
               onChange={(event) => setForm((prev) => ({ ...prev, email: event.target.value }))}
@@ -125,6 +164,7 @@ const ContactPage = () => {
             >
               Send on WhatsApp
             </motion.button>
+            {status ? <p className="mt-3 text-sm text-[#0B4192]">{status}</p> : null}
           </motion.form>
         </motion.div>
 

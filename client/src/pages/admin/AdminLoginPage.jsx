@@ -28,37 +28,38 @@ const AdminLoginPage = () => {
   };
 
   return (
-    <section className="flex min-h-screen items-center justify-center px-4">
+    <section className="flex min-h-screen items-center justify-center bg-[#F7F9FD] px-4">
       <Helmet>
         <title>Admin Login | EACE</title>
       </Helmet>
-      <form onSubmit={onSubmit} className="glass w-full max-w-md rounded-2xl p-7">
-        <h1 className="text-2xl font-bold">EACE Admin Login</h1>
-        <p className="mt-2 text-sm text-slate-300">Manage gallery, content, videos, and testimonials.</p>
+      <form onSubmit={onSubmit} className="w-full max-w-md rounded-2xl border border-[#D9E2F2] bg-white p-7 shadow-[0_20px_50px_rgba(9,32,70,0.15)]">
+        <p className="text-xs uppercase tracking-[0.2em] text-[#790000]">Admin</p>
+        <h1 className="mt-2 text-2xl font-bold text-[#0B4192]">EACE Admin Login</h1>
+        <p className="mt-2 text-sm text-[#3A5A8C]">Manage gallery, content, videos, and testimonials.</p>
 
-        <label className="mt-6 block text-sm text-slate-200">Email</label>
+        <label className="mt-6 block text-sm text-[#3A5A8C]">Email</label>
         <input
           type="email"
           value={form.email}
           onChange={(event) => setForm((prev) => ({ ...prev, email: event.target.value }))}
-          className="mt-2 w-full rounded-lg border border-white/15 bg-slate-900/70 px-3 py-2 text-sm outline-none focus:border-gold/70"
+          className="mt-2 w-full rounded-lg border border-[#D9E2F2] bg-white px-3 py-2 text-sm text-[#0B4192] outline-none focus:border-[#0B4192]"
           required
         />
 
-        <label className="mt-4 block text-sm text-slate-200">Password</label>
+        <label className="mt-4 block text-sm text-[#3A5A8C]">Password</label>
         <input
           type="password"
           value={form.password}
           onChange={(event) => setForm((prev) => ({ ...prev, password: event.target.value }))}
-          className="mt-2 w-full rounded-lg border border-white/15 bg-slate-900/70 px-3 py-2 text-sm outline-none focus:border-gold/70"
+          className="mt-2 w-full rounded-lg border border-[#D9E2F2] bg-white px-3 py-2 text-sm text-[#0B4192] outline-none focus:border-[#0B4192]"
           required
         />
 
-        {error ? <p className="mt-3 text-sm text-red-400">{error}</p> : null}
+        {error ? <p className="mt-3 text-sm text-red-500">{error}</p> : null}
 
         <button
           disabled={loading}
-          className="mt-6 w-full rounded-lg bg-gold px-4 py-2.5 text-sm font-bold text-slate-900 transition hover:brightness-105 disabled:opacity-60"
+          className="mt-6 w-full rounded-lg bg-[#0B4192] px-4 py-2.5 text-sm font-bold text-white transition hover:brightness-110 disabled:opacity-60"
         >
           {loading ? 'Signing in...' : 'Sign In'}
         </button>
