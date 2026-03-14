@@ -57,7 +57,7 @@ const GalleryPage = () => {
           _id: item?._id || `gallery-${idx}`,
           title: typeof item?.title === 'string' && item.title.trim() ? item.title.trim() : `Training Moment ${idx + 1}`,
           previewUrl: hasImage ? optimizeCloudinaryImage(raw, 1400) : '',
-          thumbUrl: hasImage ? optimizeCloudinaryImage(raw, 900) : '',
+          thumbUrl: hasImage ? optimizeCloudinaryImage(raw, 700) : '',
           imageUrl: hasImage ? raw : '',
           hasImage,
         };
@@ -175,7 +175,7 @@ const GalleryPage = () => {
                         src={video.youtubeUrl}
                         controls
                         playsInline
-                        preload="metadata"
+                        preload="none"
                         onPlay={(event) => pauseOtherVideos(event.currentTarget)}
                       />
                     ) : (

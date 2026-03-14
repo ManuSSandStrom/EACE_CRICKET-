@@ -25,7 +25,7 @@ const leadTabs = [
   { id: 'plan', label: 'Plan Enquiries' },
   { id: 'trial', label: 'Free Trials' },
   { id: 'school', label: 'School Enquiries' },
-  { id: 'contact', label: 'Contacted' },
+  { id: 'contact', label: 'Contact Enquiries' },
   { id: 'whatsapp', label: 'WhatsApp' },
 ];
 

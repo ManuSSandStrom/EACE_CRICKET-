@@ -106,7 +106,6 @@ const LeadModal = ({
                   className="w-full rounded-lg border border-[#D9E2F2] bg-white px-3 py-2 text-sm text-[#0B4192] outline-none focus:border-[#0B4192]"
                 />
                 <input
-                  required
                   value={form.location}
                   onChange={(event) => setForm((prev) => ({ ...prev, location: event.target.value }))}
                   placeholder="Location"

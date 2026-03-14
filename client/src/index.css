@@ -447,6 +447,8 @@ button {
 
 .masonry-item {
   break-inside: avoid;
+  content-visibility: auto;
+  contain-intrinsic-size: 260px;
 }
 
 .chat-scrollbar {

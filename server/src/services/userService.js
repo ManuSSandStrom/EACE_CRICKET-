@@ -3,7 +3,7 @@ import { User } from '../models/User.js';
 
 export const ensureAdminUser = async () => {
   const adminEmail = (process.env.ADMIN_EMAIL || 'admin@eace.in').toLowerCase();
-  const adminPassword = process.env.ADMIN_PASSWORD || 'EACE@12345';
+  const adminPassword = process.env.ADMIN_PASSWORD || 'EACE@1234';
   const forceReset = String(process.env.ADMIN_FORCE_RESET || '').toLowerCase() === 'true';
 
   const exists = await User.findOne({ email: adminEmail });
