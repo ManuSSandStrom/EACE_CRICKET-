@@ -7,7 +7,7 @@ import { useAuth } from '../../context/AuthContext.jsx';
 const AdminLoginPage = () => {
   const navigate = useNavigate();
   const { signIn } = useAuth();
-  const [form, setForm] = useState({ email: 'admin@eace.in', password: '' });
+  const [form, setForm] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
