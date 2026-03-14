@@ -13,7 +13,6 @@ const quickLinks = [
   { to: '/coaches', label: 'Coaches' },
   { to: '/gallery', label: 'Gallery' },
   { to: '/contact', label: 'Contact' },
-  { to: '/admin/login', label: 'Admin Login' },
 ];
 
 const Footer = () => {

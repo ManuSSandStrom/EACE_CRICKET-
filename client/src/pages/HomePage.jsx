@@ -90,8 +90,9 @@ const normalizeCoaches = (list, fallback) => {
           if (!coach || typeof coach !== 'object') return null;
           const name = typeof coach.name === 'string' ? coach.name.trim() : '';
           const expertise = typeof coach.expertise === 'string' ? coach.expertise.trim() : '';
+          const imageUrl = typeof coach.imageUrl === 'string' ? coach.imageUrl.trim() : '';
           if (!name) return null;
-          return { name, expertise: expertise || 'Cricket Development Specialist' };
+          return { name, expertise: expertise || 'Cricket Development Specialist', imageUrl };
         })
         .filter(Boolean)
     : [];

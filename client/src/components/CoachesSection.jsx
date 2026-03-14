@@ -26,8 +26,18 @@ const CoachesSection = ({ coaches = [] }) => {
             transition={{ type: 'spring', stiffness: 220, damping: 20 }}
             className="sports-card rounded-2xl p-6"
           >
-            <div className="mb-4 flex h-36 w-full items-center justify-center rounded-xl border border-dashed border-sportsBlue/20 bg-cream text-center text-xs uppercase tracking-[0.16em] text-muted">
-              Coach Profile
+            <div className="mb-4 flex h-36 w-full items-center justify-center overflow-hidden rounded-xl border border-dashed border-sportsBlue/20 bg-cream text-center text-xs uppercase tracking-[0.16em] text-muted">
+              {coach.imageUrl ? (
+                <img
+                  src={coach.imageUrl}
+                  alt={coach.name}
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : (
+                'Coach Profile'
+              )}
             </div>
             <h3 className="text-xl font-semibold text-paper">{coach.name}</h3>
             <p className="mt-2 text-sm text-muted">{coach.expertise}</p>

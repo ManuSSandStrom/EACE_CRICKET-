@@ -60,6 +60,10 @@ const AdminDashboardPage = () => {
   const [galleryForm, setGalleryForm] = useState({ title: '', category: categories[0], imageUrl: '' });
   const [galleryImage, setGalleryImage] = useState(null);
 
+  const [coachesForm, setCoachesForm] = useState([]);
+  const [coachForm, setCoachForm] = useState({ name: '', expertise: '', imageUrl: '' });
+  const [coachImage, setCoachImage] = useState(null);
+
   const [testimonialForm, setTestimonialForm] = useState({
     name: '',
     role: '',
@@ -126,6 +130,7 @@ const AdminDashboardPage = () => {
 
     if (homeContent) {
       setHomeData(homeContent);
+      setCoachesForm(Array.isArray(homeContent.coaches) ? homeContent.coaches : []);
       setHomeForm({
         heroHeadline: homeContent.heroHeadline || '',
         heroSubheading: homeContent.heroSubheading || '',
@@ -206,6 +211,52 @@ const AdminDashboardPage = () => {
     } catch (_error) {
       setStatus('Failed to update homepage content.');
     }
+  };
+
+  const persistCoaches = async (nextCoaches) => {
+    setStatus('Updating coaches...');
+    try {
+      const payload = {
+        ...(homeData || {}),
+        heroHeadline: homeForm.heroHeadline,
+        heroSubheading: homeForm.heroSubheading,
+        programs,
+        coaches: nextCoaches,
+      };
+      const updated = await updateHomeContent(payload);
+      setHomeData(updated);
+      setCoachesForm(updated.coaches || []);
+      setCoachForm({ name: '', expertise: '', imageUrl: '' });
+      setCoachImage(null);
+      setStatus('Coaches updated.');
+    } catch (_error) {
+      setStatus('Failed to update coaches.');
+    }
+  };
+
+  const addCoach = async (event) => {
+    event.preventDefault();
+    let imageUrl = coachForm.imageUrl;
+
+    if (coachImage) {
+      imageUrl = await uploadGalleryImage(coachImage);
+    }
+
+    const next = [
+      ...coachesForm,
+      {
+        name: coachForm.name.trim(),
+        expertise: coachForm.expertise.trim(),
+        imageUrl: imageUrl ? String(imageUrl).trim() : '',
+      },
+    ].filter((coach) => coach.name);
+
+    await persistCoaches(next);
+  };
+
+  const removeCoach = async (index) => {
+    const next = coachesForm.filter((_, idx) => idx !== index);
+    await persistCoaches(next);
   };
 
   const updateLeadStatus = async (id, payload) => {
@@ -417,6 +468,40 @@ const AdminDashboardPage = () => {
           <button className="mt-4 rounded-md bg-[#0B4192] px-4 py-2 text-sm font-semibold text-white hover:brightness-110">Add Gallery Item</button>
         </form>
 
+        <form onSubmit={addCoach} className="rounded-2xl border border-[#D9E2F2] bg-white p-6 shadow-[0_18px_40px_rgba(9,32,70,0.12)]">
+          <h2 className="text-xl font-semibold text-[#0B4192]">Add Coach Profile</h2>
+          <label className="mt-4 block text-sm text-[#3A5A8C]">Coach Name</label>
+          <input
+            value={coachForm.name}
+            onChange={(event) => setCoachForm((prev) => ({ ...prev, name: event.target.value }))}
+            className="mt-1 w-full rounded-md border border-[#D9E2F2] bg-white px-3 py-2 text-sm text-[#0B4192] outline-none focus:border-[#0B4192]"
+            required
+          />
+          <label className="mt-4 block text-sm text-[#3A5A8C]">Expertise</label>
+          <input
+            value={coachForm.expertise}
+            onChange={(event) => setCoachForm((prev) => ({ ...prev, expertise: event.target.value }))}
+            className="mt-1 w-full rounded-md border border-[#D9E2F2] bg-white px-3 py-2 text-sm text-[#0B4192] outline-none focus:border-[#0B4192]"
+            required
+          />
+          <label className="mt-4 block text-sm text-[#3A5A8C]">Coach Image File</label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(event) => setCoachImage(event.target.files?.[0] || null)}
+            className="mt-1 block w-full text-xs"
+          />
+          <p className="my-2 text-center text-xs text-[#93A4C2]">or</p>
+          <label className="block text-sm text-[#3A5A8C]">Direct Image URL</label>
+          <input
+            value={coachForm.imageUrl}
+            onChange={(event) => setCoachForm((prev) => ({ ...prev, imageUrl: event.target.value }))}
+            className="mt-1 w-full rounded-md border border-[#D9E2F2] bg-white px-3 py-2 text-sm text-[#0B4192] outline-none focus:border-[#0B4192]"
+            placeholder="https://..."
+          />
+          <button className="mt-4 rounded-md bg-[#0B4192] px-4 py-2 text-sm font-semibold text-white hover:brightness-110">Save Coach</button>
+        </form>
+
         <form onSubmit={addTestimonial} className="rounded-2xl border border-[#D9E2F2] bg-white p-6 shadow-[0_18px_40px_rgba(9,32,70,0.12)]">
           <h2 className="text-xl font-semibold text-[#0B4192]">Add Testimonial</h2>
           <input
@@ -491,7 +576,7 @@ const AdminDashboardPage = () => {
         </form>
       </div>
 
-      <div className="mt-8 grid gap-6 lg:grid-cols-3">
+      <div className="mt-8 grid gap-6 lg:grid-cols-4">
         <article className="rounded-2xl border border-[#D9E2F2] bg-white p-5 shadow-[0_16px_32px_rgba(9,32,70,0.1)]">
           <h3 className="text-lg font-semibold text-[#0B4192]">Gallery Items</h3>
           <div className="mt-3 max-h-72 space-y-2 overflow-y-auto pr-1">
@@ -507,6 +592,27 @@ const AdminDashboardPage = () => {
                 </button>
               </div>
             ))}
+          </div>
+        </article>
+
+        <article className="rounded-2xl border border-[#D9E2F2] bg-white p-5 shadow-[0_16px_32px_rgba(9,32,70,0.1)]">
+          <h3 className="text-lg font-semibold text-[#0B4192]">Coaches</h3>
+          <div className="mt-3 max-h-72 space-y-2 overflow-y-auto pr-1">
+            {coachesForm.map((coach, idx) => (
+              <div key={`${coach.name}-${idx}`} className="rounded-lg border border-[#E0E8F4] p-3 text-sm">
+                <p className="font-semibold text-[#0B4192]">{coach.name}</p>
+                <p className="text-xs text-[#93A4C2]">{coach.expertise}</p>
+                <button
+                  onClick={() => removeCoach(idx)}
+                  className="mt-2 text-xs text-red-500 hover:text-red-400"
+                >
+                  Delete
+                </button>
+              </div>
+            ))}
+            {!coachesForm.length ? (
+              <p className="text-xs text-[#93A4C2]">No coaches yet.</p>
+            ) : null}
           </div>
         </article>
 
