@@ -9,16 +9,38 @@ export const login = async (req, res) => {
     return res.status(400).json({ message: 'Email and password are required' });
   }
 
-  const user = await User.findOne({ email: email.toLowerCase() });
+  const normalizedEmail = email.toLowerCase();
+  const adminEmail = (process.env.ADMIN_EMAIL || 'admin@eace.in').toLowerCase();
+  const adminPassword = process.env.ADMIN_PASSWORD || 'EACE@1234';
+  const allowReset = String(process.env.ADMIN_FORCE_RESET || '').toLowerCase() === 'true';
+
+  let user = await User.findOne({ email: normalizedEmail });
 
   if (!user) {
-    return res.status(401).json({ message: 'Invalid credentials' });
+    if (allowReset && normalizedEmail === adminEmail && password === adminPassword) {
+      const passwordHash = await bcrypt.hash(adminPassword, 10);
+      user = await User.create({
+        name: 'EACE Admin',
+        email: adminEmail,
+        passwordHash,
+        role: 'admin',
+      });
+    } else {
+      return res.status(401).json({ message: 'Invalid credentials' });
+    }
   }
 
-  const validPassword = await bcrypt.compare(password, user.passwordHash);
+  let validPassword = await bcrypt.compare(password, user.passwordHash);
 
   if (!validPassword) {
-    return res.status(401).json({ message: 'Invalid credentials' });
+    if (allowReset && normalizedEmail === adminEmail && password === adminPassword) {
+      const passwordHash = await bcrypt.hash(adminPassword, 10);
+      user.passwordHash = passwordHash;
+      await user.save();
+      validPassword = true;
+    } else {
+      return res.status(401).json({ message: 'Invalid credentials' });
+    }
   }
 
   const token = jwt.sign(
