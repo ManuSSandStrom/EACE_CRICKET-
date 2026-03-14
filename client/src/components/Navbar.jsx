@@ -34,7 +34,13 @@ const Navbar = () => {
     >
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 md:px-8">
         <Link to="/" className="flex items-center gap-3">
-          <img src={EACE_LOGO_URL} alt="EACE Logo" className="h-14 w-14 object-contain md:h-16 md:w-16" loading="lazy" />
+          <img
+            src={EACE_LOGO_URL}
+            alt="EACE Logo"
+            className="h-14 w-14 object-contain md:h-16 md:w-16"
+            loading="lazy"
+            decoding="async"
+          />
           <div>
             <p className="font-heading text-xl leading-tight text-[#0B4192]">Ekalavya Academy</p>
             <p className="font-subheading text-[11px] uppercase tracking-[0.18em] text-[#3A5A8C]">of Cricket Excellence</p>

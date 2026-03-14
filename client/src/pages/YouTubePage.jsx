@@ -94,7 +94,7 @@ const YouTubePage = () => {
                     src={video.youtubeUrl}
                     controls
                     playsInline
-                    preload="metadata"
+                    preload="none"
                     onPlay={(event) => pauseOtherVideos(event.currentTarget)}
                   />
                 ) : (

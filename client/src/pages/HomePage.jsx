@@ -6,7 +6,6 @@ import { FaWhatsapp, FaPhone, FaMapMarkerAlt, FaArrowRight, FaGraduationCap, FaS
 import { getHomeContent, getTestimonials } from '../api/contentApi.js';
 import HeroSection from '../components/HeroSection.jsx';
 import StatsCounter from '../components/StatsCounter.jsx';
-import TrustBand from '../components/TrustBand.jsx';
 import TrainingRoadmap from '../components/TrainingRoadmap.jsx';
 import CoachesSection from '../components/CoachesSection.jsx';
 import TestimonialsSlider from '../components/TestimonialsSlider.jsx';
@@ -140,12 +139,12 @@ const normalizeTestimonials = (list, fallback) => {
 
 const schoolFeatures = [
   'Daily 5-hour practice sessions with expert coaches covering batting, bowling, keeping, and fielding.',
-  ' Integrated Schooling (Balance sports & academics)',
-  ' Dormitory Stay (Safe & comfortable on-campus living)',
-  ' Hygiene-First Nutrition (homely food)',
-  '️ Match Experience (Regular practice matches & tournaments, open nets)',
-  '️ Elite Fitness Sessions & Nutrition Consultancy',
-  '️ Annual Domestic Tour (Exposure to different conditions)',
+  'Integrated Schooling (Balance sports & academics)',
+  'Dormitory Stay (Safe & comfortable on-campus living)',
+  'Hygiene-First Nutrition (homely food)',
+  'Match Experience (Regular practice matches & tournaments, open nets)',
+  'Elite Fitness Sessions & Nutrition Consultancy',
+  'Annual Domestic Tour (Exposure to different conditions)',
   'Video analysis',
   'Physiotherapy',
   'Mental balancing',
@@ -174,6 +173,7 @@ const SchoolHighlight = () => {
                   alt="Sri Sai School Logo"
                   className="h-10 w-10 rounded-full border border-white/50 bg-white object-cover shadow-sm sm:h-12 sm:w-12"
                   loading="lazy"
+                  decoding="async"
                 />
                 <h3 className="font-heading text-2xl font-bold md:text-3xl">Sri Sai School</h3>
               </div>
@@ -324,8 +324,6 @@ const HomePage = () => {
       <SchoolHighlight />
 
       <StatsCounter stats={safeStats} />
-      <TrustBand />
-
       <QuickLinks />
 
       <TrainingRoadmap />
@@ -337,3 +335,5 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+

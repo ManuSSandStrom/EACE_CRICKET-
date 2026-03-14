@@ -254,6 +254,7 @@ const PlansPage = () => {
                     alt="Sri Sai School Logo"
                     className="h-14 w-14 rounded-full object-cover shadow-sm sm:h-16 sm:w-16"
                     loading="lazy"
+                    decoding="async"
                   />
                   <div className="text-center sm:text-left">
                     <h4 className="text-lg font-bold text-[#790000]">Sri Sai School</h4>

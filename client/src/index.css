@@ -299,6 +299,54 @@ button {
     0 8px 18px rgba(11, 65, 146, 0.45);
 }
 
+.ball-loader {
+  position: relative;
+  height: 72px;
+  width: 72px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    #fff5f5 0%,
+    #fff5f5 22%,
+    #b00000 48%,
+    #790000 72%,
+    #4b0000 100%
+  );
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 255, 255, 0.65),
+    inset 0 0 0 7px rgba(255, 255, 255, 0.12),
+    0 10px 18px rgba(11, 65, 146, 0.2);
+  animation: ballSpin 1.05s linear infinite;
+}
+
+.ball-loader::before,
+.ball-loader::after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  bottom: 9px;
+  width: 16px;
+  border: 2px dashed rgba(255, 255, 255, 0.85);
+  border-left: 0;
+  border-right: 0;
+  border-radius: 999px;
+}
+
+.ball-loader::before {
+  left: 10px;
+  transform: rotate(12deg);
+}
+
+.ball-loader::after {
+  right: 10px;
+  transform: rotate(-12deg);
+}
+
+.ball-loader--small {
+  height: 52px;
+  width: 52px;
+}
+
 .hero-bat {
   position: absolute;
   width: 76px;
@@ -490,6 +538,15 @@ button {
   }
   100% {
     transform: translateX(260%);
+  }
+}
+
+@keyframes ballSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 

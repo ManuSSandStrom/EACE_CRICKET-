@@ -23,6 +23,7 @@ const Avatar = ({ name, avatarUrl }) => {
         src={avatarUrl}
         alt={name}
         loading="lazy"
+        decoding="async"
         onError={() => setErrored(true)}
         className="h-16 w-16 rounded-full border border-aqua/30 object-cover shadow-sm"
       />

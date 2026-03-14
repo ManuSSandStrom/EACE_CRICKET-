@@ -61,6 +61,7 @@ const AboutPage = () => {
               alt="Sri Sai School Logo"
               className="h-16 w-16 rounded-full border border-sportsBlue/20 object-cover"
               loading="lazy"
+              decoding="async"
             />
             <div>
               <h3 className="text-xl font-semibold text-paper">Sri Sai School</h3>

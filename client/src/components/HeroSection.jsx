@@ -75,7 +75,13 @@ const HeroSection = ({ headline, subheading }) => {
       </div>
 
       <div ref={textRef} className="relative z-20 mx-auto w-full max-w-6xl text-center">
-        <img src={EACE_LOGO_URL} alt="EACE Logo" className="mx-auto mb-7 h-32 w-32 object-contain drop-shadow-lg md:h-40 md:w-40 lg:h-48 lg:w-48" fetchpriority="high" />
+        <img
+          src={EACE_LOGO_URL}
+          alt="EACE Logo"
+          className="mx-auto mb-7 h-32 w-32 object-contain drop-shadow-lg md:h-40 md:w-40 lg:h-48 lg:w-48"
+          fetchpriority="high"
+          decoding="async"
+        />
 
         <p className="font-subheading text-xs uppercase tracking-[0.4em] text-aqua">Premier Cricket Training Destination</p>
 

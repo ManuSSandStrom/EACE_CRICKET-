@@ -23,7 +23,7 @@ const RouteShell = () => {
   const location = useLocation();
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence>
       <Suspense fallback={<LoadingScreen inline />}>
         <Routes location={location} key={location.pathname}>
           <Route element={<MainLayout />}>
@@ -63,6 +63,38 @@ const App = () => {
       idleId = window.requestIdleCallback(() => setShowEnhancements(true), { timeout: 1200 });
     } else {
       timeoutId = window.setTimeout(() => setShowEnhancements(true), 280);
+    }
+
+    return () => {
+      if (idleId !== null && 'cancelIdleCallback' in window) {
+        window.cancelIdleCallback(idleId);
+      }
+      if (timeoutId !== null) {
+        window.clearTimeout(timeoutId);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    let idleId = null;
+    let timeoutId = null;
+
+    const warmRoutes = () => {
+      void import('./pages/HomePage.jsx');
+      void import('./pages/GalleryPage.jsx');
+      void import('./pages/AboutPage.jsx');
+      void import('./pages/CoachesPage.jsx');
+      void import('./pages/ContactPage.jsx');
+      void import('./pages/PlansPage.jsx');
+      void import('./pages/CalendarPage.jsx');
+      void import('./pages/admin/AdminLoginPage.jsx');
+      void import('./pages/admin/AdminDashboardPage.jsx');
+    };
+
+    if ('requestIdleCallback' in window) {
+      idleId = window.requestIdleCallback(warmRoutes, { timeout: 1200 });
+    } else {
+      timeoutId = window.setTimeout(warmRoutes, 300);
     }
 
     return () => {

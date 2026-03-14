@@ -48,7 +48,13 @@ const PlayerSuccessStories = () => {
             >
               <div className="flex h-56 w-full flex-col items-center justify-center border-b border-dashed border-[#B8C9E8] bg-[linear-gradient(135deg,#FFFFFF,#F0F4FA)] text-[#0B4192]">
                 {story.image ? (
-                  <img src={story.image} alt={story.name} className="h-full w-full object-cover" />
+                  <img
+                    src={story.image}
+                    alt={story.name}
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 ) : (
                   <>
                     <FaRegImage className="text-3xl" />
