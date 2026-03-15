@@ -6,9 +6,9 @@ import SectionTitle from '../components/SectionTitle.jsx';
 import { riseIn, staggerContainer } from '../utils/motion.js';
 
 const trainingSlots = [
-  { batch: 'Foundation Batch (12-14 yrs)', morning: '6:00 AM - 7:30 AM', evening: '4:00 PM - 5:30 PM' },
-  { batch: 'Performance Batch (15-17 yrs)', morning: '6:00 AM - 8:00 AM', evening: '4:00 PM - 6:00 PM' },
-  { batch: 'Elite Batch (18+ yrs)', morning: '5:30 AM - 8:00 AM', evening: '4:30 PM - 7:00 PM' },
+  { batch: 'Foundation Batch (12-14 yrs)', morning: '6:00 AM - 8:00 AM', evening: '4:30 PM - 6:30 PM' },
+  { batch: 'Performance Batch (15-17 yrs)', morning: '6:00 AM - 8:00 AM', evening: '6:30 PM - 8:00 PM' },
+  { batch: 'Elite Batch (18+ yrs)', morning: '6:00 AM - 8:00 AM', evening: '4:00 PM - 8:00 PM' },
 ];
 
 const weeklySchedule = [
