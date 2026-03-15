@@ -87,8 +87,8 @@ const schoolBundle = {
 };
 
 const ageBatches = [
-  { range: '5-11 years', label: 'Junior Foundation', desc: 'Introduction to cricket, fun drills, and basic motor skills' },
-  { range: '12-14 years', label: 'Foundation Batch', desc: 'Technical basics, athletic movement, and game understanding' },
+  { range: '5-10 years', label: 'Junior Foundation', desc: 'Introduction to cricket, fun drills, and basic motor skills' },
+  { range: '11-14 years', label: 'Foundation Batch', desc: 'Technical basics, athletic movement, and game understanding' },
   { range: '15-18 years', label: 'Performance Batch', desc: 'Advanced skill-building, tactical awareness, and match execution' },
   { range: '19+ years', label: 'Elite Batch', desc: 'High-intensity training, competitive readiness, and professional guidance' },
 ];
@@ -167,22 +167,22 @@ const PlansPage = () => {
         className="mx-auto mb-12 max-w-3xl overflow-hidden rounded-2xl border border-[#B8C9E8] bg-gradient-to-r from-[#0B4192] to-[#1A5BC4] p-6 text-center text-white shadow-lg md:p-8"
       >
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80">Limited Offer</p>
-        <h3 className="mt-2 text-2xl font-bold md:text-3xl">2 Free Trial Classes</h3>
+        <h3 className="mt-2 text-2xl font-bold md:text-3xl">1 Week Free Trial (6 Classes)</h3>
         <p className="mx-auto mt-3 max-w-lg text-sm text-white/90">
-          Experience our training before enrollment. Attend 2 free sessions and connect on WhatsApp for schedule confirmation.
+          Experience our training before enrollment. Attend 6 classes over one week and connect on WhatsApp for schedule confirmation.
         </p>
         <button
           type="button"
           onClick={() =>
             openModal('trial', {
               title: 'Book Free Trial',
-              contextLabel: '2 Free Trial Classes',
+              contextLabel: '1 Week Free Trial (6 Classes)',
             })
           }
           className="mt-5 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#0B4192] transition hover:scale-105 hover:shadow-lg"
         >
           <FaWhatsapp className="text-lg text-green-600" />
-          Book Free Trial on WhatsApp
+          Book 1 Week Trial on WhatsApp
         </button>
       </motion.div>
 

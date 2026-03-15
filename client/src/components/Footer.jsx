@@ -47,7 +47,7 @@ const Footer = () => {
 
           <div className="mt-5 flex items-center gap-3">
             <a
-              href="https://www.instagram.com"
+              href="https://www.instagram.com/eace_cricket?igsh=MW13a291Z2R1Mmc0eg=="
               target="_blank"
               rel="noreferrer"
               aria-label="Instagram"
@@ -56,7 +56,7 @@ const Footer = () => {
               <FaInstagram />
             </a>
             <a
-              href="https://www.youtube.com"
+              href="https://youtube.com/@ease_sportsacademy?si=KfMBD_wUP24pOoWf"
               target="_blank"
               rel="noreferrer"
               aria-label="YouTube"
@@ -100,7 +100,7 @@ const Footer = () => {
           <div className="mt-3 overflow-hidden rounded-xl border border-[#B8C9E8]">
             <iframe
               title="EACE Map"
-              src="https://www.google.com/maps?q=12.901401,77.620572&output=embed"
+              src="https://maps.app.goo.gl/4WUpY7b32DWxcmhj9?g_st=aw"
               className="h-40 w-full"
               loading="lazy"
               allowFullScreen

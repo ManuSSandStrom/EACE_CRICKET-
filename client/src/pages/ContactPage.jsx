@@ -11,7 +11,7 @@ const fallback = {
   phones: ['8123149416'],
   whatsapp: '8123105849',
   email: 'Eace.cricket@gmail.com',
-  mapEmbedUrl: 'https://www.google.com/maps?q=12.901401,77.620572&output=embed',
+  mapEmbedUrl: 'https://maps.app.goo.gl/4WUpY7b32DWxcmhj9?g_st=aw',
 };
 
 const ContactPage = () => {

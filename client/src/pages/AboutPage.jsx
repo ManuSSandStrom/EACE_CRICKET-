@@ -21,7 +21,7 @@ const AboutPage = () => {
   return (
     <section className="mx-auto w-full max-w-7xl px-4 py-14 md:px-8">
       <Helmet>
-        <title>About Sri Sai School & Academy</title>
+        <title>About EACE Academy</title>
       </Helmet>
 
       <SectionTitle
@@ -54,25 +54,7 @@ const AboutPage = () => {
       </div>
 
       <div className="mt-10 grid gap-6 md:grid-cols-2">
-        <article className="sports-card rounded-2xl p-7 shadow-sm">
-          <div className="flex items-center gap-4">
-            <img
-              src="https://res.cloudinary.com/dt37ji5yp/image/upload/q_auto,f_auto/v1772983586/Sri_sai_school_image_bd7pqw.jpg"
-              alt="Sri Sai School Logo"
-              className="h-16 w-16 rounded-full border border-sportsBlue/20 object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-            <div>
-              <h3 className="text-xl font-semibold text-paper">Sri Sai School</h3>
-              <p className="text-sm text-muted">Begur-Koppa Road, Yelenahalli, Bangalore - 560068</p>
-            </div>
-          </div>
-          <p className="mt-4 text-sm text-muted">
-            Sri Sai School supports students with balanced academics, responsible supervision, and a growth-oriented campus culture.
-          </p>
-        </article>
-        <article className="sports-card rounded-2xl p-7 shadow-sm">
+        <article className="sports-card rounded-2xl p-7 shadow-sm md:col-span-2">
           <h3 className="text-xl font-semibold text-paper">Training Philosophy</h3>
           <p className="mt-3 text-sm text-muted">
             Coaching combines technique, match awareness, strength and conditioning, and mental readiness under structured cycles.
