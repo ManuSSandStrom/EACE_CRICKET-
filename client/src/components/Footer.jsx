@@ -100,7 +100,7 @@ const Footer = () => {
           <div className="mt-3 overflow-hidden rounded-xl border border-[#B8C9E8]">
             <iframe
               title="EACE Map"
-              src="https://maps.app.goo.gl/4WUpY7b32DWxcmhj9?g_st=aw"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.8348110298252!2d77.6209007!3d12.8539437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae6be1569c05b1%3A0x1b663a1502e07cc6!2sEkalavya%20academy%20of%20cricket%20excellence(EACE))!5e0!3m2!1sen!2sin!4v1773562276745!5m2!1sen!2sin"
               className="h-40 w-full"
               loading="lazy"
               allowFullScreen
