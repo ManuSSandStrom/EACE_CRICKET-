@@ -14,7 +14,7 @@ import {
   deleteVideo,
   updateHomeContent,
 } from '../controllers/adminController.js';
-import { getLeads, updateLead } from '../controllers/leadController.js';
+import { deleteLead, getLeads, updateLead } from '../controllers/leadController.js';
 import { asyncHandler } from '../middleware/asyncHandler.js';
 
 const router = Router();
@@ -38,5 +38,6 @@ router.put('/home-content', asyncHandler(updateHomeContent));
 
 router.get('/leads', asyncHandler(getLeads));
 router.patch('/leads/:id', asyncHandler(updateLead));
+router.delete('/leads/:id', asyncHandler(deleteLead));
 
 export default router;

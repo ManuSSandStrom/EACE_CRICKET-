@@ -63,7 +63,13 @@ app.use(
   }),
 );
 
-app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+app.use(
+  '/uploads',
+  express.static(path.join(__dirname, '../uploads'), {
+    maxAge: '30d',
+    immutable: true,
+  }),
+);
 
 app.get('/api/health', (_req, res) => {
   res.json({ ok: true, timestamp: new Date().toISOString() });

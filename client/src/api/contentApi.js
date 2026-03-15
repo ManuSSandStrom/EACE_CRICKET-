@@ -100,3 +100,7 @@ export const updateLead = async (id, payload) => {
   const { data } = await api.patch(`/admin/leads/${id}`, payload);
   return data;
 };
+
+export const deleteLead = async (id) => {
+  await api.delete(`/admin/leads/${id}`);
+};

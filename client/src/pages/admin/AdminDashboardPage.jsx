@@ -5,6 +5,7 @@ import {
   createTestimonial,
   createVideo,
   deleteGalleryItem,
+  deleteLead,
   deleteTestimonial,
   deleteVideo,
   getLeads,
@@ -19,6 +20,14 @@ import {
 import { useAuth } from '../../context/AuthContext.jsx';
 
 const categories = ['Matches', 'Practice', 'Events', 'Tournaments'];
+const adminSections = [
+  { id: 'leads', label: 'Leads' },
+  { id: 'content', label: 'Homepage' },
+  { id: 'gallery', label: 'Gallery' },
+  { id: 'coaches', label: 'Coaches' },
+  { id: 'testimonials', label: 'Testimonials' },
+  { id: 'videos', label: 'Videos' },
+];
 const leadTabs = [
   { id: 'all', label: 'All Leads' },
   { id: 'new_student', label: 'New Students' },
@@ -56,12 +65,13 @@ const AdminDashboardPage = () => {
   const [leadFilter, setLeadFilter] = useState('all');
   const [leadStatus, setLeadStatus] = useState('all');
   const [leadQuery, setLeadQuery] = useState('');
+  const [activeSection, setActiveSection] = useState('leads');
 
-  const [galleryForm, setGalleryForm] = useState({ title: '', category: categories[0], imageUrl: '' });
+  const [galleryForm, setGalleryForm] = useState({ title: '', category: categories[0] });
   const [galleryImage, setGalleryImage] = useState(null);
 
   const [coachesForm, setCoachesForm] = useState([]);
-  const [coachForm, setCoachForm] = useState({ name: '', expertise: '', imageUrl: '' });
+  const [coachForm, setCoachForm] = useState({ name: '', expertise: '' });
   const [coachImage, setCoachImage] = useState(null);
 
   const [testimonialForm, setTestimonialForm] = useState({
@@ -148,14 +158,14 @@ const AdminDashboardPage = () => {
     setStatus('Saving gallery item...');
 
     try {
-      let imageUrl = galleryForm.imageUrl;
-
-      if (galleryImage) {
-        imageUrl = await uploadGalleryImage(galleryImage);
+      if (!galleryImage) {
+        setStatus('Please upload a JPG/PNG/WEBP image.');
+        return;
       }
+      const imageUrl = await uploadGalleryImage(galleryImage);
 
       await createGalleryItem({ ...galleryForm, imageUrl });
-      setGalleryForm({ title: '', category: categories[0], imageUrl: '' });
+      setGalleryForm({ title: '', category: categories[0] });
       setGalleryImage(null);
       await load();
       setStatus('Gallery item saved.');
@@ -226,7 +236,7 @@ const AdminDashboardPage = () => {
       const updated = await updateHomeContent(payload);
       setHomeData(updated);
       setCoachesForm(updated.coaches || []);
-      setCoachForm({ name: '', expertise: '', imageUrl: '' });
+      setCoachForm({ name: '', expertise: '' });
       setCoachImage(null);
       setStatus('Coaches updated.');
     } catch (_error) {
@@ -236,11 +246,11 @@ const AdminDashboardPage = () => {
 
   const addCoach = async (event) => {
     event.preventDefault();
-    let imageUrl = coachForm.imageUrl;
-
-    if (coachImage) {
-      imageUrl = await uploadGalleryImage(coachImage);
+    if (!coachImage) {
+      setStatus('Please upload a coach photo (JPG/PNG/WEBP).');
+      return;
     }
+    const imageUrl = await uploadGalleryImage(coachImage);
 
     const next = [
       ...coachesForm,
@@ -265,6 +275,18 @@ const AdminDashboardPage = () => {
       setLeads((prev) => prev.map((lead) => (lead._id === id ? updated : lead)));
     } catch (_error) {
       setStatus('Failed to update lead.');
+    }
+  };
+
+  const removeLead = async (id) => {
+    const confirmed = window.confirm('Delete this lead permanently?');
+    if (!confirmed) return;
+    try {
+      await deleteLead(id);
+      setLeads((prev) => prev.filter((lead) => lead._id !== id));
+      setStatus('Lead deleted.');
+    } catch (_error) {
+      setStatus('Failed to delete lead.');
     }
   };
 

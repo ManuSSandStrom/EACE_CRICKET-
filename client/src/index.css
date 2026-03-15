@@ -451,6 +451,14 @@ button {
   contain-intrinsic-size: 260px;
 }
 
+/* Force Light Mode Header */
+header,
+.navbar,
+.top-header {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
 .chat-scrollbar {
   scrollbar-width: thin;
   scrollbar-color: rgba(11, 65, 146, 0.5) rgba(247, 246, 229, 0.35);
