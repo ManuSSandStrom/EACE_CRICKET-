@@ -49,13 +49,15 @@ const Navbar = () => {
     >
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 md:px-8">
         <Link to="/" className="flex items-center gap-3">
-          <img
-            src={EACE_LOGO_URL}
-            alt="EACE Logo"
-            className="h-14 w-14 object-contain md:h-16 md:w-16"
-            loading="lazy"
-            decoding="async"
-          />
+          <span className="inline-flex items-center justify-center rounded-2xl bg-white p-1.5 shadow-[0_10px_22px_rgba(11,65,146,0.18)] ring-1 ring-[#D6E2F5]">
+            <img
+              src={EACE_LOGO_URL}
+              alt="EACE Logo"
+              className="h-16 w-16 object-contain md:h-[72px] md:w-[72px]"
+              loading="lazy"
+              decoding="async"
+            />
+          </span>
           <div>
             <p className="font-heading text-xl leading-tight text-[#0B4192]">Ekalavya Academy</p>
             <p className="font-subheading text-[11px] uppercase tracking-[0.18em] text-[#3A5A8C]">of Cricket Excellence</p>

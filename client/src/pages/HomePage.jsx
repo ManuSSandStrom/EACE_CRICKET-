@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FaWhatsapp, FaPhone, FaMapMarkerAlt, FaArrowRight, FaGraduationCap, FaStar, FaCheck } from 'react-icons/fa';
+import { FaWhatsapp, FaArrowRight, FaGraduationCap, FaStar, FaCheck } from 'react-icons/fa';
 import { createLead, getHomeContent, getTestimonials } from '../api/contentApi.js';
 import HeroSection from '../components/HeroSection.jsx';
 import StatsCounter from '../components/StatsCounter.jsx';
@@ -176,31 +176,9 @@ const SchoolHighlight = () => {
       className="mx-auto w-full max-w-7xl px-4 py-10 md:px-8"
     >
       <div className="overflow-hidden rounded-3xl border-2 border-[#790000]/25 shadow-lg">
-        <div className="bg-gradient-to-r from-[#790000] to-[#0B4192] px-6 py-5 text-white md:px-8">
-          <div className="flex flex-col items-center gap-4 md:flex-row md:justify-between">
-            <div className="text-center md:text-left">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/70">Affiliated School Partner</p>
-              <div className="mt-2 flex items-center justify-center gap-3 md:justify-start">
-                <img
-                  src="https://res.cloudinary.com/dt37ji5yp/image/upload/q_auto,f_auto/v1772983586/Sri_sai_school_image_bd7pqw.jpg"
-                  alt="Sri Sai School Logo"
-                  className="h-10 w-10 rounded-full border border-white/50 bg-white object-cover shadow-sm sm:h-12 sm:w-12"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <h3 className="font-heading text-2xl font-bold md:text-3xl">Sri Sai School</h3>
-              </div>
-              <p className="mt-1 text-sm text-white/90">Quality academic education with elite cricket training</p>
-            </div>
-            <div className="flex flex-col gap-1 text-center text-sm md:text-right">
-              <span className="flex items-center justify-center gap-2 md:justify-end">
-                <FaPhone className="text-xs" /> 8123149416
-              </span>
-              <span className="flex items-center justify-center gap-2 text-xs text-white/80 md:justify-end">
-                <FaMapMarkerAlt className="text-xs" /> Begur-Koppa Road, Yelenahalli, Bangalore - 560068
-              </span>
-            </div>
-          </div>
+        <div className="bg-gradient-to-r from-[#790000] to-[#0B4192] px-6 py-5 text-center text-white md:px-8">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/80">Premium Bundle</p>
+          <h3 className="mt-2 text-2xl font-bold md:text-3xl">School + Hostel + Cricket</h3>
         </div>
 
         <div className="bg-gradient-to-br from-white via-[#FDF5F5] to-[#F0F4FA] p-6 md:p-8">
@@ -226,12 +204,12 @@ const SchoolHighlight = () => {
               <p className="mt-3 text-[10px] font-bold uppercase tracking-[0.15em] text-[#790000]/70">Exclusive Early Bird Offer</p>
               <p className="mt-2 text-5xl font-extrabold text-[#790000]">75%</p>
               <p className="mt-1 px-2 text-center text-[11px] font-semibold uppercase tracking-wider text-[#790000]">
-                Scholarship for the first 20 enrollments
+                Scholarship for the first 40 enrollments
               </p>
               <div className="mb-1 mt-3 flex w-full flex-col gap-2">
                 <div className="flex items-center justify-center gap-1.5 rounded-full bg-[#0B4192]/10 px-3 py-1.5">
                   <FaStar className="text-xs text-[#0B4192]" />
-                  <p className="text-xs font-semibold text-[#0B4192]">Eligibility: Age 12 years and above</p>
+                  <p className="text-xs font-semibold text-[#0B4192]">Eligibility: Age 11 years and above</p>
                 </div>
                 <div className="rounded-lg border border-[#B8C9E8] bg-[#E8EEF8] py-2">
                   <p className="text-xs font-bold text-[#0B4192]">Status: Enrollment Open</p>

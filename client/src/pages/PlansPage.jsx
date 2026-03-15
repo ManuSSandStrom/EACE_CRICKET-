@@ -307,21 +307,7 @@ const PlansPage = () => {
           <div className="p-6 md:p-8">
             <div className="flex flex-col items-center gap-6 md:flex-row md:items-start">
               <div className="flex-1">
-                <div className="flex flex-col items-center gap-4 rounded-xl border border-[#B8C9E8] bg-white p-5 sm:flex-row sm:items-start">
-                  <img
-                    src="https://res.cloudinary.com/dt37ji5yp/image/upload/q_auto,f_auto/v1772983586/Sri_sai_school_image_bd7pqw.jpg"
-                    alt="Sri Sai School Logo"
-                    className="h-14 w-14 rounded-full object-cover shadow-sm sm:h-16 sm:w-16"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div className="text-center sm:text-left">
-                    <h4 className="text-lg font-bold text-[#790000]">Sri Sai School</h4>
-                    <p className="mt-1 text-sm text-[#3A5A8C]">Phone: 8123149416</p>
-                    <p className="mt-1 text-sm text-[#3A5A8C]">Begur-Koppa Road, Yelenahalli, Bangalore - 560068</p>
-                  </div>
-                </div>
-                <ul className="mt-4 space-y-2">
+                <ul className="space-y-2">
                   {schoolBundle.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2 text-sm text-[#2C3E6B]">
                       <FaCheck className="mt-0.5 shrink-0 text-xs text-[#790000]" />
@@ -337,12 +323,12 @@ const PlansPage = () => {
                 <p className="mt-3 text-[10px] font-bold uppercase tracking-[0.15em] text-[#790000]/70">Exclusive Early Bird Offer</p>
                 <p className="mt-2 text-5xl font-extrabold text-[#790000]">{schoolBundle.scholarship}</p>
                 <p className="mt-1 px-2 text-center text-[11px] font-semibold uppercase tracking-wider text-[#790000]">
-                  Scholarship for the first 20 enrollments
+                  Scholarship for the first 40 enrollments
                 </p>
                 <div className="mb-1 mt-3 flex w-full flex-col gap-2">
                   <div className="flex items-center justify-center gap-1.5 rounded-full bg-[#0B4192]/10 px-3 py-1.5">
                     <FaStar className="text-xs text-[#0B4192]" />
-                    <p className="text-xs font-semibold text-[#0B4192]">Eligibility: Age 12 years and above</p>
+                    <p className="text-xs font-semibold text-[#0B4192]">Eligibility: Age 11 years and above</p>
                   </div>
                   <div className="rounded-lg border border-[#B8C9E8] bg-[#E8EEF8] py-2">
                     <p className="text-xs font-bold text-[#0B4192]">Status: Enrollment Open</p>
