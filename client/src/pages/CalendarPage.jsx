@@ -18,7 +18,7 @@ const weeklySchedule = [
   { day: 'Thursday', focus: 'Match Simulation', type: 'match' },
   { day: 'Friday', focus: 'Video Analysis & Skills', type: 'training' },
   { day: 'Saturday', focus: 'Practice Matches', type: 'match' },
-  { day: 'Sunday', focus: 'Rest / Optional Fitness', type: 'rest' },
+  { day: 'Sunday', focus: 'Practice Matches', type: 'match' },
 ];
 
 const governmentHolidays = [
@@ -327,7 +327,7 @@ const CalendarPage = () => {
         viewport={{ once: true }}
         className="mx-auto mt-10 max-w-2xl rounded-xl border border-[#B8C9E8] bg-[#F0F4FA] p-5 text-center"
       >
-        <p className="text-sm font-semibold text-[#0B4192]">Training runs 6 days a week (Monday to Saturday)</p>
+        <p className="text-sm font-semibold text-[#0B4192]">Training runs 6 days a week (Tuesday to Sunday)</p>
         <p className="mt-2 text-xs text-[#3A5A8C]">
           Sessions are conducted for students aged 5 and above, with specific batches for different age groups. Indoor net
           sessions are available during monsoon. Government and academy holidays are observed.
